@@ -11,5 +11,7 @@ namespace BusinessLayer
         void firmaSil(Firma firma);
         void firmaGuncelle(Firma firma);
         List<Firma> firmaListele();
+        Firma firmaGetirById(int id);
+        Firma firmaGetirByName(string name);
     }
 }
