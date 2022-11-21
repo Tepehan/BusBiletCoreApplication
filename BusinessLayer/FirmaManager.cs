@@ -18,7 +18,18 @@ namespace BusinessLayer
 
         public void firmaEkle(Firma firma)
         {
-            firmaDal.insert(firma);
+        
+                firmaDal.insert(firma);                    
+        }
+
+        public Firma firmaGetirById(int id)
+        {
+            return firmaDal.get(x=>x.firmaId==id);
+        }
+
+        public Firma firmaGetirByName(string ad)
+        {
+            return firmaDal.get(x => x.firmaAd == ad);
         }
 
         public void firmaGuncelle(Firma firma)
