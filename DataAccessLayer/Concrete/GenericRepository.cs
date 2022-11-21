@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccessLayer.Concrete
@@ -19,6 +20,11 @@ namespace DataAccessLayer.Concrete
             _objects.Remove(entity);
         }
 
+        public T get(Expression<Func<T, bool>> filter)
+        {
+            return _objects.Where(filter).SingleOrDefault();
+        }
+
         public void insert(T entity)
         {
             _objects.Add(entity);
@@ -27,6 +33,11 @@ namespace DataAccessLayer.Concrete
         public List<T> list()
         {
             return _objects.ToList();
+        }
+
+        public List<T> listBy(Expression<Func<T, bool>> filter)
+        {
+            return _objects.Where(filter).ToList();
         }
 
         public void update(T entity)
