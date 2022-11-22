@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32901.82
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusBiletCoreApplication", "BusBiletCoreApplication\BusBiletCoreApplication.csproj", "{BACA9771-3B49-4FDA-B4F7-6B8562B09522}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusBiletCoreApplication", "BusBiletCoreApplication\BusBiletCoreApplication.csproj", "{BACA9771-3B49-4FDA-B4F7-6B8562B09522}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityLayer", "EntityLayer\EntityLayer.csproj", "{7FC6B648-DC9E-4FAD-9D46-5DE2EB990266}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityLayer", "EntityLayer\EntityLayer.csproj", "{7FC6B648-DC9E-4FAD-9D46-5DE2EB990266}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{947F47D3-CC10-4A8B-9AB3-981716070752}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{947F47D3-CC10-4A8B-9AB3-981716070752}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{E4379055-6BF2-4FE0-953A-FB4D33757394}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{E4379055-6BF2-4FE0-953A-FB4D33757394}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{DEFB337E-75CF-46B5-9F0C-A5D40CEF7BFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E4379055-6BF2-4FE0-953A-FB4D33757394}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4379055-6BF2-4FE0-953A-FB4D33757394}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4379055-6BF2-4FE0-953A-FB4D33757394}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEFB337E-75CF-46B5-9F0C-A5D40CEF7BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEFB337E-75CF-46B5-9F0C-A5D40CEF7BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEFB337E-75CF-46B5-9F0C-A5D40CEF7BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEFB337E-75CF-46B5-9F0C-A5D40CEF7BFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

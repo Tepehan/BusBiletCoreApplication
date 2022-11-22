@@ -7,6 +7,7 @@ namespace DataAccessLayer.Abstract
 {
     public interface IGenericDal<T>
     {
+        //Çekirdek yapı
         void insert(T entity);
         void delete(T entity);
         void update(T entity);
