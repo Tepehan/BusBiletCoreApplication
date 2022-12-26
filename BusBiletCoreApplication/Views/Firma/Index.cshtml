@@ -1,0 +1,32 @@
+﻿@using EntityLayer;
+@model List<Firma>;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Firma Adı</th>
+                <th>İletişim Bilgisi</th>
+                <th>Logo</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach(var item in Model)
+        {
+             <tr>
+                    <td>@item.firmaAd</td>
+                    <td>@item.iletisim</td>
+                    <td>@item.logoUrl</td>
+                    <td><button type="button" class="btn btn-danger p-2">Sil</button></td>
+                <td><button type="button" class="btn btn-primary p-2">Güncelle</button></td>
+            </tr>
+        }
+       
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-end p-2">
+    <button type="button" class="btn btn-success p-2">Ekle</button>
+    </div>
+

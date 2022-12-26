@@ -13,7 +13,7 @@ namespace BusBiletCoreApplication.Controllers
 {
     public class HomeController : Controller
     {
-        FirmaManager firma = new FirmaManager(new EfFirmaRepository());
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -23,7 +23,7 @@ namespace BusBiletCoreApplication.Controllers
 
         public IActionResult Index()
         {
-            var liste = firma.firmaListele();
+           
             return View();
         }
 
