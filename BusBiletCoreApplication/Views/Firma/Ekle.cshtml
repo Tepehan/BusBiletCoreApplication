@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="p-2">
+    <h3>Firma Ekle</h3>
+<form action="/Firma/ekle" method="post">
+    <label>Firma Adı</label>
+    <input class="form-control" type="text" name="firmaAd" />
+    <br />
+    <label>İletişim Bilgisi</label>
+    <input class="form-control" type="text" name="iletisim" />
+    <br />
+    <label>Firma Logo</label>
+    <input class="form-control" type="text" name="logoUrl"/>
+    <br />
+    <label>Durum</label>
+    <select class="form-control" name="silindi" >
+            <option>False</option>
+            <option>True</option>
+    </select>
+    <br />
+    <input class="form-control btn btn-primary" type="submit" value="Ekle" />
+</form>
+</div>

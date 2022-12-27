@@ -4,29 +4,68 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Firma Adı</th>
-                <th>İletişim Bilgisi</th>
-                <th>Logo</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach(var item in Model)
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Firma Adı</th>
+            <th>İletişim Bilgisi</th>
+            <th>Logo</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
         {
-             <tr>
-                    <td>@item.firmaAd</td>
-                    <td>@item.iletisim</td>
-                    <td>@item.logoUrl</td>
-                    <td><button type="button" class="btn btn-danger p-2">Sil</button></td>
+            <tr>
+                <td>@item.firmaAd</td>
+                <td>@item.iletisim</td>
+                <td>@item.logoUrl</td>
+                <td>@item.silindi</td>
+                <td>
+                    <button type="button" class="btn btn-danger  text-center" data-bs-whatever="@item.firmaId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Sil </button>
+                </td>
                 <td><button type="button" class="btn btn-primary p-2">Güncelle</button></td>
             </tr>
         }
-       
-        </tbody>
-    </table>
-    <div class="d-flex justify-content-end p-2">
-    <button type="button" class="btn btn-success p-2">Ekle</button>
-    </div>
 
+    </tbody>
+</table>
+<div class="text-center d-flex justify-content-start p-2">
+    <a href="/Firma/ekle" class="btn btn-info">Yeni Firma Ekle</a>
+</div>
+
+
+<!-- Modal -->
+@*#decisionPopup Model*@
+<div class="modal fade" id="decisionPopup" tabindex="=-1" aria-labelledby="silLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="silLabel">Uyarı</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Silmek istediğinizden emin misiniz?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hayır</button>
+                <a id="delete-btn" href="" class="btn btn-success">Evet</a>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script> 
+    $(document).ready(function(){
+        $('#decisionPopup').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget);
+            var firmaId = button.attr('data-bs-whatever');
+            console.log(firmaId);
+            var a = document.querySelector("#delete-btn");
+            a.href = "/Firma/sil/" + firmaId;
+        });
+    });
+</script>
+   

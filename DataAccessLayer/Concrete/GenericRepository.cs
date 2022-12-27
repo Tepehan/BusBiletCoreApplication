@@ -18,6 +18,7 @@ namespace DataAccessLayer.Concrete
         public void delete(T entity)
         {
             _objects.Remove(entity);
+             context.SaveChanges();
         }
 
         public T get(Expression<Func<T, bool>> filter)
@@ -28,6 +29,7 @@ namespace DataAccessLayer.Concrete
         public void insert(T entity)
         {
             _objects.Add(entity);
+            context.SaveChanges();
         }
 
         public List<T> list()
@@ -43,6 +45,7 @@ namespace DataAccessLayer.Concrete
         public void update(T entity)
         {
             _objects.Update(entity);
+            context.SaveChanges();
         }
     }
 }
