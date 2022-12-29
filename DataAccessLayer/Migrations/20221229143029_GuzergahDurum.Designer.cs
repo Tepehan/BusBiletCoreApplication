@@ -4,6 +4,7 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,16 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+<<<<<<<< HEAD:DataAccessLayer/Migrations/20221229143029_GuzergahDurum.Designer.cs
+    [Migration("20221229143029_GuzergahDurum")]
+    partial class GuzergahDurum
+========
+    [Migration("20221229132809_init")]
+    partial class init
+>>>>>>>> 0bd88d9bd7735658f66fae0bb3133a1859f2df27:DataAccessLayer/Migrations/20221229132809_init.Designer.cs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

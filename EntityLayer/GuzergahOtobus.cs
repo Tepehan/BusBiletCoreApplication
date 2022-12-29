@@ -21,6 +21,7 @@ namespace EntityLayer
         //otobus ile ilişkilendirilecek.
         public int otobusId { get; set; }
         public Otobus otobus { get; set; }
+        public bool guzergahOtobusSilindi { get; set; }
         //guzergahOtobusKullanici ile ilişkilendirilecek.
         public ICollection<GuzergahOtobusKullanici> guzergahOtobusKullanicilar { get; set; }
     }

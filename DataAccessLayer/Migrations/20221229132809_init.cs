@@ -1,10 +1,18 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace DataAccessLayer.Migrations
 {
+    /// <inheritdoc />
+<<<<<<<< HEAD:DataAccessLayer/Migrations/20221229143029_GuzergahDurum.cs
+    public partial class GuzergahDurum : Migration
+========
     public partial class init : Migration
+>>>>>>>> 0bd88d9bd7735658f66fae0bb3133a1859f2df27:DataAccessLayer/Migrations/20221229132809_init.cs
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -30,7 +38,8 @@ namespace DataAccessLayer.Migrations
                     guzergahId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     kalkisYeri = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    varisYeri = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true)
+                    varisYeri = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    silindi = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -94,7 +103,8 @@ namespace DataAccessLayer.Migrations
                     tarih = table.Column<DateTime>(type: "datetime2", nullable: false),
                     biletFiyat = table.Column<double>(type: "float", nullable: false),
                     guzergahId = table.Column<int>(type: "int", nullable: false),
-                    otobusId = table.Column<int>(type: "int", nullable: false)
+                    otobusId = table.Column<int>(type: "int", nullable: false),
+                    guzergahOtobusSilindi = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -138,8 +148,7 @@ namespace DataAccessLayer.Migrations
                         name: "FK_guzergahOtobusKullaniciler_guzergahOtobusler_guzergahOtobusseferId",
                         column: x => x.guzergahOtobusseferId,
                         principalTable: "guzergahOtobusler",
-                        principalColumn: "seferId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "seferId");
                     table.ForeignKey(
                         name: "FK_guzergahOtobusKullaniciler_kullanicilar_kullaniciId",
                         column: x => x.kullaniciId,
@@ -174,6 +183,7 @@ namespace DataAccessLayer.Migrations
                 column: "firmaId");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
