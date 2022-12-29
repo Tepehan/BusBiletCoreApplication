@@ -15,9 +15,6 @@
             <th>Plaka</th>
             <th>Marka</th>
             <th>Model</th>
-            <th>Silindi</th>
-            <th></th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -31,9 +28,8 @@
                     <td>@item.plaka</td>
                     <td>@item.marka</td>
                     <td>@item.model</td>
-                    <td>@item.otobusSilindi</td>
                     <td>
-                            <button type="button" class="btn btn-danger  text-center" data-bs-whatever="@item.otobusId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fas fa-trash"></i> </button>
+                        <button type="button" class="btn btn-danger  text-center" data-bs-whatever="@item.otobusId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Sil </button>
                     </td>
                     <td><a href="/Otobus/guncelle/@item.otobusId" type="button" class="btn btn-primary p-2">Güncelle</a></td>
                 </tr>
@@ -71,10 +67,10 @@
     $(document).ready(function(){
         $('#decisionPopup').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget);
-            var otobusId = button.attr('data-bs-whatever');
-            console.log(otobusId);
+            var firmaId = button.attr('data-bs-whatever');
+            console.log(firmaId);
             var a = document.querySelector("#delete-btn");
-            a.href = "/Otobus/sil/" + otobusId;
+            a.href = "/Firma/sil/" + firmaId;
         });
     });
 </script>

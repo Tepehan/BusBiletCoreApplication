@@ -6,8 +6,6 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-#nullable disable
-
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
@@ -17,18 +15,16 @@ namespace DataAccessLayer.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.1")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+                .UseIdentityColumns()
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("ProductVersion", "5.0.0");
 
             modelBuilder.Entity("EntityLayer.Firma", b =>
                 {
                     b.Property<int>("firmaId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("firmaId"));
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("firmaAd")
                         .HasMaxLength(50)
@@ -54,9 +50,8 @@ namespace DataAccessLayer.Migrations
                 {
                     b.Property<int>("guzergahId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("guzergahId"));
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("kalkisYeri")
                         .HasMaxLength(20)
@@ -75,9 +70,8 @@ namespace DataAccessLayer.Migrations
                 {
                     b.Property<int>("seferId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("seferId"));
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<double>("biletFiyat")
                         .HasColumnType("float");
@@ -111,9 +105,8 @@ namespace DataAccessLayer.Migrations
                 {
                     b.Property<int>("biletId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("biletId"));
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("biletKesimTarihi")
                         .HasColumnType("datetime2");
@@ -165,9 +158,8 @@ namespace DataAccessLayer.Migrations
                 {
                     b.Property<int>("kullaniciId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("kullaniciId"));
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("ad")
                         .HasMaxLength(50)
@@ -212,9 +204,8 @@ namespace DataAccessLayer.Migrations
                 {
                     b.Property<int>("otobusId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("otobusId"));
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<int>("firmaId")
                         .HasColumnType("int");
@@ -229,9 +220,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("model")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<bool>("otobusSilindi")
-                        .HasColumnType("bit");
 
                     b.Property<string>("plaka")
                         .HasMaxLength(11)
