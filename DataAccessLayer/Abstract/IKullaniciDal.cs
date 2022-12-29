@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataAccessLayer.Abstract
 {
-    interface IKullaniciDal : IGenericDal<Kullanici>
+   public interface IKullaniciDal : IGenericDal<Kullanici>
     {
     }
 }
