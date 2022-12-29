@@ -18,6 +18,7 @@ namespace EntityLayer
         public string marka { get; set; }
         [StringLength(50)]
         public string model { get; set; }
+        public bool otobusSilindi { get; set; }
 
         //firma ile ilişkilendirilecek.
         public int firmaId { get; set; }

@@ -1,10 +1,14 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace DataAccessLayer.Migrations
 {
+    /// <inheritdoc />
     public partial class init : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -70,6 +74,7 @@ namespace DataAccessLayer.Migrations
                     plaka = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
                     marka = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     model = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    otobusSilindi = table.Column<bool>(type: "bit", nullable: false),
                     firmaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -138,8 +143,7 @@ namespace DataAccessLayer.Migrations
                         name: "FK_guzergahOtobusKullaniciler_guzergahOtobusler_guzergahOtobusseferId",
                         column: x => x.guzergahOtobusseferId,
                         principalTable: "guzergahOtobusler",
-                        principalColumn: "seferId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "seferId");
                     table.ForeignKey(
                         name: "FK_guzergahOtobusKullaniciler_kullanicilar_kullaniciId",
                         column: x => x.kullaniciId,
@@ -174,6 +178,7 @@ namespace DataAccessLayer.Migrations
                 column: "firmaId");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
