@@ -10,7 +10,7 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=405-03; database=DBBusBilet ;Encrypt=False; User ID=sa;Password=1234");
+            optionsBuilder.UseSqlServer("server=405-00 ; database=DBBusBilet ;Encrypt=False; User ID=sa;Password=1234");
         }
         
         public DbSet<Firma> firmalar { get; set; }

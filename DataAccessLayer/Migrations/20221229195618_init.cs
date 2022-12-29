@@ -74,6 +74,7 @@ namespace DataAccessLayer.Migrations
                     plaka = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
                     marka = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     model = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    otobusSilindi = table.Column<bool>(type: "bit", nullable: false),
                     firmaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

@@ -233,6 +233,9 @@ namespace DataAccessLayer.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("otobusSilindi")
+                        .HasColumnType("bit");
+
                     b.Property<string>("plaka")
                         .HasMaxLength(11)
                         .HasColumnType("nvarchar(11)");

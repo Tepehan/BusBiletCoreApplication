@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20221229132809_init")]
+    [Migration("20221229195618_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -235,6 +235,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("model")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("otobusSilindi")
+                        .HasColumnType("bit");
 
                     b.Property<string>("plaka")
                         .HasMaxLength(11)
