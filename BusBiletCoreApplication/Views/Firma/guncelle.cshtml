@@ -1,0 +1,38 @@
+﻿@using EntityLayer;
+@model Firma;
+@{
+    ViewData["Title"] = "guncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="p-2">
+    <h3>Firma Guncelle</h3>
+    <form action="/Firma/guncelle" method="post">
+        <input type="hidden" class="form-control" type="text" name="firmaId" value="@Model.firmaId" />
+        <label>Firma Adı</label>
+        <input class="form-control" type="text" name="firmaAd" value="@Model.firmaAd" />
+        <br />
+        <label>İletişim Bilgisi</label>
+        <input class="form-control" type="text" name="iletisim" value="@Model.iletisim" />
+        <br />
+        <label>Firma Logo</label>
+        <input class="form-control" type="text" name="logoUrl" value="@Model.logoUrl" />
+        <br />
+        <label>Durum</label>
+        <select class="form-control" name="silindi">
+            @if (Model.silindi)
+            {
+            <option selected>True</option>
+            <option>False</option>
+            }
+            else
+            {
+            <option>True</option>
+            <option selected>False</option>
+            }
+           
+        </select>
+        <br />
+        <input class="form-control btn btn-primary" type="submit" value="Güncelle" />
+    </form>
+</div>

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataAccessLayer.Abstract
 {
-    interface IOtobusDal : IGenericDal<Otobus>
+    public interface IOtobusDal : IGenericDal<Otobus>
     {
       
     }
