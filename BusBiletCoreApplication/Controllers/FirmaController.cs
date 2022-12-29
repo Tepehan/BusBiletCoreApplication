@@ -13,10 +13,12 @@ namespace BusBiletCoreApplication.Controllers
             var firmalar = fm.firmaListele();
             return View(firmalar);
         }
+
         [HttpGet]
         public IActionResult Ekle() {
             return View();
         }
+
         [HttpPost]
         public IActionResult Ekle(Firma firma)
         {
