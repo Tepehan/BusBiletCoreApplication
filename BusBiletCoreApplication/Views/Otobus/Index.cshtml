@@ -8,7 +8,7 @@
 <table class="table table-hover table-dark">
     <thead>
         <tr>
-             <th>Firma Id</th>
+             <th>Firma Ad</th>
             <th>Koltuk Sayisi</th>
             <th>Wifi</th>
             <th>TV</th>
@@ -24,7 +24,7 @@
         @foreach (var item in Model)
         {
                 <tr>
-                    <td>@item.firmaId</td>
+                    <td>@item.firma.firmaAd</td>
                     <td>@item.koltukSayisi</td>
                     <td>@item.wifi</td>
                     <td>@item.tv</td>
