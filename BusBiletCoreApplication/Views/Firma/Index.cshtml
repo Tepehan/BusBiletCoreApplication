@@ -24,7 +24,7 @@
                 <td>
                     <button type="button" class="btn btn-danger  text-center" data-bs-whatever="@item.firmaId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Sil </button>
                 </td>
-                <td><button type="button" class="btn btn-primary p-2">Güncelle</button></td>
+                <td><a href="/Firma/guncelle/@item.firmaId" type="button" class="btn btn-primary p-2">Güncelle</a></td>
             </tr>
         }
 
@@ -56,7 +56,6 @@
 </div>
  
 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script> 
     $(document).ready(function(){
         $('#decisionPopup').on('show.bs.modal', function (event) {

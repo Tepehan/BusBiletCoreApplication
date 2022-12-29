@@ -28,7 +28,19 @@ namespace BusBiletCoreApplication.Controllers
         {
             Firma firma=fm.firmaGetirById(id);
             firma.silindi = true;
-           fm.firmaGuncelle(firma);
+            fm.firmaGuncelle(firma);
+            return RedirectToAction("Index");
+        }
+        public IActionResult guncelle(int id)
+        {
+            Firma firma = fm.firmaGetirById(id);
+         
+            return View(firma);
+        }
+        [HttpPost]
+        public IActionResult guncelle(Firma firma)
+        {
+            fm.firmaGuncelle(firma);
             return RedirectToAction("Index");
         }
     }
