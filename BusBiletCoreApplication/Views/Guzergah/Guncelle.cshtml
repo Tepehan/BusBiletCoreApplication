@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Guncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="p-2">
+    <h3>Guzergah Guncelle</h3>
+    <form action="/Guzergah/Guncelle" method="post">
+
+        <input type="hidden" class="form-control" type="text" name="guzergahId" value="@Model.guzergahId" />
+        <label>Kalkış Yeri</label>
+        <input class="form-control" type="text" name="kalkisYeri" value="@Model.kalkisYeri" />
+        <br />
+        <label>Varış Yeri</label>
+        <input class="form-control" type="text" name="varisYeri" value="@Model.varisYeri" />
+        <br />
+        <label>Durum</label>
+        <select class="form-control" name="silindi">
+            @if (Model.silindi)
+            {
+                        <option selected>True</option>
+                        <option>False</option>
+            }
+            else
+            {
+                        <option>True</option>
+                        <option selected>False</option>
+            }
+
+        </select>
+        <br />
+        <input class="form-control btn btn-primary" type="submit" value="Güncelle" />
+    </form>
+</div>
+

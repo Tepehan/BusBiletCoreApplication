@@ -21,6 +21,29 @@ namespace BusBiletCoreApplication.Controllers
             gm.GuzergahGuncelle(guzergah);
             return RedirectToAction("listele");
         }
-        
+        [HttpGet]
+        public IActionResult Ekle()
+        {
+            return View();
+        }
+        public IActionResult Ekle(Guzergah guzergah)
+        {
+            gm.GuzergahEkle(guzergah);
+            return RedirectToAction("Listele");
+        }
+
+        public IActionResult Guncelle(int id)
+        {
+            Guzergah guzergah = gm.GuzergahGetirById(id);
+
+            return View(guzergah);
+        }
+        [HttpPost]
+        public IActionResult Guncelle(Guzergah guzergah)
+        {
+            gm.GuzergahGuncelle(guzergah);
+            return RedirectToAction("Listele");
+        }
+
     }
 }
