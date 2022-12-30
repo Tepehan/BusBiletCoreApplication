@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataAccessLayer.Abstract
 {
-    interface IGuzergahDal : IGenericDal<Guzergah>
+   public  interface IGuzergahDal : IGenericDal<Guzergah>
     {
         
     }

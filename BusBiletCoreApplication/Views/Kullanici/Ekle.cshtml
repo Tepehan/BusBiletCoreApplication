@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="p-2">
+    <h1>Kullanıcı Ekleme Sayfası</h1>
+    <br />
+    <form action="/Kullanici/ekle" method="post">
+
+        <label>Kullanici Ad</label>
+        <input class="form-control" type="text" name="kullaniciAd" />
+        <br />
+        <label>Kullanici Şifre</label>
+        <input class="form-control" type="text" name="kullaniciSifre" />
+        <br />
+        <label>Ad</label>
+        <input class="form-control" type="text" name="ad" />
+        <br />
+        <label>Soyad</label>
+        <input class="form-control" type="text" name="soyad" />
+        <br />
+        <label>Doğum Tarihi</label>
+        <input class="form-control" type="text" name="dogumTarihi" />
+        <br />
+        <label>Tc Kimlik No</label>
+        <input class="form-control" type="text" name="tc" />
+        <br />
+        <label>E-Mail</label>
+        <input class="form-control" type="text" name="mail" />
+        <br />
+        <label>Cinsiyet</label>
+        <select class="form-control" name="cinsiyet">
+            <option>False</option>
+            <option>True</option>
+        </select>
+        <br />
+        <label>Telefon Numarası</label>
+        <input class="form-control" type="text" name="tel" />
+        <br />
+        <label>Durum</label>
+        <select class="form-control" name="silindi">
+            <option>False</option>
+            <option>True</option>
+        </select>
+        <br />
+        <input class="form-control btn btn-primary" type="submit" value="Kullanıcı Ekle" />
+    </form>
+</div>
+
