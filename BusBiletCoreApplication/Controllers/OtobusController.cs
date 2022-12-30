@@ -24,5 +24,24 @@ namespace BusBiletCoreApplication.Controllers
             om.otobusEkle(otobus);
             return RedirectToAction("Index");
         }
+        public IActionResult sil(int id)
+        {
+            Otobus otobus = om.otobusGetirById(id);
+            otobus.otobusSilindi = true;
+            om.otobusGuncelle(otobus);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult guncelle(int id)
+        {
+            Otobus otobus = om.otobusGetirById(id);
+            return View(otobus);
+        }
+        [HttpPost]
+        public IActionResult guncelle(Otobus otobus)
+        {
+            om.otobusGuncelle(otobus);
+            return RedirectToAction("Index");
+        }
     }
 }

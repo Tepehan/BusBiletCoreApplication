@@ -4,6 +4,7 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,16 +12,31 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+<<<<<<<< HEAD:DataAccessLayer/Migrations/20221229132809_init.Designer.cs
+<<<<<<<< HEAD:DataAccessLayer/Migrations/20221229143029_GuzergahDurum.Designer.cs
+    [Migration("20221229143029_GuzergahDurum")]
+    partial class GuzergahDurum
+========
+    [Migration("20221229132809_init")]
+    partial class init
+>>>>>>>> 0bd88d9bd7735658f66fae0bb3133a1859f2df27:DataAccessLayer/Migrations/20221229132809_init.Designer.cs
+========
+    [Migration("20221229205038_yeni")]
+    partial class yeni
+>>>>>>>> 8a31e4d33c7def823a41f7e92e2834f653acb7d2:DataAccessLayer/Migrations/20221229205038_yeni.Designer.cs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.1")
+<<<<<<<< HEAD:DataAccessLayer/Migrations/20221229132809_init.Designer.cs
+========
                 .HasAnnotation("Proxies:ChangeTracking", false)
                 .HasAnnotation("Proxies:CheckEquality", false)
                 .HasAnnotation("Proxies:LazyLoading", true)
+>>>>>>>> 8a31e4d33c7def823a41f7e92e2834f653acb7d2:DataAccessLayer/Migrations/20221229205038_yeni.Designer.cs
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -64,6 +80,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("kalkisYeri")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<bool>("silindi")
+                        .HasColumnType("bit");
 
                     b.Property<string>("varisYeri")
                         .HasMaxLength(20)
