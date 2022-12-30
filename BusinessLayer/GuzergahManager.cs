@@ -11,7 +11,7 @@ namespace BusinessLayer
     
     public class GuzergahManager : IGuzergahServis
     {
-        IGuzergahDal guzergahDal;
+         IGuzergahDal guzergahDal;
         public GuzergahManager(IGuzergahDal guzergahDal) 
         {
             this.guzergahDal = guzergahDal;

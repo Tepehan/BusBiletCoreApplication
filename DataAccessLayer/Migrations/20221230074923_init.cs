@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccessLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class silindi : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -56,7 +56,8 @@ namespace DataAccessLayer.Migrations
                     tc = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
                     mail = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     cinsiyet = table.Column<bool>(type: "bit", nullable: false),
-                    tel = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true)
+                    tel = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
+                    silindi = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

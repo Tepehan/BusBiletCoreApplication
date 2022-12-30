@@ -12,13 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-<<<<<<<< HEAD:DataAccessLayer/Migrations/20221229143029_GuzergahDurum.Designer.cs
-    [Migration("20221229143029_GuzergahDurum")]
-    partial class GuzergahDurum
-========
-    [Migration("20221229132809_init")]
+    [Migration("20221230074923_init")]
     partial class init
->>>>>>>> 0bd88d9bd7735658f66fae0bb3133a1859f2df27:DataAccessLayer/Migrations/20221229132809_init.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,6 +21,9 @@ namespace DataAccessLayer.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.1")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -205,6 +203,9 @@ namespace DataAccessLayer.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("silindi")
+                        .HasColumnType("bit");
+
                     b.Property<string>("soyad")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -243,6 +244,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("model")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("otobusSilindi")
+                        .HasColumnType("bit");
 
                     b.Property<string>("plaka")
                         .HasMaxLength(11)

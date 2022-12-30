@@ -65,6 +65,9 @@ namespace DataAccessLayer.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<bool>("silindi")
+                        .HasColumnType("bit");
+
                     b.Property<string>("varisYeri")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
@@ -196,6 +199,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("mail")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("silindi")
+                        .HasColumnType("bit");
 
                     b.Property<string>("soyad")
                         .HasMaxLength(50)
