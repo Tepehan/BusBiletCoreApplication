@@ -24,7 +24,7 @@ namespace EntityLayer
 
         //guzergahOtobus ile ilişkilendirilecek.
         public int seferId { get; set; }
-        public virtual GuzergahOtobus guzergahOtobus { get; set; }
+        public virtual GuzergahOtobus sefer { get; set; }
         //kullanici ile ilişkilendirilecek.
         public int kullaniciId { get; set; }
         public virtual Kullanici kullanici { get; set; }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer
+namespace BusinessLayer.Abstract
 {
     public interface IGuzergahServis
     {
@@ -14,6 +14,6 @@ namespace BusinessLayer
         void GuzergahGuncelle(Guzergah guzergah);
         List<Guzergah> GuzergahListele();
         Guzergah GuzergahGetirById(int id);
-        
+
     }
 }

@@ -1,11 +1,36 @@
-﻿
+﻿@using EntityLayer;
+@model Firma
 @{
     ViewData["Title"] = "Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
 <div class="p-2">
+    <h3>Firma Ekle</h3>
+@using (Html.BeginForm("Ekle", "Firma", FormMethod.Post, new{ @class = "form-group" }))
+{
+    @Html.Label("Firma Adı")
+    @Html.TextBoxFor(firma=>firma.firmaAd,new { @class = "form-control" })
+        @Html.ValidationMessageFor(firma=>firma.firmaAd,"",new { @class ="text-danger" })
+    <br />
+    @Html.Label("Firma iletisim")
+    @Html.TextBoxFor(firma=>firma.iletisim,new { @class = "form-control" })
+        @Html.ValidationMessageFor(firma=>firma.iletisim,"",new { @class ="text-danger" })
+        <br />
+    @Html.Label("Logo Url")
+    @Html.TextBoxFor(firma=>firma.logoUrl,new { @class = "form-control" })
+        @Html.ValidationMessageFor(firma=>firma.logoUrl,"",new { @class ="text-danger" })
+        <br />
+    @Html.Label("Durum")
+    <select class="form-control" name="silindi" >
+            <option>False</option>
+            <option>True</option>
+    </select>
+    <br />
+        <input class="form-control btn btn-primary" type="submit" value="Ekle" />
+}
+</div>
+@*<div class="p-2">
     <h3>Firma Ekle</h3>
 <form action="/Firma/ekle" method="post">
     <label>Firma Adı</label>
@@ -25,4 +50,4 @@
     <br />
     <input class="form-control btn btn-primary" type="submit" value="Ekle" />
 </form>
-</div>
+</div>*@

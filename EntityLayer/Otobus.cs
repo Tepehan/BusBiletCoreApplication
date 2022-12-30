@@ -24,6 +24,6 @@ namespace EntityLayer
         public int firmaId { get; set; }
         public virtual Firma firma { get; set; }
         //guzergahOtobus ile ilişkilendirilecek.
-        public virtual ICollection<GuzergahOtobus> guzergahOtobusler { get; set; }
+        public virtual ICollection<GuzergahOtobus> seferler { get; set; }
     }
 }

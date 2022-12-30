@@ -21,8 +21,8 @@ namespace DataAccessLayer.Concrete
         public DbSet<Guzergah> guzergahlar { get; set; }
         public DbSet<Otobus> otobusler { get; set; }
         public DbSet<Kullanici> kullanicilar { get; set; }
-        public DbSet<GuzergahOtobus> guzergahOtobusler { get; set; }
-        public DbSet<GuzergahOtobusKullanici> guzergahOtobusKullaniciler { get; set; }
+        public DbSet<GuzergahOtobus> seferler { get; set; }
+        public DbSet<GuzergahOtobusKullanici> biletler { get; set; }
 
         
     }

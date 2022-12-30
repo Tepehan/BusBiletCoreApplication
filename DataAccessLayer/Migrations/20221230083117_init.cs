@@ -91,7 +91,7 @@ namespace DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "guzergahOtobusler",
+                name: "seferler",
                 columns: table => new
                 {
                     seferId = table.Column<int>(type: "int", nullable: false)
@@ -100,21 +100,21 @@ namespace DataAccessLayer.Migrations
                     kalkisSaat = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: true),
                     tarih = table.Column<DateTime>(type: "datetime2", nullable: false),
                     biletFiyat = table.Column<double>(type: "float", nullable: false),
+                    guzergahOtobusSilindi = table.Column<bool>(type: "bit", nullable: false),
                     guzergahId = table.Column<int>(type: "int", nullable: false),
-                    otobusId = table.Column<int>(type: "int", nullable: false),
-                    guzergahOtobusSilindi = table.Column<bool>(type: "bit", nullable: false)
+                    otobusId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_guzergahOtobusler", x => x.seferId);
+                    table.PrimaryKey("PK_seferler", x => x.seferId);
                     table.ForeignKey(
-                        name: "FK_guzergahOtobusler_guzergahlar_guzergahId",
+                        name: "FK_seferler_guzergahlar_guzergahId",
                         column: x => x.guzergahId,
                         principalTable: "guzergahlar",
                         principalColumn: "guzergahId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_guzergahOtobusler_otobusler_otobusId",
+                        name: "FK_seferler_otobusler_otobusId",
                         column: x => x.otobusId,
                         principalTable: "otobusler",
                         principalColumn: "otobusId",
@@ -122,7 +122,7 @@ namespace DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "guzergahOtobusKullaniciler",
+                name: "biletler",
                 columns: table => new
                 {
                     biletId = table.Column<int>(type: "int", nullable: false)
@@ -136,62 +136,62 @@ namespace DataAccessLayer.Migrations
                     yolcuTc = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
                     yolcuCinsiyet = table.Column<bool>(type: "bit", nullable: false),
                     seferId = table.Column<int>(type: "int", nullable: false),
-                    guzergahOtobusseferId = table.Column<int>(type: "int", nullable: true),
                     kullaniciId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_guzergahOtobusKullaniciler", x => x.biletId);
+                    table.PrimaryKey("PK_biletler", x => x.biletId);
                     table.ForeignKey(
-                        name: "FK_guzergahOtobusKullaniciler_guzergahOtobusler_guzergahOtobusseferId",
-                        column: x => x.guzergahOtobusseferId,
-                        principalTable: "guzergahOtobusler",
-                        principalColumn: "seferId");
-                    table.ForeignKey(
-                        name: "FK_guzergahOtobusKullaniciler_kullanicilar_kullaniciId",
+                        name: "FK_biletler_kullanicilar_kullaniciId",
                         column: x => x.kullaniciId,
                         principalTable: "kullanicilar",
                         principalColumn: "kullaniciId",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_biletler_seferler_seferId",
+                        column: x => x.seferId,
+                        principalTable: "seferler",
+                        principalColumn: "seferId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_guzergahOtobusKullaniciler_guzergahOtobusseferId",
-                table: "guzergahOtobusKullaniciler",
-                column: "guzergahOtobusseferId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_guzergahOtobusKullaniciler_kullaniciId",
-                table: "guzergahOtobusKullaniciler",
+                name: "IX_biletler_kullaniciId",
+                table: "biletler",
                 column: "kullaniciId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_guzergahOtobusler_guzergahId",
-                table: "guzergahOtobusler",
-                column: "guzergahId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_guzergahOtobusler_otobusId",
-                table: "guzergahOtobusler",
-                column: "otobusId");
+                name: "IX_biletler_seferId",
+                table: "biletler",
+                column: "seferId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_otobusler_firmaId",
                 table: "otobusler",
                 column: "firmaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_seferler_guzergahId",
+                table: "seferler",
+                column: "guzergahId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_seferler_otobusId",
+                table: "seferler",
+                column: "otobusId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "guzergahOtobusKullaniciler");
-
-            migrationBuilder.DropTable(
-                name: "guzergahOtobusler");
+                name: "biletler");
 
             migrationBuilder.DropTable(
                 name: "kullanicilar");
+
+            migrationBuilder.DropTable(
+                name: "seferler");
 
             migrationBuilder.DropTable(
                 name: "guzergahlar");

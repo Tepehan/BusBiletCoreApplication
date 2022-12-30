@@ -19,6 +19,6 @@ namespace EntityLayer
         
 
         //guzergahOtobus ile ilişkilendirilecek.
-        public virtual ICollection<GuzergahOtobus> guzergahOtobusler { get; set; }
+        public virtual ICollection<GuzergahOtobus> seferler { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BusinessLayer;
+﻿using BusBiletCoreApplication.Validaitons;
+using BusinessLayer;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer;
 using Microsoft.AspNetCore.Mvc;
@@ -22,8 +23,23 @@ namespace BusBiletCoreApplication.Controllers
         [HttpPost]
         public IActionResult Ekle(Firma firma)
         {
-            fm.firmaEkle(firma);
-            return RedirectToAction("Index");
+           FirmaValidator firmaValidator= new FirmaValidator(); 
+            var result = firmaValidator.Validate(firma);
+            if (result.IsValid)
+            {
+                fm.firmaEkle(firma);
+                return RedirectToAction("Index");
+               
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
+          
         }
     
         public IActionResult sil(int id)

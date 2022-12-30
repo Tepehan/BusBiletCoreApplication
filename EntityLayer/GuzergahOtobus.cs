@@ -14,6 +14,7 @@ namespace EntityLayer
         public string kalkisSaat { get; set; }
         public DateTime tarih { get; set; }
         public double biletFiyat { get; set; }
+        public bool guzergahOtobusSilindi { get; set; }
 
         //guzergah ile ilişkilendirilecek.
         public int guzergahId { get; set; }
@@ -21,8 +22,7 @@ namespace EntityLayer
         //otobus ile ilişkilendirilecek.
         public int otobusId { get; set; }
         public virtual Otobus otobus { get; set; }
-        public bool guzergahOtobusSilindi { get; set; }
         //guzergahOtobusKullanici ile ilişkilendirilecek.
-        public virtual ICollection<GuzergahOtobusKullanici> guzergahOtobusKullanicilar { get; set; }
+        public virtual ICollection<GuzergahOtobusKullanici> biletler { get; set; }
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20221230074923_init")]
+    [Migration("20221230083117_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -116,7 +116,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("otobusId");
 
-                    b.ToTable("guzergahOtobusler");
+                    b.ToTable("seferler");
                 });
 
             modelBuilder.Entity("EntityLayer.GuzergahOtobusKullanici", b =>
@@ -129,9 +129,6 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<DateTime>("biletKesimTarihi")
                         .HasColumnType("datetime2");
-
-                    b.Property<int?>("guzergahOtobusseferId")
-                        .HasColumnType("int");
 
                     b.Property<int>("koltukNo")
                         .HasColumnType("int");
@@ -166,11 +163,11 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("biletId");
 
-                    b.HasIndex("guzergahOtobusseferId");
-
                     b.HasIndex("kullaniciId");
 
-                    b.ToTable("guzergahOtobusKullaniciler");
+                    b.HasIndex("seferId");
+
+                    b.ToTable("biletler");
                 });
 
             modelBuilder.Entity("EntityLayer.Kullanici", b =>
@@ -268,13 +265,13 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("EntityLayer.GuzergahOtobus", b =>
                 {
                     b.HasOne("EntityLayer.Guzergah", "guzergah")
-                        .WithMany("guzergahOtobusler")
+                        .WithMany("seferler")
                         .HasForeignKey("guzergahId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EntityLayer.Otobus", "otobus")
-                        .WithMany("guzergahOtobusler")
+                        .WithMany("seferler")
                         .HasForeignKey("otobusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -286,19 +283,21 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.GuzergahOtobusKullanici", b =>
                 {
-                    b.HasOne("EntityLayer.GuzergahOtobus", "guzergahOtobus")
-                        .WithMany("guzergahOtobusKullanicilar")
-                        .HasForeignKey("guzergahOtobusseferId");
-
                     b.HasOne("EntityLayer.Kullanici", "kullanici")
-                        .WithMany("guzergahOtobusKullanicilar")
+                        .WithMany("biletler")
                         .HasForeignKey("kullaniciId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("guzergahOtobus");
+                    b.HasOne("EntityLayer.GuzergahOtobus", "sefer")
+                        .WithMany("biletler")
+                        .HasForeignKey("seferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("kullanici");
+
+                    b.Navigation("sefer");
                 });
 
             modelBuilder.Entity("EntityLayer.Otobus", b =>
@@ -319,22 +318,22 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Guzergah", b =>
                 {
-                    b.Navigation("guzergahOtobusler");
+                    b.Navigation("seferler");
                 });
 
             modelBuilder.Entity("EntityLayer.GuzergahOtobus", b =>
                 {
-                    b.Navigation("guzergahOtobusKullanicilar");
+                    b.Navigation("biletler");
                 });
 
             modelBuilder.Entity("EntityLayer.Kullanici", b =>
                 {
-                    b.Navigation("guzergahOtobusKullanicilar");
+                    b.Navigation("biletler");
                 });
 
             modelBuilder.Entity("EntityLayer.Otobus", b =>
                 {
-                    b.Navigation("guzergahOtobusler");
+                    b.Navigation("seferler");
                 });
 #pragma warning restore 612, 618
         }

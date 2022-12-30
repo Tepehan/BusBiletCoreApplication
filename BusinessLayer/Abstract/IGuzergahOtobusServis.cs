@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EntityLayer;
 
-namespace BusinessLayer
+namespace BusinessLayer.Abstract
 {
     public interface IGuzergahOtobusServis
     {

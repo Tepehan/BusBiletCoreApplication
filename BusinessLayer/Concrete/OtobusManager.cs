@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Abstract;
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
 using EntityLayer;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-	public class OtobusManager : IOtobusServis
+    public class OtobusManager : IOtobusServis
 	{
 		IOtobusDal otobusDal;
 		public OtobusManager(IOtobusDal otobusDal) 

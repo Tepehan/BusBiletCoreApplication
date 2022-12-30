@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BusinessLayer
+namespace BusinessLayer.Abstract
 {
     public interface IFirmaServis
     {
