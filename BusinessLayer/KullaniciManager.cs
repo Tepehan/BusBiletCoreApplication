@@ -33,7 +33,7 @@ namespace BusinessLayer
             return _kullaniciDal.get(x => x.kullaniciAd ==name);
         }
 
-        public void KullaniciGüncelle(Kullanici kullanici)
+        public void KullaniciGuncelle(Kullanici kullanici)
         {
 
             _kullaniciDal.update(kullanici);

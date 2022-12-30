@@ -26,6 +26,8 @@ namespace EntityLayer
         [StringLength(11)]
         public string tel { get; set; }
 
+        public bool silindi { get; set; }
+
         //guzergahOtobusKullanici ile ilişkilendirelecek.
         public ICollection<GuzergahOtobusKullanici> guzergahOtobusKullanicilar { get; set; }
     }

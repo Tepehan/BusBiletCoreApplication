@@ -1,0 +1,62 @@
+﻿@using EntityLayer
+@model Kullanici
+@{
+    ViewData["Title"] = "guncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="p-2">
+    <h3>Kullanıcı Güncelle</h3>
+    <form action="/Kullanici/guncelle" method="post">
+
+        <input type="hidden" class="form-control" type="text" name="kullaniciId" value="@Model.kullaniciId" />
+        <label>Kullanıcı Adı</label>
+        <input class="form-control" type="text" name="kullaniciAd" value="@Model.kullaniciAd" />
+        <br />
+        <label>Kullanıcı Şifre</label>
+        <input class="form-control" type="text" name="kullaniciSifre" value="@Model.kullaniciSifre" />
+        <br />
+        <label>Ad</label>
+        <input class="form-control" type="text" name="ad" value="@Model.ad" />
+        <br />
+        <label>Soyad</label>
+        <input class="form-control" type="text" name="soyad" value="@Model.soyad" />
+        <br />
+        <label>Doğum Tarihi</label>
+        <input class="form-control" type="text" name="dogumTarihi" value="@Model.dogumTarihi" />
+        <br />
+        <label>Tc Kimlik No</label>
+        <input class="form-control" type="text" name="tc" value="@Model.tc" />
+        <br />
+        <label>E-mail Adres</label>
+        <input class="form-control" type="text" name="mail" value="@Model.mail" />
+        <br />
+        <label>Cinsiyet</label>
+        <select class="form-control" name="cinsiyet" value="@Model.cinsiyet">
+
+            <option>True</option>
+            <option>False</option>
+
+        </select>
+        <br />
+        <label>İletişim Bilgisi</label>
+        <input class="form-control" type="text" name="tel" value="@Model.tel" />
+        <label>Durum</label>
+        <select class="form-control" name="silindi">
+            @if (Model.silindi)
+            {
+                <option selected>True</option>
+                <option>False</option>
+            }
+            else
+            {
+                <option>True</option>
+                <option selected>False</option>
+            }
+
+        </select>
+        <br />
+        <input class="form-control btn btn-primary" type="submit" value="Güncelle" />
+    </form>
+</div>
+
