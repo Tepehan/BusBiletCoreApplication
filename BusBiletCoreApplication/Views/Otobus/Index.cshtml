@@ -1,0 +1,79 @@
+﻿@using EntityLayer;
+@model List<Otobus>;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+             <th>Firma Ad</th>
+            <th>Koltuk Sayisi</th>
+            <th>Wifi</th>
+            <th>TV</th>
+            <th>Plaka</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Durum</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>@item.firma.firmaAd</td>
+                    <td>@item.koltukSayisi</td>
+                    <td>@item.wifi</td>
+                    <td>@item.tv</td>
+                    <td>@item.plaka</td>
+                    <td>@item.marka</td>
+                    <td>@item.model</td>
+                    <td>@item.otobusSilindi</td>
+                    <td>
+                            <button type="button" class="btn btn-danger  text-center" data-bs-whatever="@item.otobusId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fas fa-trash"></i> </button>
+                    </td>
+                    <td><a href="/Otobus/guncelle/@item.otobusId" type="button" class="btn btn-primary p-2">Güncelle</a></td>
+                </tr>
+        }
+
+    </tbody>
+</table>
+<div class="text-center d-flex justify-content-start p-2">
+    <a href="/Otobus/ekle" class="btn btn-info">Yeni Otobus Ekle</a>
+</div>
+
+
+<!-- Modal -->
+@*#decisionPopup Model*@
+<div class="modal fade" id="decisionPopup" tabindex="=-1" aria-labelledby="silLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="silLabel">Uyarı</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Silmek istediğinizden emin misiniz?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hayır</button>
+                <a id="delete-btn" href="" class="btn btn-success">Evet</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script> 
+    $(document).ready(function(){
+        $('#decisionPopup').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget);
+            var otobusId = button.attr('data-bs-whatever');
+            var a = document.querySelector("#delete-btn");
+            a.href = "/Otobus/sil/" + otobusId;
+        });
+    });
+</script>

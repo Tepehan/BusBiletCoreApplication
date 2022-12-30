@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}    
+
+
+<div class="p-2">
+    <h3>Sefer Ekle</h3>
+    <form action="/GuzergahOtobus/ekle" method="post">
+        <label>Sefer Id</label>
+        <input class="form-control" type="text" name="seferId" />
+        <br />
+        <label>Süre</label>
+        <input class="form-control" type="text" name="sure" />
+        <br />
+        <label>Tarih</label>
+        <input class="form-control" type="text" name="tarih" />
+        <br />
+
+        <label>Kalkış Saati</label>
+        <input class="form-control" type="text" name="kalkisSaat" />
+        <br />
+        <label>Bilet Fiyatı</label>
+        <input class="form-control" type="text" name="biletFiyat" />
+        <br />
+        <label>Durum</label>
+        <select class="form-control" name="silindi">
+            <option>False</option>
+            <option>True</option>
+        </select>
+        <br />
+        <input class="form-control btn btn-primary" type="submit" value="Ekle" />
+    </form>
+</div>
+

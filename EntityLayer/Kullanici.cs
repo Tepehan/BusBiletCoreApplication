@@ -29,6 +29,6 @@ namespace EntityLayer
         public bool silindi { get; set; }
 
         //guzergahOtobusKullanici ile ilişkilendirelecek.
-        public ICollection<GuzergahOtobusKullanici> guzergahOtobusKullanicilar { get; set; }
+        public virtual ICollection<GuzergahOtobusKullanici> guzergahOtobusKullanicilar { get; set; }
     }
 }

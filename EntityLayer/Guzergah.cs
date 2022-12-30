@@ -14,7 +14,11 @@ namespace EntityLayer
         [StringLength(20)]
         public string varisYeri { get; set; }
 
+        public bool silindi { get; set; }
+
+        
+
         //guzergahOtobus ile ilişkilendirilecek.
-        public ICollection<GuzergahOtobus> guzergahOtobusler { get; set; }
+        public virtual ICollection<GuzergahOtobus> guzergahOtobusler { get; set; }
     }
 }

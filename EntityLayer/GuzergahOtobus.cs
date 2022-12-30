@@ -17,11 +17,12 @@ namespace EntityLayer
 
         //guzergah ile ilişkilendirilecek.
         public int guzergahId { get; set; }
-        public Guzergah guzergah { get; set; }
+        public virtual Guzergah guzergah { get; set; }
         //otobus ile ilişkilendirilecek.
         public int otobusId { get; set; }
-        public Otobus otobus { get; set; }
+        public virtual Otobus otobus { get; set; }
+        public bool guzergahOtobusSilindi { get; set; }
         //guzergahOtobusKullanici ile ilişkilendirilecek.
-        public ICollection<GuzergahOtobusKullanici> guzergahOtobusKullanicilar { get; set; }
+        public virtual ICollection<GuzergahOtobusKullanici> guzergahOtobusKullanicilar { get; set; }
     }
 }

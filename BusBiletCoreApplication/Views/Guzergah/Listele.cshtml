@@ -1,43 +1,44 @@
 ﻿@using EntityLayer;
-@model List<Firma>;
+@model List<Guzergah>;
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Listele";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-}
+    }
+<h1 style="text-aligncenter;">GÜZERGAHLAR</h1>
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>Firma Adı</th>
-            <th>İletişim Bilgisi</th>
-            <th>Logo</th>
+            <th>Guzergah Id</th>
+            <th>Kalkış Yeri</th>
+            <th>Varış Yeri</th>
             <th>Durum</th>
+            
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.firmaAd</td>
-                <td>@item.iletisim</td>
-                <td>@item.logoUrl</td>
+                <td>@item.guzergahId</td>
+                <td>@item.kalkisYeri</td>
+                <td>@item.varisYeri</td>
                 <td>@item.silindi</td>
+                
                 <td>
-                    <button type="button" class="btn btn-danger  text-center" data-bs-whatever="@item.firmaId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Sil </button>
+                    <button type="button" class="btn btn-danger  text-center" data-bs-whatever="@item.guzergahId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Sil </button>
                 </td>
-                <td><a href="/Firma/guncelle/@item.firmaId" type="button" class="btn btn-primary p-2">Güncelle</a></td>
+                <td><a href="/Firma/guncelle/@item.guzergahId" type="button" class="btn btn-primary p-2">Güncelle</a></td>
             </tr>
         }
 
     </tbody>
 </table>
 <div class="text-center d-flex justify-content-start p-2">
-    <a href="/Firma/ekle" class="btn btn-info">Yeni Firma Ekle</a>
+    <a href="" class="btn btn-info">Yeni Güzergah Ekle</a>
 </div>
-
-
 <!-- Modal -->
 @*#decisionPopup Model*@
-@*<div class="modal fade" id="decisionPopup" tabindex="=-1" aria-labelledby="silLabel" aria-hidden="true">
+<div class="modal fade" id="decisionPopup" tabindex="=-1" aria-labelledby="silLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -53,18 +54,22 @@
             </div>
         </div>
     </div>
-</div>*@
- 
+</div>
+
 
     <script> 
     $(document).ready(function(){
         $('#decisionPopup').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget);
-            var firmaId = button.attr('data-bs-whatever');
-            console.log(firmaId);
+            var GuzergahId = button.attr('data-bs-whatever');
+            console.log(GuzergahId);
             var a = document.querySelector("#delete-btn");
-            a.href = "/Firma/sil/" + firmaId;
+            a.href = "/Guzergah/sil/" + GuzergahId;
         });
     });
 </script>
-   
+
+
+
+
+
