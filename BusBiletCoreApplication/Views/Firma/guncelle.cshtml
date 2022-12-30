@@ -1,7 +1,7 @@
 ﻿@using EntityLayer;
 @model Firma;
 @{
-    ViewData["Title"] = "guncelle";
+    ViewData["Title"] = "Guncelle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -22,17 +22,18 @@
         <select class="form-control" name="silindi">
             @if (Model.silindi)
             {
-            <option selected>True</option>
-            <option>False</option>
+                <option selected>True</option>
+                <option>False</option>
             }
             else
             {
-            <option>True</option>
-            <option selected>False</option>
+                <option>True</option>
+                <option selected>False</option>
             }
-           
+
         </select>
         <br />
         <input class="form-control btn btn-primary" type="submit" value="Güncelle" />
     </form>
 </div>
+

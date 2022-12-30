@@ -18,6 +18,6 @@ namespace EntityLayer
         public bool silindi { get; set; }
 
         //Otobus ile ilişkilendirilecek.
-        public ICollection<Otobus> otobusler { get; set; }
+        public virtual ICollection<Otobus> otobusler { get; set; }
     }
 }

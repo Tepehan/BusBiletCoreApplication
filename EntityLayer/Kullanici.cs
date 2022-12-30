@@ -27,6 +27,6 @@ namespace EntityLayer
         public string tel { get; set; }
 
         //guzergahOtobusKullanici ile ilişkilendirelecek.
-        public ICollection<GuzergahOtobusKullanici> guzergahOtobusKullanicilar { get; set; }
+        public virtual ICollection<GuzergahOtobusKullanici> guzergahOtobusKullanicilar { get; set; }
     }
 }
