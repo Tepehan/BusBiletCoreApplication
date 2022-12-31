@@ -1,0 +1,57 @@
+﻿@using EntityLayer;
+@model GuzergahOtobusKullanici
+@{
+    ViewData["Title"] = "Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="p-2">
+    <h3>Bilet Ekle</h3>
+    <form action="/GuzergahOtobusKullanici/ekle" method="post">
+        <label>Bilet Id</label>
+        <input class="form-control" type="text" name="biletId" />
+        <br />
+        <label>Seri No</label>
+        <input class="form-control" type="text" name="seriNo" />
+        <br />
+        <label>Ödeme Tipi</label>
+          <select class="form-control" name="odemeTipi">
+            <option>False</option>
+            <option>True</option>
+        </select>
+        <br />
+        <label>Koltuk No</label>
+        <input class="form-control" type="text" name="koltukNo" />
+        <br />
+        <label>Bilet Kesim Tarihi</label>
+        <input class="form-control" type="text" name="biletKesimTarihi" />
+        <br />
+        <label>Yolcu Ad</label>
+        <input class="form-control" type="text" name="yolcuAd" />
+        <br />
+        <label>Yolcu Soyad</label>
+        <input class="form-control" type="text" name="yolcuSoyad" />
+        <br />
+        <label>Yolcu TC</label>
+        <input class="form-control" type="text" name="yolcuTc" />
+        <br />
+        <label>Yolcu Cinsiyet</label>
+         <select class="form-control" name="yolcuCinsiyet">
+            <option>False</option>
+            <option>True</option>
+        </select>
+        <br />
+        <label>Sefer Id</label>
+        <input class="form-control" type="text" name="seferId" />
+        <br />
+        <label>Kullanici Id</label>
+        <input class="form-control" type="text" name="kullaniciId" />
+        <br />
+        <label>Durum</label>
+        <select class="form-control" name="silindi">
+            <option>False</option>
+            <option>True</option>
+        </select>
+        <br />
+        <input class="form-control btn btn-primary" type="submit" value="Ekle" />
+    </form>
+</div>
