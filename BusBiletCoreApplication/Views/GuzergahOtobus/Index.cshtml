@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<table class="table table-hover">
+<table class="table table-hover table-dark table-bordered">
     <thead>
         <tr>
             <th>Sefer Id</th>
@@ -14,6 +14,9 @@
             <th>Tarih</th>
             <th>Kalkış Saati</th>
             <th>Bilet Fiyatı</th>
+            <th>Güzergah</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
         </tr>
     </thead>
     <tbody>
@@ -25,8 +28,9 @@
                 <td>@item.tarih</td>
                 <td>@item.kalkisSaat</td>
                 <td>@item.biletFiyat</td>
+                <td>@item.guzergah.kalkisYeri - @item.guzergah.varisYeri</td>
                 <td>
-                    <button type="button" class="btn btn-danger  text-center" data-bs-whatever="@item.seferId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Sil </button>
+                    <button type="button" class="btn btn-danger text-center" data-bs-whatever="@item.seferId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Sil </button>
                 </td>
                 <td><a href="/GuzergahOtobus/guncelle/@item.seferId" type="button" class="btn btn-primary p-2">Güncelle</a></td>
             </tr>
