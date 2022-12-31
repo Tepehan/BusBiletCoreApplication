@@ -1,36 +1,47 @@
-﻿
+﻿@using EntityLayer;
+@model GuzergahOtobus
+
 @{
     ViewData["Title"] = "Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }    
 
-
 <div class="p-2">
     <h3>Sefer Ekle</h3>
-    <form action="/GuzergahOtobus/ekle" method="post">
-        <label>Sefer Id</label>
-        <input class="form-control" type="text" name="seferId" />
-        <br />
-        <label>Süre</label>
-        <input class="form-control" type="text" name="sure" />
-        <br />
-        <label>Tarih</label>
-        <input class="form-control" type="text" name="tarih" />
+    @using (Html.BeginForm("Ekle", "GuzergahOtobus", FormMethod.Post, new { @class = "form-group" }))
+    {
+        @Html.Label("Sefer Süresi")
+        @Html.TextBoxFor(sefer=>sefer.sure,new { @class = "form-control" })
+        @Html.ValidationMessageFor(sefer=>sefer.sure,"",new { @class ="text-danger" })
         <br />
 
-        <label>Kalkış Saati</label>
-        <input class="form-control" type="text" name="kalkisSaat" />
+        @Html.Label("Sefer Kalkış Saati")
+        @Html.TextBoxFor(sefer=>sefer.kalkisSaat,new { @class = "form-control" })
+        @Html.ValidationMessageFor(sefer=>sefer.kalkisSaat,"",new { @class ="text-danger" })
         <br />
-        <label>Bilet Fiyatı</label>
-        <input class="form-control" type="text" name="biletFiyat" />
+        
+        @Html.Label("Sefer Tarihi")
+        @Html.TextBoxFor(sefer=>sefer.tarih,new { @class = "form-control" })
+        @Html.ValidationMessageFor(sefer=>sefer.tarih,"",new { @class ="text-danger" })
         <br />
-        <label>Durum</label>
-        <select class="form-control" name="silindi">
+        
+        @Html.Label("Bilet Fiyatı")
+        @Html.TextBoxFor(sefer=>sefer.biletFiyat,new { @class = "form-control" })
+        @Html.ValidationMessageFor(sefer=>sefer.biletFiyat,"",new { @class ="text-danger" })
+        <br />      
+        
+        @Html.Label("Bilet Fiyatı")
+        @Html.TextBoxFor(sefer=>sefer.biletFiyat,new { @class = "form-control" })
+        @Html.ValidationMessageFor(sefer=>sefer.biletFiyat,"",new { @class ="text-danger" })
+        <br />
+
+        @Html.Label("Durum")
+        <select class="form-control" name="guzergahOtobusSilindi">
             <option>False</option>
             <option>True</option>
         </select>
         <br />
-        <input class="form-control btn btn-primary" type="submit" value="Ekle" />
-    </form>
-</div>
 
+        <input class="form-control btn btn-primary" type="submit" value="Sefer Ekle" />
+    }
+</div>
