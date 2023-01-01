@@ -1,4 +1,5 @@
-﻿using BusinessLayer;
+﻿using BusBiletCoreApplication.Validaitons;
+using BusinessLayer;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer;
 using Microsoft.AspNetCore.Mvc;
@@ -24,8 +25,23 @@ namespace BusBiletCoreApplication.Controllers
         [HttpPost]
         public IActionResult Ekle(Kullanici kullanici)
         {
-            km.KullaniciEkle(kullanici);
-            return RedirectToAction("Index");
+            KullaniciValidator kullaniciValidator = new KullaniciValidator();
+            var result = kullaniciValidator.Validate(kullanici);
+            if (result.IsValid)
+            {
+                km.KullaniciEkle(kullanici);
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
+           
         }
 
         public IActionResult sil(int id)
@@ -46,8 +62,23 @@ namespace BusBiletCoreApplication.Controllers
         [HttpPost]
         public IActionResult guncelle(Kullanici kullanici)
         {
-            km.KullaniciGuncelle(kullanici);
-            return RedirectToAction("Index");
+            KullaniciValidator kullaniciValidator = new KullaniciValidator();
+            var result = kullaniciValidator.Validate(kullanici);
+            if (result.IsValid)
+            {
+                km.KullaniciGuncelle(kullanici);
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
+            
         }
     }
 }
