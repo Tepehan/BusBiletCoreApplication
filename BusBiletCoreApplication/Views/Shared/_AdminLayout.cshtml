@@ -74,7 +74,8 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <ion-icon name="business-outline"></ion-icon>
+                    @*<i class="fas fa-fw fa-cog"></i>*@
                     <span>Firmalar</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -108,18 +109,29 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/Kullanici/Index/" @*data-toggle="collapse" data-target="#collapsePages*@"
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <ion-icon name="person-add-outline"></ion-icon>
+                    @*<i class="fas fa-fw fa-folder"></i>*@
                     <span>Kullanıcılar</span>
                 </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-light py-2 collapse-inner rounded">
+                        @*bg-white*@
+                        <h6 class="collapse-header">İşlemler</h6>
+                        <a class="collapse-item" href="/Kullanici/Index">Listele</a>
+                        <a class="collapse-item" href="/Kullanici/Ekle">Ekle</a>
+                    </div>
+                </div>
                
             </li>
 
             <!-- Nav Item - Güzergahlar -->
             <li class="nav-item">
                 <a class="nav-link" href="/Guzergah/Listele">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <ion-icon name="trail-sign-outline"></ion-icon>
+                    @*<i class="fas fa-fw fa-chart-area"></i>*@
                     <span>Güzergahlar</span></a>
             </li>
 
