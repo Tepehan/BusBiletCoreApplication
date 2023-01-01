@@ -70,15 +70,15 @@
                 Arayüz
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Firmalar Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <ion-icon name="business-outline"></ion-icon>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFirmalar"
+                    aria-expanded="true" aria-controls="collapseFirmalar">
+                    <ion-icon name="business"></ion-icon>
                     @*<i class="fas fa-fw fa-cog"></i>*@
                     <span>Firmalar</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseFirmalar" class="collapse" aria-labelledby="headingFirmalar" data-parent="#accordionSidebar">
                     <div class="bg-light py-2 collapse-inner rounded">@*bg-white*@
                         <h6 class="collapse-header">İşlemler</h6>
                         <a class="collapse-item" href="/Firma/Index">Listele</a>
@@ -87,14 +87,14 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Otobüsler Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <ion-icon name="bus-outline"></ion-icon>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOtobusler"
+                    aria-expanded="true" aria-controls="collapseOtobusler">
+                    <ion-icon name="bus"></ion-icon>
                     <span>Otobüsler</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapseOtobusler" class="collapse" aria-labelledby="headingOtobusler"
                     data-parent="#accordionSidebar">
                     <div class="bg-light py-2 collapse-inner rounded">@*bg-white*@
                         <h6 class="collapse-header">İşlemler</h6>
@@ -107,15 +107,15 @@
            
          
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Kullanicilar Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <ion-icon name="person-add-outline"></ion-icon>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKullanicilar"
+                    aria-expanded="true" aria-controls="collapseKullanicilar">
+                    <ion-icon name="person-add"></ion-icon>
                     @*<i class="fas fa-fw fa-folder"></i>*@
                     <span>Kullanıcılar</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
+                <div id="collapseKullanicilar" class="collapse" aria-labelledby="headingKullanicilar"
                      data-parent="#accordionSidebar">
                     <div class="bg-light py-2 collapse-inner rounded">
                         @*bg-white*@
@@ -129,26 +129,59 @@
 
             <!-- Nav Item - Güzergahlar -->
             <li class="nav-item">
-                <a class="nav-link" href="/Guzergah/Listele">
-                    <ion-icon name="trail-sign-outline"></ion-icon>
-                    @*<i class="fas fa-fw fa-chart-area"></i>*@
-                    <span>Güzergahlar</span></a>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGuzergahlar"
+                    aria-expanded="true" aria-controls="collapseGuzergahlar">
+                    <ion-icon name="trail-sign"></ion-icon>
+                    @*<i class="fas fa-fw fa-folder"></i>*@
+                    <span>Güzergahlar</span>
+                </a>
+                <div id="collapseGuzergahlar" class="collapse" aria-labelledby="headingGuzergahlar"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-light py-2 collapse-inner rounded">
+                        @*bg-white*@
+                        <h6 class="collapse-header">İşlemler</h6>
+                        <a class="collapse-item" href="/Guzergah/Listele">Listele</a>
+                        <a class="collapse-item" href="/Guzergah/Ekle">Ekle</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Nav Item - Seferler -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Seferler</span></a>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSeferler"
+                    aria-expanded="true" aria-controls="collapseSeferler">
+                    <ion-icon name="map"></ion-icon>
+                    @*<i class="fas fa-fw fa-folder"></i>*@
+                    <span>Seferler</span>
+                </a>
+                <div id="collapseSeferler" class="collapse" aria-labelledby="headingSeferler"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-light py-2 collapse-inner rounded">
+                        @*bg-white*@
+                        <h6 class="collapse-header">İşlemler</h6>
+                        <a class="collapse-item" href="/GuzergahOtobus/Index">Listele</a>
+                        <a class="collapse-item" href="/GuzergahOtobus/Ekle">Ekle</a>
+                    </div>
+                </div>
             </li>
             <!-- Nav Item - Biletler -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBiletler"
+                    aria-expanded="true" aria-controls="collapseBiletler">
+                    <ion-icon name="ticket"></ion-icon>
+                    @*<i class="fas fa-fw fa-folder"></i>*@
                     <span>Biletler</span>
                 </a>
+                <div id="collapseBiletler" class="collapse" aria-labelledby="headingBiletler"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-light py-2 collapse-inner rounded">
+                        @*bg-white*@
+                        <h6 class="collapse-header">İşlemler</h6>
+                        <a class="collapse-item" href="/GuzergahOtobusKullanici/Index">Listele</a>
+                        <a class="collapse-item" href="/GuzergahOtobusKullanici/Ekle">Ekle</a>
+                    </div>
+                </div>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
