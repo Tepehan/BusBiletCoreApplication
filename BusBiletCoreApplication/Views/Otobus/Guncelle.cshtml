@@ -7,65 +7,72 @@
 
 <div class="p-2">
     <h3>Otobus Guncelle</h3>
-<form action="/Otobus/guncelle" method="post">
-    <input type="hidden" class="form-control" type="text" name="otobusId" value="@Model.otobusId" />
-    <label>Firma Id</label>
-    <input class="form-control" type="text" name="firmaId"value="@Model.firmaId" />
-    <br />
-    <label>Koltuk Sayısı</label>
-    <input class="form-control" type="text" name="koltukSayisi" value="@Model.koltukSayisi" />
-    <br />
-    <label>Wifi</label>
-    <select class="form-control" name="wifi">
+    @using (Html.BeginForm("Guncelle", "Otobus", FormMethod.Post, new { @class = "form-group" }))
+    {
+        @Html.TextBoxFor(otobus=>otobus.otobusId,new { @class = "form-control",@name="otobusId",@value="@Model.otobusId",@type="hidden"})
+        @Html.Label("Firma Id")
+        @Html.TextBoxFor(otobus=>otobus.firmaId,new { @class = "form-control",@name="firmaId",@value="@Model.firmaId"})
+        @Html.ValidationMessageFor(otobus=>otobus.firmaId,"",new { @class ="text-danger" })
+            <br />
+        @Html.Label("Koltuk Sayısı")
+        @Html.TextBoxFor(otobus=>otobus.koltukSayisi,new { @class = "form-control",@name="koltukSayisi",@value="@Model.koltukSayisi"})
+        @Html.ValidationMessageFor(otobus=>otobus.koltukSayisi,"",new { @class ="text-danger"})
+            <br />
+        @Html.Label("Wifi")
+           <select class="form-control" name="wifi">
             @if (Model.wifi)
             {
-                    <option selected>True</option>
-                    <option>False</option>
+                <option selected>True</option>
+                <option>False</option>
             }
             else
             {
-                    <option>True</option>
-                    <option selected>False</option>
+                <option>True</option>
+                <option selected>False</option>
             }
-    </select>
-    <label>TV</label>
-    <select class="form-control" name="tv" >
+            </select>
+            <br />
+        @Html.Label("Tv")
+            <select class="form-control" name="tv">
             @if (Model.tv)
             {
-                    <option selected>True</option>
-                    <option>False</option>
+                <option selected>True</option>
+                <option>False</option>
             }
             else
             {
-                    <option>True</option>
-                    <option selected>False</option>
+                <option>True</option>
+                <option selected>False</option>
             }
-    </select>
-    <br />
-    <label>Plaka</label>
-    <input class="form-control" type="text" name="plaka" value="@Model.plaka" />
-    <br />
-    <label>Marka</label>
-    <input class="form-control" type="text" name="marka" value="@Model.marka" />
-    <br />
-    <label>Model</label>
-    <input class="form-control" type="text" name="model" value="@Model.model"/>
-    <br />
-    <label>Durum</label>
-    <select class="form-control" name="otobusSilindi" >
+            </select>
+            <br />
+        @Html.Label("Plaka")
+        @Html.TextBoxFor(otobus=>otobus.plaka,new { @class = "form-control",@name="plaka",@value="@Model.plaka" })
+        @Html.ValidationMessageFor(otobus=>otobus.plaka,"",new { @class ="text-danger" })
+            <br />
+        @Html.Label("Marka")
+        @Html.TextBoxFor(otobus=>otobus.marka,new { @class = "form-control",@name="marka",@value="@Model.marka" })
+        @Html.ValidationMessageFor(otobus=>otobus.marka,"",new { @class ="text-danger" })
+            <br />
+        @Html.Label("Model")
+        @Html.TextBoxFor(otobus=>otobus.model,new { @class = "form-control",@name="model",@value="@Model.model" })
+        @Html.ValidationMessageFor(otobus=>otobus.model,"",new { @class ="text-danger" })
+            <br />
+        @Html.Label("Durum")
+            <select class="form-control" name="otobusSilindi" >
             @if (Model.otobusSilindi)
             {
-                    <option selected>True</option>
-                    <option>False</option>
+                <option selected>True</option>
+                <option>False</option>
             }
             else
             {
-                    <option>True</option>
-                    <option selected>False</option>
+                <option>True</option>
+                <option selected>False</option>
             }
-    </select>
-    <br />
-    <input class="form-control btn btn-primary" type="submit" value="Ekle" />
-</form>
+            </select>
+            <br /> 
+            <input class="form-control btn btn-primary" type="submit" value="Ekle" />   
+    }
 </div>
 

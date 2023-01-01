@@ -1,4 +1,6 @@
-﻿using BusinessLayer;
+﻿using BusBiletCoreApplication.Validaitons;
+using BusinessLayer;
+using BusinessLayer.Validaitons;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer;
 using Microsoft.AspNetCore.Mvc;
@@ -21,8 +23,22 @@ namespace BusBiletCoreApplication.Controllers
         [HttpPost]
         public IActionResult Ekle(Otobus otobus)
         {
-            om.otobusEkle(otobus);
-            return RedirectToAction("Index");
+            OtobusValidator otobusValidator = new OtobusValidator();
+            var result = otobusValidator.Validate(otobus);
+            if (result.IsValid)
+            {
+                om.otobusEkle(otobus);
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
         public IActionResult sil(int id)
         {
@@ -40,8 +56,22 @@ namespace BusBiletCoreApplication.Controllers
         [HttpPost]
         public IActionResult guncelle(Otobus otobus)
         {
-            om.otobusGuncelle(otobus);
-            return RedirectToAction("Index");
+            OtobusValidator otobusValidator = new OtobusValidator();
+            var result = otobusValidator.Validate(otobus);
+            if (result.IsValid)
+            {
+                om.otobusGuncelle(otobus);
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
     }
 }

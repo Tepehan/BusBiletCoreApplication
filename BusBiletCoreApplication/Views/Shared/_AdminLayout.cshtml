@@ -31,8 +31,8 @@
 
 
     <style>
-        #accordionSidebar {
-            transition:1s;
+        * {
+            transition:0.5s ease-in-out;
         }
     </style>
 </head>
@@ -42,14 +42,14 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-dark  sidebar sidebar-dark accordion" id="accordionSidebar">@*bg-gradient-primary*@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <ion-icon name="globe-outline" style="font-size:50px"></ion-icon>@*<i class="fas fa-laugh-wink"></i>*@
                 </div>
-                <div class="sidebar-brand-text mx-3">BUSBİLET Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">BUSBİLET Admin</div>
             </a>
 
             <!-- Divider -->
@@ -78,10 +78,10 @@
                     <span>Firmalar</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                    <div class="bg-light py-2 collapse-inner rounded">@*bg-white*@
+                        <h6 class="collapse-header">İşlemler</h6>
+                        <a class="collapse-item" href="/Firma/Index">Listele</a>
+                        <a class="collapse-item" href="/Firma/Ekle">Ekle</a>
                     </div>
                 </div>
             </li>
@@ -90,17 +90,15 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <ion-icon name="bus-outline"></ion-icon>
                     <span>Otobüsler</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                    <div class="bg-light py-2 collapse-inner rounded">@*bg-white*@
+                        <h6 class="collapse-header">İşlemler</h6>
+                        <a class="collapse-item" href="/Otobus/Index">Listele</a>
+                        <a class="collapse-item" href="/Otobus/Ekle">Ekle</a>
                     </div>
                 </div>
             </li>
@@ -110,7 +108,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/Kullanici/Index/" data-toggle="collapse" data-target="#collapsePages"
+                <a class="nav-link collapsed" href="/Kullanici/Index/" @*data-toggle="collapse" data-target="#collapsePages*@"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Kullanıcılar</span>
@@ -158,7 +156,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-0 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-dark topbar mb-0 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -169,10 +167,10 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                            <input type="text" class="form-control bg-dark border-0 small text-white" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-dark" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -426,7 +424,8 @@
     <!-- Page level custom scripts -->
     <script src="~/admin_dashboard/js/demo/chart-area-demo.js"></script>
     <script src="~/admin_dashboard/js/demo/chart-pie-demo.js"></script>
-  
-
+    <!-- Custom icon scripts -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
