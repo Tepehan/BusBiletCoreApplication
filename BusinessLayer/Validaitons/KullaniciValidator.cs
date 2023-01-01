@@ -27,6 +27,9 @@ namespace BusBiletCoreApplication.Validaitons
             RuleFor(kullanici => kullanici.soyad).MaximumLength(50).WithMessage("Maximum 50 karakter girilmelidir.");
             RuleFor(kullanici => kullanici.soyad).MinimumLength(2).WithMessage("Minimum 2 karakter girilmelidir.");
 
+            //Rule for  dogumTarihi
+            RuleFor(kullanici => kullanici.dogumTarihi).NotEmpty().WithMessage("Boş geçilemez.");
+            
             //Rule for  tc
             RuleFor(kullanici => kullanici.tc).NotEmpty().WithMessage("Boş geçilemez");
             RuleFor(kullanici => kullanici.tc).MaximumLength(11).WithMessage("Maximum 11 karakter girilmelidir.");
