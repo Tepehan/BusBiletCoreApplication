@@ -1,4 +1,5 @@
-﻿using BusBiletCoreApplication.Validaitons;
+﻿using BusBiletCoreApplication.Models;
+using BusBiletCoreApplication.Validaitons;
 using BusinessLayer;
 using BusinessLayer.Validaitons;
 using DataAccessLayer.Concrete.EntityFramework;
@@ -10,6 +11,7 @@ namespace BusBiletCoreApplication.Controllers
 	public class OtobusController : Controller
 	{
 		OtobusManager om = new OtobusManager(new EfOtobusRepository());
+        FirmaManager fm=new FirmaManager(new EfFirmaRepository());
 		public IActionResult Index()
 		{
 			var otobusler = om.otobusListele();
@@ -18,7 +20,9 @@ namespace BusBiletCoreApplication.Controllers
         [HttpGet]
         public IActionResult Ekle()
         {
-            return View();
+            OtobusFirmaModel model= new OtobusFirmaModel();
+            model.firmaModal = fm.firmaListele();
+            return View(model);
         }
         [HttpPost]
         public IActionResult Ekle(Otobus otobus)
@@ -50,8 +54,10 @@ namespace BusBiletCoreApplication.Controllers
         [HttpGet]
         public IActionResult guncelle(int id)
         {
-            Otobus otobus = om.otobusGetirById(id);
-            return View(otobus);
+			OtobusFirmaModel model = new OtobusFirmaModel();
+			model.firmaModal = fm.firmaListele();
+            model.otobusModal = om.otobusGetirById(id);
+			return View(model);
         }
         [HttpPost]
         public IActionResult guncelle(Otobus otobus)
