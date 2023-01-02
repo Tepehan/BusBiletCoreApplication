@@ -15,6 +15,7 @@
             <th>Kalkış Saati</th>
             <th>Bilet Fiyatı</th>
             <th>Güzergah</th>
+            <th>Otobüs Plaka</th>
             <th>Sil</th>
             <th>Güncelle</th>
         </tr>
@@ -29,6 +30,7 @@
                 <td>@item.kalkisSaat</td>
                 <td>@item.biletFiyat</td>
                 <td>@item.guzergah.kalkisYeri - @item.guzergah.varisYeri</td>
+                <td>@item.otobus.plaka</td>
                 <td>
                     <button type="button" class="btn btn-danger text-center" data-bs-whatever="@item.seferId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Sil </button>
                 </td>
