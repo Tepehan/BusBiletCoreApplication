@@ -12,15 +12,13 @@ namespace DataAccessLayer.Concrete
         {
             optionsBuilder.UseLazyLoadingProxies().UseSqlServer ("server=405-00 ; database=DBBusBilet ;Encrypt=False; User ID=sa;Password=1234");
 
-        }
-        
+        }       
         public DbSet<Firma> firmalar { get; set; }
         public DbSet<Guzergah> guzergahlar { get; set; }
         public DbSet<Otobus> otobusler { get; set; }
         public DbSet<Kullanici> kullanicilar { get; set; }
         public DbSet<GuzergahOtobus> seferler { get; set; }
         public DbSet<GuzergahOtobusKullanici> biletler { get; set; }
-
         
     }
 }

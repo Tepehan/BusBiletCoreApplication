@@ -9,10 +9,10 @@ namespace BusinessLayer.Abstract
 {
     public interface IGuzergahOtobusKullaniciServis
     {
-        void GuzergahOtobusKullaniciEkle(GuzergahOtobusKullanici guzergahOtobusKullanici);
-        void GuzergahOtobusKullaniciSil(GuzergahOtobusKullanici guzergahOtobusKullanici);
-        void GuzergahOtobusKullaniciGuncelle(GuzergahOtobusKullanici guzergahOtobusKullanici);
-        List<GuzergahOtobusKullanici> guzergahOtobusKullaniciListele();
-        public GuzergahOtobusKullanici guzergahOtobusKullaniciGetById(int id);
+        void BiletEkle(GuzergahOtobusKullanici guzergahOtobusKullanici);
+        void BiletSil(GuzergahOtobusKullanici guzergahOtobusKullanici);
+        void BiletGuncelle(GuzergahOtobusKullanici guzergahOtobusKullanici);
+        List<GuzergahOtobusKullanici> BiletListele();
+        public GuzergahOtobusKullanici BiletGetById(int id);
     }
 }

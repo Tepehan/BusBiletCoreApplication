@@ -17,6 +17,14 @@ namespace BusBiletCoreApplication.Controllers
             return View(guzergahOtobusler);
         }
 
+        public IActionResult Sil(int id)
+        {
+            GuzergahOtobus guzergahOtobus = controller.guzergahOtobusGetById(id);
+            guzergahOtobus.guzergahOtobusSilindi = true;
+            controller.guzergahOtobusGuncelle(guzergahOtobus);
+            return RedirectToAction("Index");
+        }
+
         [HttpGet]
         public IActionResult Ekle()
         {
@@ -44,5 +52,21 @@ namespace BusBiletCoreApplication.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public IActionResult Guncelle(int id)
+        {
+            GuzergahOtobus guzergahOtobus = controller.guzergahOtobusGetById(id);
+            return View(guzergahOtobus);
+        }
+
+        [HttpPost]
+        public IActionResult Guncelle(GuzergahOtobus guzergahOtobus)
+        {
+            controller.guzergahOtobusGuncelle(guzergahOtobus);
+            return RedirectToAction("Index");
+        }
+
     }
 }
+

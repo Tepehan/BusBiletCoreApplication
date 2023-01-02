@@ -46,6 +46,5 @@ namespace BusinessLayer
         {
             guzergahOtobusDal.delete(guzergahOtobus);
         }
-
     }
 }

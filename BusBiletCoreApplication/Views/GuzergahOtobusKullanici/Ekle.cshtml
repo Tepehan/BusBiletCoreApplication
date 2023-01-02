@@ -6,52 +6,59 @@
 }
 <div class="p-2">
     <h3>Bilet Ekle</h3>
-    <form action="/GuzergahOtobusKullanici/ekle" method="post">
-        <label>Bilet Id</label>
-        <input class="form-control" type="text" name="biletId" />
+    @using (Html.BeginForm("Ekle", "GuzergahOtobusKullanici", FormMethod.Post, new { @class = "form-group" }))
+    {
+        
+        @Html.Label("Seri No")
+        @Html.TextBoxFor(bilet=>bilet.seriNo,new { @class = "form-control" })
+        @Html.ValidationMessageFor(bilet=>bilet.seriNo,"",new { @class ="text-danger" })
         <br />
-        <label>Seri No</label>
-        <input class="form-control" type="text" name="seriNo" />
-        <br />
-        <label>Ödeme Tipi</label>
-          <select class="form-control" name="odemeTipi">
+        @Html.Label("Ödeme Tipi")
+        <select class="form-control" name="odemeTipi">
             <option>False</option>
             <option>True</option>
         </select>
         <br />
-        <label>Koltuk No</label>
-        <input class="form-control" type="text" name="koltukNo" />
+        @Html.Label("Koltuk No")
+        @Html.TextBoxFor(bilet=>bilet.koltukNo ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(bilet=>bilet.koltukNo ,"",new { @class ="text-danger" })
         <br />
-        <label>Bilet Kesim Tarihi</label>
-        <input class="form-control" type="text" name="biletKesimTarihi" />
+        @Html.Label("Bilet Kesim Tarihi")
+        @Html.TextBoxFor(bilet=>bilet.biletKesimTarihi ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(bilet=>bilet.biletKesimTarihi ,"",new { @class ="text-danger" })
         <br />
-        <label>Yolcu Ad</label>
-        <input class="form-control" type="text" name="yolcuAd" />
+        @Html.Label("Yolcu Ad")
+        @Html.TextBoxFor(bilet=>bilet.yolcuAd ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(bilet=>bilet.yolcuAd ,"",new { @class ="text-danger" })
         <br />
-        <label>Yolcu Soyad</label>
-        <input class="form-control" type="text" name="yolcuSoyad" />
+        @Html.Label("Yolcu Soyad")
+        @Html.TextBoxFor(bilet=>bilet.yolcuSoyad ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(bilet=>bilet.yolcuSoyad ,"",new { @class ="text-danger" })
         <br />
-        <label>Yolcu TC</label>
-        <input class="form-control" type="text" name="yolcuTc" />
+        @Html.Label("Yolcu Tc")
+        @Html.TextBoxFor(bilet=>bilet.yolcuTc ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(bilet=>bilet.yolcuTc ,"",new { @class ="text-danger" })
         <br />
-        <label>Yolcu Cinsiyet</label>
-         <select class="form-control" name="yolcuCinsiyet">
+        @Html.Label("Yolcu Cinsiyet")
+        <select class="form-control" name="yolcuCinsiyet">
             <option>False</option>
             <option>True</option>
         </select>
         <br />
-        <label>Sefer Id</label>
-        <input class="form-control" type="text" name="seferId" />
+        @Html.Label("Sefer Id")
+        @Html.TextBoxFor(bilet=>bilet.seferId ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(bilet=>bilet.seferId ,"",new { @class ="text-danger" })
         <br />
-        <label>Kullanici Id</label>
-        <input class="form-control" type="text" name="kullaniciId" />
+        @Html.Label("Kullanıcı Id")
+        @Html.TextBoxFor(bilet=>bilet.kullaniciId ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(bilet=>bilet.kullaniciId ,"",new { @class ="text-danger" })
         <br />
-        <label>Durum</label>
+        @Html.Label("Durum")
         <select class="form-control" name="silindi">
             <option>False</option>
             <option>True</option>
         </select>
         <br />
         <input class="form-control btn btn-primary" type="submit" value="Ekle" />
-    </form>
+    }
 </div>

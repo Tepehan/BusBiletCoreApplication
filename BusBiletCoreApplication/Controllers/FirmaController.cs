@@ -58,8 +58,23 @@ namespace BusBiletCoreApplication.Controllers
         [HttpPost]
         public IActionResult guncelle(Firma firma)
         {
-            fm.firmaGuncelle(firma);
-            return RedirectToAction("Index");
+            FirmaValidator firmaValidator = new FirmaValidator();
+            var result = firmaValidator.Validate(firma);
+            if (result.IsValid)
+            {
+                fm.firmaGuncelle(firma);
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
+            
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿
+﻿@using EntityLayer;
+@model Guzergah;
 @{
     ViewData["Title"] = "Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -6,21 +7,25 @@
 
 <div class="p-2">
     <h3>Guzergah Ekle</h3>
-<form action="/Guzergah/Ekle" method="post">
 
-    <label>Guzergah Kalkış Yeri</label>
-    <input class="form-control" type="text" name="kalkisYeri" />
-    <br />
-    <label>Guzergah Varış Yeri</label>
-    <input class="form-control" type="text" name="varisYeri" />
-    <br />
-    <label>Durum</label>
-    <select class="form-control" name="silindi" >
-            <option>False</option>
-            <option>True</option>
+    @using (Html.BeginForm("Ekle", "Guzergah", FormMethod.Post, new { @class = "form-group" }))
+    {
+        @Html.Label("Kalkış Yeri")
+        @Html.TextBoxFor(guzergah=>guzergah.kalkisYeri,new { @class = "form-control" })
+        @Html.ValidationMessageFor(guzergah=>guzergah.kalkisYeri,"",new { @class ="text-danger" })
+        <br />
+        @Html.Label("Varış Yeri")
+        @Html.TextBoxFor(guzergah=>guzergah.varisYeri ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(guzergah=>guzergah.varisYeri  ,"",new { @class ="text-danger" })
+        <br />
+    
+    @Html.Label("Durum")
+    <select class="form-control" name="silindi">
+        <option>False</option>
+        <option>True</option>
     </select>
     <br />
     <input class="form-control btn btn-primary" type="submit" value="Ekle" />
-</form>
+    }
 </div>
 
