@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+  
 }    
 
 <div class="p-2">
@@ -12,22 +13,22 @@
     {
 
         @Html.Label("Sefer Süresi")
-        @Html.TextBoxFor(sefer=>sefer.guzergahOtobusModel.sure,new { @class = "form-control" })
+        @Html.TextBox("sure","0",new { @class = "form-control" })
         @Html.ValidationMessageFor(sefer=>sefer.guzergahOtobusModel.sure,"",new { @class ="text-danger" })
         <br />
 
         @Html.Label("Sefer Kalkış Saati")
-        @Html.TextBoxFor(sefer=>sefer.guzergahOtobusModel.kalkisSaat,new { @class = "form-control" })
+        @Html.TextBox("kalkisSaat","",new { @class = "form-control" })
         @Html.ValidationMessageFor(sefer=>sefer.guzergahOtobusModel.kalkisSaat,"",new { @class ="text-danger" })
         <br />
         
         @Html.Label("Sefer Tarihi")
-        @Html.TextBoxFor(sefer=>sefer.guzergahOtobusModel.tarih,new { @class = "form-control" })
+        @Html.TextBox("tarih","",new { @class = "form-control" })
         @Html.ValidationMessageFor(sefer=>sefer.guzergahOtobusModel.tarih,"",new { @class ="text-danger" })
         <br />
         
         @Html.Label("Bilet Fiyatı")
-        @Html.TextBoxFor(sefer=>sefer.guzergahOtobusModel.biletFiyat,new { @class = "form-control" })
+        @Html.TextBox("biletFiyat","0.00",new { @class = "form-control" })
         @Html.ValidationMessageFor(sefer=>sefer.guzergahOtobusModel.biletFiyat,"",new { @class ="text-danger" })
         <br />
 
@@ -39,13 +40,23 @@
         <br />
 
         @Html.Label("Güzergahlar")
-        <select class="form-control" asp-items="@(new SelectList(Model.guzergahModel, "kalkisYeri", "varisYeri"))">
+        <select name="guzergahId" class="form-control">
             @foreach(var item in Model.guzergahModel)
             {
-                <option value="@item.kalkisYeri"> - @item.varisYeri</option>
+                var combine = @item.kalkisYeri.ToUpper() + "-" + @item.varisYeri.ToUpper();
+                <option value=" @item.guzergahId">@combine</option>
             }
         </select>
         <br />
+        @Html.Label("Otobüsler")
+            <select name="otobusId" class="form-control">
+            @foreach (var item in Model.otobusModel)
+            {
+               
+                        <option value=" @item.otobusId">@item.plaka</option>
+            }
+            </select>
+            <br />
 
         <input class="form-control btn btn-primary" type="submit" value="Sefer Ekle" />
     }

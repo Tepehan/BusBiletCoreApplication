@@ -1,5 +1,5 @@
 ﻿@using EntityLayer;
-@model GuzergahOtobus;
+@model SeferGuzergahModel;
 @{
     ViewData["Title"] = "Guncelle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -8,27 +8,50 @@
 <div class="p-2">
     <h3>Sefer Güncelle</h3>
     <form action="/GuzergahOtobus/Guncelle" method="post">
-        <input type="hidden" class="form-control" type="text" name="seferId" value="@Model.seferId" />
+        <input type="hidden" class="form-control" type="text" name="seferId" value="@Model.guzergahOtobusModel.seferId" />
 
         <label>Sefer Süresi</label>
-        <input class="form-control" type="text" name="seferSüresi" value="@Model.sure" />
+        <input class="form-control" type="text" name="sure" value="@Model.guzergahOtobusModel.sure" />
         <br />
 
         <label>Sefer Kalkış Saati</label>
-        <input class="form-control" type="text" name="kalkisSaati" value="@Model.kalkisSaat" />
+        <input class="form-control" type="text" name="kalkisSaat" value="@Model.guzergahOtobusModel.kalkisSaat" />
         <br />
 
         <label>Sefer Tarihi</label>
-        <input class="form-control" type="text" name="seferTarihi" value="@Model.tarih" />
+        <input class="form-control" type="text" name="tarih" value="@Model.guzergahOtobusModel.tarih" />
         <br />
 
         <label>Bilet Fiyatı</label>
-        <input class="form-control" type="text" name="biletFiyati" value="@Model.biletFiyat" />
+        <input class="form-control" type="text" name="biletFiyat" value="@Model.guzergahOtobusModel.biletFiyat" />
         <br />
+         <label>Otobus</label>
+        <select  class="form-control" name="otobusId">
+            @foreach (var item in @Model.otobusModel)
+            {
 
+                <option value="@item.otobusId">@item.plaka</option>
+            }
+           
+
+
+        </select>
+        <br />
+        <label>Güzergah</label>
+         <select  class="form-control" name="guzergahId">
+            @foreach (var item in @Model.guzergahModel)
+            {
+
+                <option value="@item.guzergahId">@item.kalkisYeri-@item.varisYeri</option>
+            }
+           
+
+
+        </select>
+        <br />
         <label>Durum</label>
         <select class="form-control" name="guzergahOtobusSilindi">
-            @if (Model.guzergahOtobusSilindi)
+            @if (Model.guzergahOtobusModel.guzergahOtobusSilindi)
             {
                 <option selected>True</option>
                 <option>False</option>

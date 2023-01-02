@@ -1,69 +1,84 @@
-﻿using BusBiletCoreApplication.Validaitons;
+﻿using BusBiletCoreApplication.Models;
+using BusBiletCoreApplication.Validaitons;
 using BusinessLayer;
 using BusinessLayer.Validaitons;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace BusBiletCoreApplication.Controllers
 {
     public class GuzergahOtobusController : Controller
     {
-        GuzergahOtobusManager controller = new GuzergahOtobusManager(new EfGuzergahOtobusRepository());
+        GuzergahOtobusManager guzergahOtobusManager = new GuzergahOtobusManager(new EfGuzergahOtobusRepository());
+        GuzergahManager guzergahManager=new GuzergahManager(new EfGuzergahRepository());
+        OtobusManager otobusManager = new OtobusManager(new EfOtobusRepository());
         GuzergahOtobusValidator validator;
         public IActionResult Index()
         {
-            var guzergahOtobusler = controller.guzergahOtobusListele();
+            var guzergahOtobusler = guzergahOtobusManager.guzergahOtobusListele();
             return View(guzergahOtobusler);
         }
 
         public IActionResult Sil(int id)
         {
-            GuzergahOtobus guzergahOtobus = controller.guzergahOtobusGetById(id);
+            GuzergahOtobus guzergahOtobus = guzergahOtobusManager.guzergahOtobusGetById(id);
             guzergahOtobus.guzergahOtobusSilindi = true;
-            controller.guzergahOtobusGuncelle(guzergahOtobus);
+            guzergahOtobusManager.guzergahOtobusGuncelle(guzergahOtobus);
             return RedirectToAction("Index");
         }
 
         [HttpGet]
         public IActionResult Ekle()
         {
-            return View();
+            SeferGuzergahModel seferGuzergahModel = new SeferGuzergahModel();
+            seferGuzergahModel.guzergahModel = guzergahManager.GuzergahListele();
+            seferGuzergahModel.otobusModel = otobusManager.otobusListele();
+            seferGuzergahModel.guzergahOtobusModel = new GuzergahOtobus() ;
+            return View(seferGuzergahModel);
         }
 
         [HttpPost]
         public IActionResult Ekle(GuzergahOtobus guzergahOtobus)
         {
-            validator = new GuzergahOtobusValidator();
-            var result = validator.Validate(guzergahOtobus);
+            guzergahOtobusManager.guzergahOtobusEkle(guzergahOtobus);
+            return RedirectToAction("Index");
+            //validator = new GuzergahOtobusValidator();
+            //var result = validator.Validate(guzergahOtobus);
 
-            if (result.IsValid)
-            {
-                controller.guzergahOtobusEkle(guzergahOtobus);
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
-                }
+            //if (result.IsValid)
+            //{
 
-                return View();
-            }
+            //}
+            //else
+            //{
+            //    foreach (var error in result.Errors)
+            //    {
+            //        ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+            //    }
+
+            //    return View();
+            //}
         }
 
         [HttpGet]
         public IActionResult Guncelle(int id)
         {
-            GuzergahOtobus guzergahOtobus = controller.guzergahOtobusGetById(id);
-            return View(guzergahOtobus);
+            GuzergahOtobus guzergahOtobus = guzergahOtobusManager.guzergahOtobusGetById(id);
+          
+            SeferGuzergahModel seferGuzergahModel = new SeferGuzergahModel();
+            seferGuzergahModel.guzergahModel = guzergahManager.GuzergahListele();
+            seferGuzergahModel.guzergahOtobusModel = guzergahOtobus;
+            seferGuzergahModel.otobusModel = otobusManager.otobusListele();
+            return View(seferGuzergahModel);
         }
 
         [HttpPost]
         public IActionResult Guncelle(GuzergahOtobus guzergahOtobus)
         {
-            controller.guzergahOtobusGuncelle(guzergahOtobus);
+           
+            guzergahOtobusManager.guzergahOtobusGuncelle(guzergahOtobus);
             return RedirectToAction("Index");
         }
 

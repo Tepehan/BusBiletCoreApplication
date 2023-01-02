@@ -8,6 +8,7 @@ namespace BusBiletCoreApplication.Models
     {
         public GuzergahOtobus guzergahOtobusModel { get; set; }
         public IEnumerable<Guzergah> guzergahModel { get; set; }
+        public IEnumerable<Otobus> otobusModel { get; set; }
 
     }
 }
