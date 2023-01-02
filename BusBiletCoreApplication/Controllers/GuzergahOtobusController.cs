@@ -19,7 +19,7 @@ namespace BusBiletCoreApplication.Controllers
 
         public ActionResult Sil(int id)
         {
-            GuzergahOtobus guzergahOtobus = controller.GuzergahOtobusGetirById(id);
+            GuzergahOtobus guzergahOtobus = controller.guzergahOtobusGetById(id);
             guzergahOtobus.guzergahOtobusSilindi = true;
             controller.guzergahOtobusGuncelle(guzergahOtobus);
             return RedirectToAction("listele");
