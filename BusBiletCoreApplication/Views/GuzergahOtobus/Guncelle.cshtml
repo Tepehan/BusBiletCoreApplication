@@ -28,9 +28,23 @@
 
         <label>Güzergah</label>
         <select  class="form-control" name="guzergahId">
+
+            @{var seferKalkisVaris = string.Concat(Model.guzergahOtobusModel.guzergah.kalkisYeri,
+                                                   Model.guzergahOtobusModel.guzergah.varisYeri);
+            }
+
             @foreach (var item in @Model.guzergahModel)
             {
-                <option value="@item.guzergahId">@item.kalkisYeri-@item.varisYeri</option>
+                var kalkisVaris = item.kalkisYeri + item.varisYeri;
+
+                if (kalkisVaris == seferKalkisVaris)
+                {
+                    <option value="@item.guzergahId" selected="@item.kalkisYeri-@item.varisYeri">@item.kalkisYeri-@item.varisYeri</option>
+                }
+                else
+                {
+                    <option value="@item.guzergahId">@item.kalkisYeri-@item.varisYeri</option>
+                }
             }
         </select>
         <br />
