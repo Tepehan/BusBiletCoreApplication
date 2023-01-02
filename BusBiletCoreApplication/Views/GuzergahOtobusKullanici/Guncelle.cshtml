@@ -1,8 +1,65 @@
-﻿
+﻿@using EntityLayer;
+@model GuzergahOtobusKullanici
 @{
     ViewData["Title"] = "Guncelle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Guncelle</h1>
-
+<div class="p-2">
+    <h3>Bilet Güncelle</h3>
+    @using (Html.BeginForm("Guncelle", "GuzergahOtobusKullanici", FormMethod.Post, new { @class = "form-group" }))
+    {
+        @Html.TextBoxFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.biletId,new { @class = "form-control" })
+        @Html.Label("Seri No")
+        @Html.TextBoxFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.seriNo,new { @class = "form-control" })
+        @Html.ValidationMessageFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.seriNo,"",new { @class ="text-danger" })
+        <br />
+        @Html.Label("Ödeme Tipi")
+        <select class="form-control" name="odemeTipi">
+            <option>False</option>
+            <option>True</option>
+        </select>
+        <br />
+        @Html.Label("Koltuk No")
+        @Html.TextBoxFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.koltukNo ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.koltukNo ,"",new { @class ="text-danger" })
+        <br />
+        @Html.Label("Bilet Kesim Tarihi")
+        @Html.TextBoxFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.biletKesimTarihi ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.biletKesimTarihi ,"",new { @class ="text-danger" })
+        <br />
+        @Html.Label("Yolcu Ad")
+        @Html.TextBoxFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.yolcuAd ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.yolcuAd ,"",new { @class ="text-danger" })
+        <br />
+        @Html.Label("Yolcu Soyad")
+        @Html.TextBoxFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.yolcuSoyad ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.yolcuSoyad ,"",new { @class ="text-danger" })
+        <br />
+        @Html.Label("Yolcu Tc")
+        @Html.TextBoxFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.yolcuTc ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.yolcuTc ,"",new { @class ="text-danger" })
+        <br />
+        @Html.Label("Yolcu Cinsiyet")
+        <select class="form-control" name="yolcuCinsiyet">
+            <option>False</option>
+            <option>True</option>
+        </select>
+        <br />
+        @Html.Label("Sefer Id")
+        @Html.TextBoxFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.seferId ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.seferId ,"",new { @class ="text-danger" })
+        <br />
+        @Html.Label("Kullanıcı Id")
+        @Html.TextBoxFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.kullaniciId ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(GuzergahOtobusKullanici=>GuzergahOtobusKullanici.kullaniciId ,"",new { @class ="text-danger" })
+        <br />
+        @Html.Label("Durum")
+        <select class="form-control" name="silindi">
+            <option>False</option>
+            <option>True</option>
+        </select>
+        <br />
+        <input class="form-control btn btn-primary" type="submit" value="Ekle" />
+    }
+</div>

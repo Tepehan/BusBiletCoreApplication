@@ -1,4 +1,6 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusBiletCoreApplication.Validaitons;
+using BusinessLayer.Concrete;
+using BusinessLayer.Validaitons;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +24,22 @@ namespace BusBiletCoreApplication.Controllers
        [HttpPost]
         public IActionResult Ekle(GuzergahOtobusKullanici guzergahOtobusKullanici)
         {
-            return RedirectToAction("Index");
+            GuzergahOtobusKullaniciValidator gokValidator = new GuzergahOtobusKullaniciValidator();
+            var result = gokValidator.Validate(guzergahOtobusKullanici);
+            if (result.IsValid)
+            {
+                gokm.GuzergahOtobusKullaniciEkle(guzergahOtobusKullanici);
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
 
         public IActionResult Guncelle(int id)
@@ -30,8 +47,10 @@ namespace BusBiletCoreApplication.Controllers
             GuzergahOtobusKullanici guzergahOtobusKullanici = gokm.guzergahOtobusKullaniciGetById(id);
             return View();
         }
+        [HttpPost]
         public IActionResult Guncelle(GuzergahOtobusKullanici guzergahOtobusKullanici)
         {
+
             gokm.GuzergahOtobusKullaniciGuncelle(guzergahOtobusKullanici);
             return RedirectToAction("Index");
         }
