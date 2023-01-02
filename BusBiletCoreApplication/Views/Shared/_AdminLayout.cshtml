@@ -34,6 +34,14 @@
         * {
             transition:0.5s ease-in-out;
         }
+        ion-icon
+        {
+            color:white;
+        }
+        #accordionSidebar .nav-item
+        {
+            color:white;
+        }
     </style>
 </head>
 <body>
@@ -42,14 +50,14 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-dark  sidebar sidebar-dark accordion" id="accordionSidebar">@*bg-gradient-primary*@
+        <ul class="navbar-nav sidebar accordion" id="accordionSidebar" style="background-color:#1a1c2a">@*bg-gradient-primary*@
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html" >
                 <div class="sidebar-brand-icon rotate-n-15">
                     <ion-icon name="globe-outline" style="font-size:50px"></ion-icon>@*<i class="fas fa-laugh-wink"></i>*@
                 </div>
-                <div class="sidebar-brand-text mx-3">BUSBİLET Admin</div>
+                <div class="sidebar-brand-text text-light mx-3">BUSBİLET Admin</div>
             </a>
 
             <!-- Divider -->
@@ -58,7 +66,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-tachometer-alt text-white"></i>
                     <span>Dashboard</span></a>
             </li>
 
@@ -66,12 +74,12 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            <div class="sidebar-heading text-light">
                 Arayüz
             </div>
 
             <!-- Nav Item - Firmalar Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item text-light">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFirmalar"
                     aria-expanded="true" aria-controls="collapseFirmalar">
                     <ion-icon name="business"></ion-icon>
@@ -201,7 +209,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-dark topbar mb-0 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light topbar mb-0 static-top shadow" style="background-color:#1a1c2a">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -212,10 +220,10 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-dark border-0 small text-white" placeholder="Search for..."
+                            <input type="text" class="form-control border-0 small text-white" placeholder="Search for..." style="background-color:#1a1c2a"
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-dark" type="button">
+                                <button class="btn btn-light" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
