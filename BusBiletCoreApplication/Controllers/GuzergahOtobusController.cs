@@ -31,21 +31,6 @@ namespace BusBiletCoreApplication.Controllers
             return View();
         }
 
-        public IActionResult Listele(GuzergahOtobus guzergahOtobus)
-        {
-            controller.guzergahOtobusListele(guzergahOtobus);
-            return RedirectToAction("Listele");
-        }
-
-        public IActionResult Guncelle(int id)
-        {
-            GuzergahOtobus guzergahOtobus = controller.GuzergahOtobusGetirById(id);
-
-            return View(guzergahOtobus);
-        }
-
-
-
         [HttpPost]
         public IActionResult Ekle(GuzergahOtobus guzergahOtobus)
         {
