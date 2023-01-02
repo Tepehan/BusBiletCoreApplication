@@ -9,6 +9,7 @@
     <h3>Güzergah Güncelle</h3>
     @using (Html.BeginForm("Guncelle", "Guzergah", FormMethod.Post, new { @class = "form-group" }))
     {
+        @Html.TextBoxFor(guzergah=>guzergah.guzergahId,new { @class = "form-control",@type="hidden"})
         @Html.Label("Kalkış Yeri")
         @Html.TextBoxFor(guzergah=>guzergah.kalkisYeri ,new { @class = "form-control" })
         @Html.ValidationMessageFor(guzergah=>guzergah.kalkisYeri  ,"",new { @class ="text-danger" })
