@@ -17,8 +17,7 @@ namespace BusinessLayer.Validaitons
             RuleFor(guzergahOtobusKullanici=>guzergahOtobusKullanici.koltukNo).NotEmpty().WithMessage("Koltuk No boş geçilemez.");
 
             //Rule For BiletKesimTarihi
-            RuleFor(guzergahOtobusKullanici => guzergahOtobusKullanici.biletKesimTarihi).NotEmpty().WithMessage("Bilet kesim tarihi boş geçilemez.");
-            RuleFor(guzergahOtobusKullanici => guzergahOtobusKullanici.biletKesimTarihi);
+            RuleFor(guzergahOtobusKullanici => guzergahOtobusKullanici.biletKesimTarihi).NotEmpty().WithMessage("Bilet kesim tarihi boş geçilemez.");          
 
             
         }
