@@ -12,8 +12,6 @@ namespace BusinessLayer.Validaitons
     {
         public OtobusValidator() 
         {
-			//Rule for FirmaId
-			RuleFor(otobus => otobus.firmaId).NotEmpty().WithMessage("Boş geçilemez");
 			//Rule for KoltukSayisi
 			RuleFor(otobus => otobus.koltukSayisi).NotEmpty().WithMessage("Boş geçilemez");
 			//Rule for Plaka
