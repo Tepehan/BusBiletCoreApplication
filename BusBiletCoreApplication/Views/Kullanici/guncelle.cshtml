@@ -39,7 +39,7 @@
         <br />
         @Html.Label("Cinsiyet")
         <select class="form-control" name="cinsiyet">
-            if (Model.cinsiyet)
+            @if (Model.cinsiyet)
             {
                 <option selected>True</option>
                 <option>False</option>
@@ -52,12 +52,12 @@
         </select>
         <br />
         @Html.Label("Telefon Numarası")
-        @Html.TextBoxFor(kullanici=>kullanici.tel,new { @class = "form-control",@name="tel",@value="@Model.tel" })
+        @Html.TextBoxFor(kullanici=>kullanici.tel,"",new { @class = "form-control" })
         @Html.ValidationMessageFor(kullanici=>kullanici.tel,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Durum")
         <select class="form-control" name="silindi">
-            if (Model.silindi)
+            @if (Model.silindi)
             {
                 <option selected>True</option>
                 <option>False</option>
