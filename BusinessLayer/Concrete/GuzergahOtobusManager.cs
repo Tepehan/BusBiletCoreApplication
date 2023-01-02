@@ -42,10 +42,19 @@ namespace BusinessLayer
             return guzergahOtobusDal.list();
         }
 
+        public void guzergahOtobusListele(GuzergahOtobus guzergahOtobus)
+        {
+            throw new NotImplementedException();
+        }
+
         public void guzergahOtobusSil(GuzergahOtobus guzergahOtobus)
         {
             guzergahOtobusDal.delete(guzergahOtobus);
         }
 
+        public GuzergahOtobus GuzergahOtobusGetirById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
