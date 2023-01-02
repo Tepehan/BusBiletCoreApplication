@@ -7,33 +7,38 @@
 
 <div class="p-2">
     <h3>Firma Guncelle</h3>
-    <form action="/Firma/guncelle" method="post">
-        <input type="hidden" class="form-control" type="text" name="firmaId" value="@Model.firmaId" />
-        <label>Firma Adı</label>
-        <input class="form-control" type="text" name="firmaAd" value="@Model.firmaAd" />
+    @using (Html.BeginForm("Guncelle", "Firma", FormMethod.Post, new { @class = "form-group" }))
+    {
+        @Html.TextBoxFor(firma=>firma.firmaId,new { @class = "form-control",@name="firmaId",@value="@Model.firmaId",@type="hidden"})
+        @Html.Label("Firma Adı")
+        @Html.TextBoxFor(firma=>firma.firmaAd,new { @class = "form-control",@name="firmaAd",@value="@Model.firmaAd" })
+        @Html.ValidationMessageFor(firma=>firma.firmaAd,"",new { @class ="text-danger" })
         <br />
-        <label>İletişim Bilgisi</label>
-        <input class="form-control" type="text" name="iletisim" value="@Model.iletisim" />
+        @Html.Label("İletişim Bilgisi")
+        @Html.TextBoxFor(firma=>firma.iletisim,new { @class = "form-control",@name="iletisim",@value="@Model.iletisim" })
+        @Html.ValidationMessageFor(firma=>firma.iletisim,"",new { @class ="text-danger" })
         <br />
-        <label>Firma Logo</label>
-        <input class="form-control" type="text" name="logoUrl" value="@Model.logoUrl" />
+        @Html.Label("Firma Logo")
+        @Html.TextBoxFor(firma=>firma.logoUrl,new { @class = "form-control",@name="logoUrl",@value="@Model.logoUrl" })
+        @Html.ValidationMessageFor(firma=>firma.logoUrl,"",new { @class ="text-danger" })
         <br />
-        <label>Durum</label>
+        @Html.Label("Durum")
         <select class="form-control" name="silindi">
-            @if (Model.silindi)
+            if (Model.silindi)
             {
-                <option selected>True</option>
-                <option>False</option>
+            <option selected>True</option>
+            <option>False</option>
             }
             else
             {
-                <option>True</option>
-                <option selected>False</option>
+            <option>True</option>
+            <option selected>False</option>
             }
-
         </select>
         <br />
-        <input class="form-control btn btn-primary" type="submit" value="Güncelle" />
-    </form>
+        <input class="form-control btn btn-primary" type="submit" value="Firma Güncelle" />
+    }
 </div>
+
+
 
