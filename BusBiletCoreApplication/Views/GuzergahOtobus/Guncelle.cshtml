@@ -1,0 +1,70 @@
+﻿@using EntityLayer;
+@model SeferGuzergahModel;
+@{
+    ViewData["Title"] = "Guncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="p-2">
+    <h3>Sefer Güncelle</h3>
+    <form action="/GuzergahOtobus/Guncelle" method="post">
+        <input type="hidden" class="form-control" type="text" name="seferId" value="@Model.guzergahOtobusModel.seferId" />
+
+        <label>Sefer Süresi</label>
+        <input class="form-control" type="text" name="sure" value="@Model.guzergahOtobusModel.sure" />
+        <br />
+
+        <label>Sefer Kalkış Saati</label>
+        <input class="form-control" type="text" name="kalkisSaat" value="@Model.guzergahOtobusModel.kalkisSaat" />
+        <br />
+
+        <label>Sefer Tarihi</label>
+        <input class="form-control" type="text" name="tarih" value="@Model.guzergahOtobusModel.tarih" />
+        <br />
+
+        <label>Bilet Fiyatı</label>
+        <input class="form-control" type="text" name="biletFiyat" value="@Model.guzergahOtobusModel.biletFiyat" />
+        <br />
+         <label>Otobus</label>
+        <select  class="form-control" name="otobusId">
+            @foreach (var item in @Model.otobusModel)
+            {
+
+                <option value="@item.otobusId">@item.plaka</option>
+            }
+           
+
+
+        </select>
+        <br />
+        <label>Güzergah</label>
+         <select  class="form-control" name="guzergahId">
+            @foreach (var item in @Model.guzergahModel)
+            {
+
+                <option value="@item.guzergahId">@item.kalkisYeri-@item.varisYeri</option>
+            }
+           
+
+
+        </select>
+        <br />
+        <label>Durum</label>
+        <select class="form-control" name="guzergahOtobusSilindi">
+            @if (Model.guzergahOtobusModel.guzergahOtobusSilindi)
+            {
+                <option selected>True</option>
+                <option>False</option>
+            }
+            else
+            {
+                <option>True</option>
+                <option selected>False</option>
+            }
+
+        </select>
+        <br />
+        <input class="form-control btn btn-primary" type="submit" value="Sefer Güncelle" />
+
+    </form>
+</div>

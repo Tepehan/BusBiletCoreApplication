@@ -8,7 +8,7 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>Bilet Id</th>
+            
             <th>Seri No</th>
             <th>Ödeme Tipi</th>
             <th>Koltuk No</th>
@@ -17,15 +17,16 @@
             <th>Yolcu Soyad</th>
             <th>Yolcu Tc</th>
             <th>Yolcu Cinsiyet</th>
-            <th>Sefer Id</th>
-            <th>Kullanici Id</th>
+            <th>Sefer Ad</th>
+            <th>Kullanici Ad</th>
+            <th>Durum</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.biletId</td>
+                
                 <td>@item.seriNo</td>
                 <td>@item.odemeTipi</td>
                 <td>@item.koltukNo</td>
@@ -34,10 +35,11 @@
                 <td>@item.yolcuSoyad</td>
                 <td>@item.yolcuTc</td>
                 <td>@item.yolcuCinsiyet</td>
-                <td>@item.seferId</td>
-                <td>@item.kullaniciId</td>
+                <td>@item.sefer.guzergah.kalkisYeri - @item.sefer.guzergah.varisYeri </td>
+                <td>@item.kullanici.kullaniciAd</td>
+                <td>@item.silindi</td>
                 <td>
-                    <button type="button" class="btn btn-danger  text-center" data-bs-whatever="@item.biletId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Sil </button>
+                    <button type="button" class="btn btn-danger  text-center" data-bs-whatever="@item.biletId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Sil</button>
                 </td>
                 <td><a href="/GuzergahOtobusKullanici/guncelle/@item.biletId" type="button" class="btn btn-primary p-2">Güncelle</a></td>
             </tr>
@@ -48,4 +50,35 @@
 <div class="text-center d-flex justify-content-start p-2">
     <a href="/GuzergahOtobusKullanici/ekle" class="btn btn-info">Yeni Bilet Ekle</a>
 </div>
+<!-- Modal -->
+@*#decisionPopup Model*@
+<div class="modal fade" id="decisionPopup" tabindex="=-1" aria-labelledby="silLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="silLabel">Uyarı</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Silmek istediğinizden emin misiniz?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hayır</button>
+                <a id="delete-btn" href="" class="btn btn-success">Evet</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#decisionPopup').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var biletId = button.attr('data-bs-whatever');
+            var a = document.querySelector("#delete-btn");
+            a.href = "/GuzergahOtobusKullanici/sil/" + biletId;
+        });
+    });
+</script>
 

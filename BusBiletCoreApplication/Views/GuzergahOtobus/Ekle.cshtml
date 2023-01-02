@@ -1,34 +1,36 @@
 ﻿@using EntityLayer;
-@model GuzergahOtobus
+@model SeferGuzergahModel
 
 @{
     ViewData["Title"] = "Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+  
 }    
 
 <div class="p-2">
     <h3>Sefer Ekle</h3>
     @using (Html.BeginForm("Ekle", "GuzergahOtobus", FormMethod.Post, new { @class = "form-group" }))
     {
+
         @Html.Label("Sefer Süresi")
-        @Html.TextBoxFor(sefer=>sefer.sure,new { @class = "form-control" })
-        @Html.ValidationMessageFor(sefer=>sefer.sure,"",new { @class ="text-danger" })
+        @Html.TextBox("sure","0",new { @class = "form-control" })
+        @Html.ValidationMessageFor(sefer=>sefer.guzergahOtobusModel.sure,"",new { @class ="text-danger" })
         <br />
 
         @Html.Label("Sefer Kalkış Saati")
-        @Html.TextBoxFor(sefer=>sefer.kalkisSaat,new { @class = "form-control" })
-        @Html.ValidationMessageFor(sefer=>sefer.kalkisSaat,"",new { @class ="text-danger" })
+        @Html.TextBox("kalkisSaat","",new { @class = "form-control" })
+        @Html.ValidationMessageFor(sefer=>sefer.guzergahOtobusModel.kalkisSaat,"",new { @class ="text-danger" })
         <br />
         
         @Html.Label("Sefer Tarihi")
-        @Html.TextBoxFor(sefer=>sefer.tarih,new { @class = "form-control" })
-        @Html.ValidationMessageFor(sefer=>sefer.tarih,"",new { @class ="text-danger" })
+        @Html.TextBox("tarih","",new { @class = "form-control" })
+        @Html.ValidationMessageFor(sefer=>sefer.guzergahOtobusModel.tarih,"",new { @class ="text-danger" })
         <br />
         
         @Html.Label("Bilet Fiyatı")
-        @Html.TextBoxFor(sefer=>sefer.biletFiyat,new { @class = "form-control" })
-        @Html.ValidationMessageFor(sefer=>sefer.biletFiyat,"",new { @class ="text-danger" })
-        <br />      
+        @Html.TextBox("biletFiyat","0.00",new { @class = "form-control" })
+        @Html.ValidationMessageFor(sefer=>sefer.guzergahOtobusModel.biletFiyat,"",new { @class ="text-danger" })
+        <br />
 
         @Html.Label("Durum")
         <select class="form-control" name="guzergahOtobusSilindi">
@@ -36,6 +38,25 @@
             <option>True</option>
         </select>
         <br />
+
+        @Html.Label("Güzergahlar")
+        <select name="guzergahId" class="form-control">
+            @foreach(var item in Model.guzergahModel)
+            {
+                var combine = @item.kalkisYeri.ToUpper() + "-" + @item.varisYeri.ToUpper();
+                <option value=" @item.guzergahId">@combine</option>
+            }
+        </select>
+        <br />
+        @Html.Label("Otobüsler")
+            <select name="otobusId" class="form-control">
+            @foreach (var item in Model.otobusModel)
+            {
+               
+                        <option value=" @item.otobusId">@item.plaka</option>
+            }
+            </select>
+            <br />
 
         <input class="form-control btn btn-primary" type="submit" value="Sefer Ekle" />
     }
