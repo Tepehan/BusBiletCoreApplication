@@ -25,30 +25,33 @@
         <label>Bilet Fiyatı</label>
         <input class="form-control" type="text" name="biletFiyat" value="@Model.guzergahOtobusModel.biletFiyat" />
         <br />
-         <label>Otobus</label>
+
+        <label>Güzergah</label>
+        <select  class="form-control" name="guzergahId">
+            @foreach (var item in @Model.guzergahModel)
+            {
+                <option value="@item.guzergahId">@item.kalkisYeri-@item.varisYeri</option>
+            }
+        </select>
+        <br />
+
+        <label>Otobus</label>
         <select  class="form-control" name="otobusId">
             @foreach (var item in @Model.otobusModel)
             {
-
-                <option value="@item.otobusId">@item.plaka</option>
+                if(@item.plaka == Model.guzergahOtobusModel.otobus.plaka)
+                {
+                    <option value="@item.otobusId" selected="@item.plaka">@item.plaka</option>
+                }
+                else
+                {
+                    <option value="@item.otobusId">@item.plaka</option>
+                }
             }
-           
-
-
         </select>
         <br />
-        <label>Güzergah</label>
-         <select  class="form-control" name="guzergahId">
-            @foreach (var item in @Model.guzergahModel)
-            {
-
-                <option value="@item.guzergahId">@item.kalkisYeri-@item.varisYeri</option>
-            }
-           
 
 
-        </select>
-        <br />
         <label>Durum</label>
         <select class="form-control" name="guzergahOtobusSilindi">
             @if (Model.guzergahOtobusModel.guzergahOtobusSilindi)
