@@ -8,7 +8,7 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>Bilet Id</th>
+            
             <th>Seri No</th>
             <th>Ödeme Tipi</th>
             <th>Koltuk No</th>
@@ -17,15 +17,15 @@
             <th>Yolcu Soyad</th>
             <th>Yolcu Tc</th>
             <th>Yolcu Cinsiyet</th>
-            <th>Sefer Id</th>
-            <th>Kullanici Id</th>
+            <th>Sefer Ad</th>
+            <th>Kullanici Ad</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.biletId</td>
+                
                 <td>@item.seriNo</td>
                 <td>@item.odemeTipi</td>
                 <td>@item.koltukNo</td>
@@ -34,8 +34,8 @@
                 <td>@item.yolcuSoyad</td>
                 <td>@item.yolcuTc</td>
                 <td>@item.yolcuCinsiyet</td>
-                <td>@item.seferId</td>
-                <td>@item.kullaniciId</td>
+                <td>@item.sefer.guzergah.kalkisYeri @item.sefer.guzergah.varisYeri </td>
+                <td>@item.kullanici.kullaniciAd</td>
                 <td>
                     <button type="button" class="btn btn-danger  text-center" data-bs-whatever="@item.biletId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Sil </button>
                 </td>

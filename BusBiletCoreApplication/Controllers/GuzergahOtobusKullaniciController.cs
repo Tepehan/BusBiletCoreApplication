@@ -24,6 +24,16 @@ namespace BusBiletCoreApplication.Controllers
         {
             return RedirectToAction("Index");
         }
-       
+
+        public IActionResult Guncelle(int id)
+        {
+            GuzergahOtobusKullanici guzergahOtobusKullanici = gokm.guzergahOtobusKullaniciGetById(id);
+            return View();
+        }
+        public IActionResult Guncelle(GuzergahOtobusKullanici guzergahOtobusKullanici)
+        {
+            gokm.GuzergahOtobusKullaniciGuncelle(guzergahOtobusKullanici);
+            return RedirectToAction("Index");
+        }
     }
 }
