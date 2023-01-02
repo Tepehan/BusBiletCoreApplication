@@ -1,5 +1,5 @@
 ﻿@using EntityLayer;
-@model Guzergah
+@model Guzergah;
 @{
     ViewData["Title"] = "Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -8,24 +8,24 @@
 <div class="p-2">
     <h3>Guzergah Ekle</h3>
 
-    @using (Html.BeginForm("Ekle", "Guzergah", FormMethod.Post, new{ @class = "form-group" }))
+    @using (Html.BeginForm("Ekle", "Guzergah", FormMethod.Post, new { @class = "form-group" }))
     {
-         @Html.Label("Kalkış Yeri")
-        @Html.TextBoxFor(guzergah=>guzergah.kalkisYeri ,new { @class = "form-control" })
-        @Html.ValidationMessageFor(guzergah=>guzergah.kalkisYeri  ,"",new { @class ="text-danger" })
-    <br />
-           @Html.Label("Varış Yeri")
-    @Html.TextBoxFor(guzergah=>guzergah.varisYeri ,new { @class = "form-control" })
+        @Html.Label("Kalkış Yeri")
+        @Html.TextBoxFor(guzergah=>guzergah.kalkisYeri,new { @class = "form-control" })
+        @Html.ValidationMessageFor(guzergah=>guzergah.kalkisYeri,"",new { @class ="text-danger" })
+        <br />
+        @Html.Label("Varış Yeri")
+        @Html.TextBoxFor(guzergah=>guzergah.varisYeri ,new { @class = "form-control" })
         @Html.ValidationMessageFor(guzergah=>guzergah.varisYeri  ,"",new { @class ="text-danger" })
-    <br />
-    }
-        @Html.Label("Durum")
-    <select class="form-control" name="silindi" >
-            <option>False</option>
-            <option>True</option>
+        <br />
+    
+    @Html.Label("Durum")
+    <select class="form-control" name="silindi">
+        <option>False</option>
+        <option>True</option>
     </select>
     <br />
     <input class="form-control btn btn-primary" type="submit" value="Ekle" />
-
+    }
 </div>
 
