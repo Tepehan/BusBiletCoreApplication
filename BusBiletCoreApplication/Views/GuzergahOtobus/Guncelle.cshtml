@@ -1,0 +1,47 @@
+﻿@using EntityLayer;
+@model GuzergahOtobus;
+@{
+    ViewData["Title"] = "Guncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="p-2">
+    <h3>Sefer Güncelle</h3>
+    <form action="/GuzergahOtobus/Guncelle" method="post">
+        <input type="hidden" class="form-control" type="text" name="seferId" value="@Model.seferId" />
+
+        <label>Sefer Süresi</label>
+        <input class="form-control" type="text" name="seferSüresi" value="@Model.sure" />
+        <br />
+
+        <label>Sefer Kalkış Saati</label>
+        <input class="form-control" type="text" name="kalkisSaati" value="@Model.kalkisSaat" />
+        <br />
+
+        <label>Sefer Tarihi</label>
+        <input class="form-control" type="text" name="seferTarihi" value="@Model.tarih" />
+        <br />
+
+        <label>Bilet Fiyatı</label>
+        <input class="form-control" type="text" name="biletFiyati" value="@Model.biletFiyat" />
+        <br />
+
+        <label>Durum</label>
+        <select class="form-control" name="guzergahOtobusSilindi">
+            @if (Model.guzergahOtobusSilindi)
+            {
+                <option selected>True</option>
+                <option>False</option>
+            }
+            else
+            {
+                <option>True</option>
+                <option selected>False</option>
+            }
+
+        </select>
+        <br />
+        <input class="form-control btn btn-primary" type="submit" value="Sefer Güncelle" />
+
+    </form>
+</div>
