@@ -7,51 +7,52 @@
 
 <div class="p-2">
 	<h3>Otobus Ekle</h3>
-	@using (Html.BeginForm("Ekle", "Otobus", FormMethod.Post, new { @class = "form-group" }))
-	{
-		@Html.Label("Firma Ad")
+	<form action="/Otobus/Ekle" method="post">
+		<label>Firma Ad</label>
 		<select class="form-control" name="firmaId">
 			@foreach (var item in Model.firmaModal)
 			{
-						<option value="@item.firmaId">@item.firmaAd</option>
+							<option value="@item.firmaId">@item.firmaAd</option>
 			}
 			</select>
 		<br />
-		@Html.Label("Koltuk Sayısı")
-		@Html.TextBoxFor(otobus=>otobus.otobusModal.koltukSayisi,new { @class = "form-control" })
+		<label>Koltuk Sayısı</label>
+		<input class="form-control" type="text" name="koltukSayisi"/>
 		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.koltukSayisi,"",new { @class ="text-danger" })
 		<br />
-		@Html.Label("Wifi")
+		<label>Wifi</label>
 		<select class="form-control" name="wifi" >
 		<option>False</option>
 		<option>True</option>
 		</select>
 		<br />
-		@Html.Label("Tv")
+		<label>Tv</label>
 		<select class="form-control" name="tv">
 		<option>False</option>
 		<option>True</option>
 		</select>
 		<br />
-		@Html.Label("Plaka")
-		@Html.TextBoxFor(otobus=>otobus.otobusModal.plaka,new { @class = "form-control" })
+		<label>Plaka</label>
+		<input class="form-control" type="text" name="plaka"/>
 		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.plaka,"",new { @class ="text-danger" })
 		<br />
-		@Html.Label("Marka")
-		@Html.TextBoxFor(otobus=>otobus.otobusModal.marka,new { @class = "form-control" })
+		<label>Marka</label>
+		<input class="form-control" type="text" name="marka"/>
 		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.marka,"",new { @class ="text-danger" })
 		<br />
-		@Html.Label("Model")
-		@Html.TextBoxFor(otobus=>otobus.otobusModal.model,new { @class = "form-control" })
+		<label>Model</label>
+		<input class="form-control" type="text" name="model"/>
 		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.model,"",new { @class ="text-danger" })
 		<br />
-		@Html.Label("Durum")
+		<label>Durum</label>
 		<select class="form-control" name="otobusSilindi" >
 			<option>False</option>
 			<option>True</option>
 		</select>
 		<br />
 		<input class="form-control btn btn-primary" type="submit" value="Ekle" />
-	}
+
+	</form>
+		
 </div>
 

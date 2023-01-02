@@ -17,31 +17,31 @@ namespace BusinessLayer.Concrete
             this.guzergahOtobusKullaniciDal = guzergahOtobusKullaniciDal;
         }
 
-        public void GuzergahOtobusKullaniciEkle(GuzergahOtobusKullanici guzergahOtobusKullanici)
+        public void BiletEkle(GuzergahOtobusKullanici guzergahOtobusKullanici)
         {
             guzergahOtobusKullaniciDal.insert(guzergahOtobusKullanici);
         }
 
 
-        public GuzergahOtobusKullanici guzergahOtobusKullaniciGetById(int id)
+        public GuzergahOtobusKullanici BiletGetById(int id)
         {
             return guzergahOtobusKullaniciDal.get(x => x.biletId == id);
         }
 
 
-        public void GuzergahOtobusKullaniciGuncelle(GuzergahOtobusKullanici guzergahOtobusKullanici)
+        public void BiletGuncelle(GuzergahOtobusKullanici guzergahOtobusKullanici)
         {
             guzergahOtobusKullaniciDal.update(guzergahOtobusKullanici);
         }
 
 
-        public List<GuzergahOtobusKullanici> guzergahOtobusKullaniciListele()
+        public List<GuzergahOtobusKullanici> BiletListele()
         {
             return guzergahOtobusKullaniciDal.list();
         }
 
 
-        public void GuzergahOtobusKullaniciSil(GuzergahOtobusKullanici guzergahOtobusKullanici)
+        public void BiletSil(GuzergahOtobusKullanici guzergahOtobusKullanici)
         {
             guzergahOtobusKullaniciDal.delete(guzergahOtobusKullanici); 
         }
