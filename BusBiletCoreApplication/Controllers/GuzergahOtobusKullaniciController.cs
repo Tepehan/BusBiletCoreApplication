@@ -12,7 +12,7 @@ namespace BusBiletCoreApplication.Controllers
         GuzergahOtobusKullaniciManager gokm = new GuzergahOtobusKullaniciManager(new EfGuzergahOtobusKullaniciRepository());
         public IActionResult Index()
         {
-            var guzergahOtobusKullaniciler = gokm.guzergahOtobusKullaniciListele();
+            var guzergahOtobusKullaniciler = gokm.BiletListele();
             return View(guzergahOtobusKullaniciler);
         }
         [HttpGet]
@@ -28,7 +28,7 @@ namespace BusBiletCoreApplication.Controllers
             var result = gokValidator.Validate(guzergahOtobusKullanici);
             if (result.IsValid)
             {
-                gokm.GuzergahOtobusKullaniciEkle(guzergahOtobusKullanici);
+                gokm.BiletEkle(guzergahOtobusKullanici);
                 return RedirectToAction("Index");
 
             }
@@ -41,18 +41,39 @@ namespace BusBiletCoreApplication.Controllers
                 return View();
             }
         }
-
+        public IActionResult Sil(int id)
+        {
+            GuzergahOtobusKullanici guzergahOtobusKullanici = gokm.BiletGetById(id);
+            guzergahOtobusKullanici.silindi = true;
+            gokm.BiletGuncelle(guzergahOtobusKullanici);
+            return RedirectToAction("Index");
+        }
         public IActionResult Guncelle(int id)
         {
-            GuzergahOtobusKullanici guzergahOtobusKullanici = gokm.guzergahOtobusKullaniciGetById(id);
-            return View();
+            GuzergahOtobusKullanici guzergahOtobusKullanici = gokm.BiletGetById(id);
+            return View(guzergahOtobusKullanici);
         }
         [HttpPost]
         public IActionResult Guncelle(GuzergahOtobusKullanici guzergahOtobusKullanici)
         {
 
-            gokm.GuzergahOtobusKullaniciGuncelle(guzergahOtobusKullanici);
-            return RedirectToAction("Index");
+            GuzergahOtobusKullaniciValidator gokValidator = new GuzergahOtobusKullaniciValidator();
+            var result = gokValidator.Validate(guzergahOtobusKullanici);
+            if (result.IsValid)
+            {
+                gokm.BiletGuncelle(guzergahOtobusKullanici);
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
+
         }
     }
 }

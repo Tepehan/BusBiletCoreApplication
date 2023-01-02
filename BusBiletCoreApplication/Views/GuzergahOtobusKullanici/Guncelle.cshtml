@@ -9,57 +9,81 @@
     <h3>Bilet Güncelle</h3>
     @using (Html.BeginForm("Guncelle", "GuzergahOtobusKullanici", FormMethod.Post, new { @class = "form-group" }))
     {
-        @Html.TextBoxFor(bilet=>bilet.biletId,new { @class = "form-control" })
+        @Html.TextBoxFor(bilet=>bilet.biletId,new { @class = "form-control",@name="biletId",@value="@Model.biletId",@type="hidden" })
         @Html.Label("Seri No")
-        @Html.TextBoxFor(bilet=>bilet.seriNo,new { @class = "form-control" })
+        @Html.TextBoxFor(bilet=>bilet.seriNo,new { @class = "form-control",@name="seriNo",@value="@Model.seriNo" })
         @Html.ValidationMessageFor(bilet=>bilet.seriNo,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Ödeme Tipi")
         <select class="form-control" name="odemeTipi">
+            @if (Model.odemeTipi)
+            {
+            <option selected>True</option>
             <option>False</option>
+            }
+            else
+            {
             <option>True</option>
+            <option selected>False</option>
+            }
         </select>
         <br />
         @Html.Label("Koltuk No")
-        @Html.TextBoxFor(bilet=>bilet.koltukNo ,new { @class = "form-control" })
+        @Html.TextBoxFor(bilet=>bilet.koltukNo ,new { @class = "form-control",@name="koltukNo",@value="@Model.koltukNo" })
         @Html.ValidationMessageFor(bilet=>bilet.koltukNo ,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Bilet Kesim Tarihi")
-        @Html.TextBoxFor(bilet=>bilet.biletKesimTarihi ,new { @class = "form-control" })
+        @Html.TextBoxFor(bilet=>bilet.biletKesimTarihi ,new { @class = "form-control",@name="biletKesimTarihi",@value="@Model.biletKesimTarihi" })
         @Html.ValidationMessageFor(bilet=>bilet.biletKesimTarihi ,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Yolcu Ad")
-        @Html.TextBoxFor(bilet=>bilet.yolcuAd ,new { @class = "form-control" })
+        @Html.TextBoxFor(bilet=>bilet.yolcuAd ,new { @class = "form-control",@name="yolcuAd",@value="@Model.yolcuAd" })
         @Html.ValidationMessageFor(bilet=>bilet.yolcuAd ,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Yolcu Soyad")
-        @Html.TextBoxFor(bilet=>bilet.yolcuSoyad ,new { @class = "form-control" })
+        @Html.TextBoxFor(bilet=>bilet.yolcuSoyad ,new { @class = "form-control",@name="yolcuSoyad",@value="@Model.yolcuSoyad" })
         @Html.ValidationMessageFor(bilet=>bilet.yolcuSoyad ,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Yolcu Tc")
-        @Html.TextBoxFor(bilet=>bilet.yolcuTc ,new { @class = "form-control" })
+        @Html.TextBoxFor(bilet=>bilet.yolcuTc ,new { @class = "form-control",@name="yolcuTc",@value="@Model.yolcuTc" })
         @Html.ValidationMessageFor(bilet=>bilet.yolcuTc ,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Yolcu Cinsiyet")
         <select class="form-control" name="yolcuCinsiyet">
+            @if (Model.yolcuCinsiyet)
+            {
+            <option selected>True</option>
             <option>False</option>
+            }
+            else
+            {
             <option>True</option>
+            <option selected>False</option>
+            }
         </select>
         <br />
         @Html.Label("Sefer Id")
-        @Html.TextBoxFor(bilet=>bilet.seferId ,new { @class = "form-control" })
+        @Html.TextBoxFor(bilet=>bilet.seferId ,new { @class = "form-control",@name="seferId",@value="@Model.seferId" })
         @Html.ValidationMessageFor(bilet=>bilet.seferId ,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Kullanıcı Id")
-        @Html.TextBoxFor(bilet=>bilet.kullaniciId ,new { @class = "form-control" })
+        @Html.TextBoxFor(bilet=>bilet.kullaniciId ,new { @class = "form-control",@name="kullaniciId",@value="@Model.kullaniciId" })
         @Html.ValidationMessageFor(bilet=>bilet.kullaniciId ,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Durum")
         <select class="form-control" name="silindi">
+            @if (Model.silindi)
+            {
+            <option selected>True</option>
             <option>False</option>
-            <option>True</option>
-        </select>
+            }
+                else
+                {
+                <option>True</option>
+                <option selected>False</option>
+                }
+            </select>
         <br />
-        <input class="form-control btn btn-primary" type="submit" value="Ekle" />
+        <input class="form-control btn btn-primary" type="submit" value="Güncelle" />
     }
 </div>
