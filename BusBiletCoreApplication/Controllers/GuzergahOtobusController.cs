@@ -17,12 +17,12 @@ namespace BusBiletCoreApplication.Controllers
             return View(guzergahOtobusler);
         }
 
-        public ActionResult Sil(int id)
+        public IActionResult Sil(int id)
         {
             GuzergahOtobus guzergahOtobus = controller.guzergahOtobusGetById(id);
             guzergahOtobus.guzergahOtobusSilindi = true;
             controller.guzergahOtobusGuncelle(guzergahOtobus);
-            return RedirectToAction("listele");
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
