@@ -1,5 +1,5 @@
-﻿@using EntityLayer;
-@model Otobus;
+﻿@using BusBiletCoreApplication.Models
+@model OtobusFirmaModel;
 @{
 	ViewData["Title"] = "Ekle";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -9,45 +9,49 @@
 	<h3>Otobus Ekle</h3>
 	@using (Html.BeginForm("Ekle", "Otobus", FormMethod.Post, new { @class = "form-group" }))
 	{
-	@Html.Label("Firma Id")
-	@Html.TextBoxFor(otobus=>otobus.firmaId,new { @class = "form-control" })
-	@Html.ValidationMessageFor(otobus=>otobus.firmaId,"",new { @class ="text-danger" })
-	<br />
-	@Html.Label("Koltuk Sayısı")
-	@Html.TextBoxFor(otobus=>otobus.koltukSayisi,new { @class = "form-control" })
-	@Html.ValidationMessageFor(otobus=>otobus.koltukSayisi,"",new { @class ="text-danger" })
-	<br />
-	@Html.Label("Wifi")
-	<select class="form-control" name="wifi" >
-	<option>False</option>
-	<option>True</option>
-	</select>
-	<br />
-	@Html.Label("Tv")
-	<select class="form-control" name="tv" >
-	<option>False</option>
-	<option>True</option>
-	</select>
-	<br />
-	@Html.Label("Plaka")
-	@Html.TextBoxFor(otobus=>otobus.plaka,new { @class = "form-control" })
-	@Html.ValidationMessageFor(otobus=>otobus.plaka,"",new { @class ="text-danger" })
-	<br />
-	@Html.Label("Marka")
-	@Html.TextBoxFor(otobus=>otobus.marka,new { @class = "form-control" })
-	@Html.ValidationMessageFor(otobus=>otobus.marka,"",new { @class ="text-danger" })
-	<br />
-	@Html.Label("Model")
-	@Html.TextBoxFor(otobus=>otobus.model,new { @class = "form-control" })
-	@Html.ValidationMessageFor(otobus=>otobus.model,"",new { @class ="text-danger" })
-	<br />
-	@Html.Label("Durum")
-	<select class="form-control" name="otobusSilindi" >
+		@Html.Label("Firma Ad")
+		<select class="form-control" name="firmaId">
+			@foreach (var item in Model.firmaModal)
+			{
+						<option value="@item.firmaId">@item.firmaAd</option>
+			}
+			</select>
+		<br />
+		@Html.Label("Koltuk Sayısı")
+		@Html.TextBoxFor(otobus=>otobus.otobusModal.koltukSayisi,new { @class = "form-control" })
+		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.koltukSayisi,"",new { @class ="text-danger" })
+		<br />
+		@Html.Label("Wifi")
+		<select class="form-control" name="wifi" >
 		<option>False</option>
 		<option>True</option>
-	</select>
-	<br />
-	<input class="form-control btn btn-primary" type="submit" value="Ekle" />
+		</select>
+		<br />
+		@Html.Label("Tv")
+		<select class="form-control" name="tv">
+		<option>False</option>
+		<option>True</option>
+		</select>
+		<br />
+		@Html.Label("Plaka")
+		@Html.TextBoxFor(otobus=>otobus.otobusModal.plaka,new { @class = "form-control" })
+		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.plaka,"",new { @class ="text-danger" })
+		<br />
+		@Html.Label("Marka")
+		@Html.TextBoxFor(otobus=>otobus.otobusModal.marka,new { @class = "form-control" })
+		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.marka,"",new { @class ="text-danger" })
+		<br />
+		@Html.Label("Model")
+		@Html.TextBoxFor(otobus=>otobus.otobusModal.model,new { @class = "form-control" })
+		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.model,"",new { @class ="text-danger" })
+		<br />
+		@Html.Label("Durum")
+		<select class="form-control" name="otobusSilindi" >
+			<option>False</option>
+			<option>True</option>
+		</select>
+		<br />
+		<input class="form-control btn btn-primary" type="submit" value="Ekle" />
 	}
 </div>
 
