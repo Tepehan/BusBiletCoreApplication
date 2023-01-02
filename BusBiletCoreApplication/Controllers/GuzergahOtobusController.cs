@@ -53,6 +53,20 @@ namespace BusBiletCoreApplication.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult Guncelle(int id)
+        {
+            GuzergahOtobus guzergahOtobus = controller.guzergahOtobusGetById(id);
+            return View(guzergahOtobus);
+        }
+
+        [HttpPost]
+        public IActionResult Guncelle(GuzergahOtobus guzergahOtobus)
+        {
+            controller.guzergahOtobusGuncelle(guzergahOtobus);
+            return RedirectToAction("Index");
+        }
+
     }
 }
 
