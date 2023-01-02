@@ -11,10 +11,7 @@ namespace DataAccessLayer.Concrete
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLazyLoadingProxies().UseSqlServer ("server=405-00 ; database=DBBusBilet ;Encrypt=False; User ID=sa;Password=1234");
-            //UseSqlServer(@"Server=LAPTOP-7U5PUCF6;Initial Catalog=BusTicket;" +
-            //    "Persist Security Info=False;User ID=sa;Password=6161;" +
-            //    "MultipleActiveResultSets=False;Encrypt=False;" +
-            //    "TrustServerCertificate=False;Connection Timeout=30;");
+
         }
         
         public DbSet<Firma> firmalar { get; set; }
