@@ -4,46 +4,42 @@
     ViewData["Title"] = "guncelle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 <div class="p-2">
-    <h3>Kullanıcı Güncelle</h3>
-    <form action="/Kullanici/guncelle" method="post">
-
-        <input type="hidden" class="form-control" type="text" name="kullaniciId" value="@Model.kullaniciId" />
-        <label>Kullanıcı Adı</label>
-        <input class="form-control" type="text" name="kullaniciAd" value="@Model.kullaniciAd" />
+    <h2>Kullanıcı Güncelle</h2><br />
+    @using (Html.BeginForm("Guncelle", "Kullanici", FormMethod.Post, new { @class = "form-group" }))
+    {
+        @Html.TextBoxFor(kullanici=>kullanici.kullaniciId,new { @class = "form-control",@name="kullaniciId",@value="@Model.kullaniciId",@type="hidden"})
+        @Html.Label("Kullanici Adı")
+        @Html.TextBoxFor(kullanici=>kullanici.kullaniciAd,new { @class = "form-control",@name="kullaniciAd",@value="@Model.kullaniciAd" })
+        @Html.ValidationMessageFor(kullanici=>kullanici.kullaniciAd,"",new { @class ="text-danger" })
         <br />
-        <label>Kullanıcı Şifre</label>
-        <input class="form-control" type="text" name="kullaniciSifre" value="@Model.kullaniciSifre" />
+        @Html.Label("Kullanici Şifre")
+        @Html.TextBoxFor(kullanici=>kullanici.kullaniciSifre,new { @class = "form-control",@name="kullaniciSifre",@value="@Model.kullaniciSifre" })
+        @Html.ValidationMessageFor(kullanici=>kullanici.kullaniciSifre,"",new { @class ="text-danger" })
         <br />
-        <label>Ad</label>
-        <input class="form-control" type="text" name="ad" value="@Model.ad" />
+        @Html.Label("Ad")
+        @Html.TextBoxFor(kullanici=>kullanici.ad,new { @class = "form-control",@name="ad",@value="@Model.ad" })
+        @Html.ValidationMessageFor(kullanici=>kullanici.ad,"",new { @class ="text-danger" })
         <br />
-        <label>Soyad</label>
-        <input class="form-control" type="text" name="soyad" value="@Model.soyad" />
+        @Html.Label("Soyad")
+        @Html.TextBoxFor(kullanici=>kullanici.soyad,new { @class = "form-control",@name="soyad",@value="@Model.soyad" } )
+        @Html.ValidationMessageFor(kullanici=>kullanici.soyad,"",new { @class ="text-danger" })
         <br />
-        <label>Doğum Tarihi</label>
-        <input class="form-control" type="text" name="dogumTarihi" value="@Model.dogumTarihi" />
+        @Html.Label("Doğum Tarihi")
+        @Html.TextBoxFor(kullanici=>kullanici.dogumTarihi,new { @class = "form-control",@name="dogumTarihi",@value="@Model.dogumTarihi" } )
+        @Html.ValidationMessageFor(kullanici=>kullanici.dogumTarihi,"",new { @class ="text-danger" })
         <br />
-        <label>Tc Kimlik No</label>
-        <input class="form-control" type="text" name="tc" value="@Model.tc" />
+        @Html.Label("Tc Kimlik No")
+        @Html.TextBoxFor(kullanici=>kullanici.tc,new { @class = "form-control",@name="tc",@value="@Model.tc" } )
+        @Html.ValidationMessageFor(kullanici=>kullanici.tc,"",new { @class ="text-danger" })
         <br />
-        <label>E-mail Adres</label>
-        <input class="form-control" type="text" name="mail" value="@Model.mail" />
+        @Html.Label("E-Mail")
+        @Html.TextBoxFor(kullanici=>kullanici.mail,new { @class = "form-control",@name="mail",@value="@Model.mail" } )
+        @Html.ValidationMessageFor(kullanici=>kullanici.mail,"",new { @class ="text-danger" })
         <br />
-        <label>Cinsiyet</label>
-        <select class="form-control" name="cinsiyet" value="@Model.cinsiyet">
-
-            <option>True</option>
-            <option>False</option>
-
-        </select>
-        <br />
-        <label>İletişim Bilgisi</label>
-        <input class="form-control" type="text" name="tel" value="@Model.tel" />
-        <label>Durum</label>
-        <select class="form-control" name="silindi">
-            @if (Model.silindi)
+        @Html.Label("Cinsiyet")
+        <select class="form-control" name="cinsiyet">
+            if (Model.cinsiyet)
             {
                 <option selected>True</option>
                 <option>False</option>
@@ -53,10 +49,26 @@
                 <option>True</option>
                 <option selected>False</option>
             }
-
         </select>
         <br />
-        <input class="form-control btn btn-primary" type="submit" value="Güncelle" />
-    </form>
+        @Html.Label("Telefon Numarası")
+        @Html.TextBoxFor(kullanici=>kullanici.tel,new { @class = "form-control",@name="tel",@value="@Model.tel" })
+        @Html.ValidationMessageFor(kullanici=>kullanici.tel,"",new { @class ="text-danger" })
+        <br />
+        @Html.Label("Durum")
+        <select class="form-control" name="silindi">
+            if (Model.silindi)
+            {
+                <option selected>True</option>
+                <option>False</option>
+            }
+            else
+            {
+                <option>True</option>
+                <option selected>False</option>
+            }
+        </select>
+        <br />
+        <input class="form-control btn btn-primary" type="submit" value="Kullanıcı Güncelle" />
+    }
 </div>
-

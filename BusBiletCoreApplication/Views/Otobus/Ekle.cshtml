@@ -1,45 +1,57 @@
-﻿
+﻿@using BusBiletCoreApplication.Models
+@model OtobusFirmaModel;
 @{
-    ViewData["Title"] = "Ekle";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "Ekle";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="p-2">
-    <h3>Otobus Ekle</h3>
-<form action="/Otobus/ekle" method="post">
-    <label>Firma Id</label>
-    <input class="form-control" type="text" name="firmaId" />
-    <br />
-    <label>Koltuk Sayısı</label>
-    <input class="form-control" type="text" name="koltukSayisi" />
-    <br />
-    <label>Wifi</label>
-    <select class="form-control" name="wifi" >
-            <option>False</option>
-            <option>True</option>
-    </select>
-    <label>TV</label>
-    <select class="form-control" name="tv" >
-            <option>False</option>
-            <option>True</option>
-    </select>
-    <br />
-    <label>Plaka</label>
-    <input class="form-control" type="text" name="plaka" />
-    <br />
-    <label>Marka</label>
-    <input class="form-control" type="text" name="marka" />
-    <br />
-    <label>Model</label>
-    <input class="form-control" type="text" name="model" />
-    <br />
-    <label>Durum</label>
-    <select class="form-control" name="otobusSilindi" >
-            <option>False</option>
-            <option>True</option>
-    </select>
-    <br />
-    <input class="form-control btn btn-primary" type="submit" value="Ekle" />
-</form>
+	<h3>Otobus Ekle</h3>
+	@using (Html.BeginForm("Ekle", "Otobus", FormMethod.Post, new { @class = "form-group" }))
+	{
+		@Html.Label("Firma Ad")
+		<select class="form-control" name="firmaId">
+			@foreach (var item in Model.firmaModal)
+			{
+						<option value="@item.firmaId">@item.firmaAd</option>
+			}
+			</select>
+		<br />
+		@Html.Label("Koltuk Sayısı")
+		@Html.TextBoxFor(otobus=>otobus.otobusModal.koltukSayisi,new { @class = "form-control" })
+		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.koltukSayisi,"",new { @class ="text-danger" })
+		<br />
+		@Html.Label("Wifi")
+		<select class="form-control" name="wifi" >
+		<option>False</option>
+		<option>True</option>
+		</select>
+		<br />
+		@Html.Label("Tv")
+		<select class="form-control" name="tv">
+		<option>False</option>
+		<option>True</option>
+		</select>
+		<br />
+		@Html.Label("Plaka")
+		@Html.TextBoxFor(otobus=>otobus.otobusModal.plaka,new { @class = "form-control" })
+		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.plaka,"",new { @class ="text-danger" })
+		<br />
+		@Html.Label("Marka")
+		@Html.TextBoxFor(otobus=>otobus.otobusModal.marka,new { @class = "form-control" })
+		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.marka,"",new { @class ="text-danger" })
+		<br />
+		@Html.Label("Model")
+		@Html.TextBoxFor(otobus=>otobus.otobusModal.model,new { @class = "form-control" })
+		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.model,"",new { @class ="text-danger" })
+		<br />
+		@Html.Label("Durum")
+		<select class="form-control" name="otobusSilindi" >
+			<option>False</option>
+			<option>True</option>
+		</select>
+		<br />
+		<input class="form-control btn btn-primary" type="submit" value="Ekle" />
+	}
 </div>
 

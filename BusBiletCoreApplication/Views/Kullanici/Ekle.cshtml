@@ -1,51 +1,59 @@
-﻿@{
+﻿@using EntityLayer;
+@model Kullanici
+@{
     ViewData["Title"] = "Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
 <div class="p-2">
-    <h1>Kullanıcı Ekleme Sayfası</h1>
-    <br />
-    <form action="/Kullanici/ekle" method="post">
-
-        <label>Kullanici Ad</label>
-        <input class="form-control" type="text" name="kullaniciAd" />
+    <h2>Kullanıcı Ekle</h2><br />
+    @using (Html.BeginForm("Ekle", "Kullanici", FormMethod.Post, new { @class = "form-group" }))
+    {
+        @Html.Label("Kullanici Adı")
+        @Html.TextBoxFor(kullanici=>kullanici.kullaniciAd,new { @class = "form-control" })
+        @Html.ValidationMessageFor(kullanici=>kullanici.kullaniciAd,"",new { @class ="text-danger" })
         <br />
-        <label>Kullanici Şifre</label>
-        <input class="form-control" type="text" name="kullaniciSifre" />
+        @Html.Label("Kullanici Şifre")
+        @Html.TextBoxFor(kullanici=>kullanici.kullaniciSifre,new { @class = "form-control" })
+        @Html.ValidationMessageFor(kullanici=>kullanici.kullaniciSifre,"",new { @class ="text-danger" })
         <br />
-        <label>Ad</label>
-        <input class="form-control" type="text" name="ad" />
+        @Html.Label("Ad")
+        @Html.TextBoxFor(kullanici=>kullanici.ad,new { @class = "form-control" })
+        @Html.ValidationMessageFor(kullanici=>kullanici.ad,"",new { @class ="text-danger" })
         <br />
-        <label>Soyad</label>
-        <input class="form-control" type="text" name="soyad" />
+        @Html.Label("Soyad")
+        @Html.TextBoxFor(kullanici=>kullanici.soyad,new { @class = "form-control" })
+        @Html.ValidationMessageFor(kullanici=>kullanici.soyad,"",new { @class ="text-danger" })
         <br />
-        <label>Doğum Tarihi</label>
-        <input class="form-control" type="text" name="dogumTarihi" />
+        @Html.Label("Doğum Tarihi")
+        @Html.TextBoxFor(kullanici=>kullanici.dogumTarihi,new { @class = "form-control" })
+        @Html.ValidationMessageFor(kullanici=>kullanici.dogumTarihi,"",new { @class ="text-danger" })
         <br />
-        <label>Tc Kimlik No</label>
-        <input class="form-control" type="text" name="tc" />
+        @Html.Label("Tc Kimlik No")
+        @Html.TextBoxFor(kullanici=>kullanici.tc,new { @class = "form-control" })
+        @Html.ValidationMessageFor(kullanici=>kullanici.tc,"",new { @class ="text-danger" })
         <br />
-        <label>E-Mail</label>
-        <input class="form-control" type="text" name="mail" />
+        @Html.Label("E-Mail")
+        @Html.TextBoxFor(kullanici=>kullanici.mail,new { @class = "form-control" })
+        @Html.ValidationMessageFor(kullanici=>kullanici.mail,"",new { @class ="text-danger" })
         <br />
-        <label>Cinsiyet</label>
+        @Html.Label("Cinsiyet")
         <select class="form-control" name="cinsiyet">
             <option>False</option>
             <option>True</option>
         </select>
         <br />
-        <label>Telefon Numarası</label>
-        <input class="form-control" type="text" name="tel" />
+        @Html.Label("Telefon Numarası")
+        @Html.TextBoxFor(kullanici=>kullanici.tel,new { @class = "form-control" })
+        @Html.ValidationMessageFor(kullanici=>kullanici.tel,"",new { @class ="text-danger" })
         <br />
-        <label>Durum</label>
+        @Html.Label("Durum")
         <select class="form-control" name="silindi">
             <option>False</option>
             <option>True</option>
         </select>
         <br />
         <input class="form-control btn btn-primary" type="submit" value="Kullanıcı Ekle" />
-    </form>
+    }
 </div>
 
