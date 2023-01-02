@@ -32,13 +32,13 @@
 		<select class="form-control" name="wifi" >
 			@if (Model.otobusModal.wifi)
 			{
-					<option>False</option>
-					<option selected>True</option>
+					<option value="False">Yok</option>
+				    <option value="True" selected>Var</option>
 			}
 			else
 			{
-						<option selected>False</option>
-						<option >True</option>
+					<option value="False" selected>Yok</option>
+					<option value="True">Var</option>
 			}
 		</select>
 		<br />
@@ -46,13 +46,13 @@
 		<select class="form-control" name="tv">
 			@if (Model.otobusModal.tv)
 			{
-					<option>False</option>
-					<option selected>True</option>
+					<option value="False">Yok</option>
+					<option value="True" selected>Var</option>
 			}
 			else
 			{
-						<option selected>False</option>
-						<option >True</option>
+					<option value="False" selected>Yok</option>
+					<option value="True">Var</option>
 			}
 		</select>
 		<br />
@@ -72,18 +72,18 @@
 		<select class="form-control" name="otobusSilindi" >
 			@if(Model.otobusModal.otobusSilindi)
 			{
-				<option>False</option>
-				<option selected>True</option>
+				<option value="False">Aktif</option>
+				<option value="True" selected>Pasif</option>
 			}
 			else
 			{
-					<option selected>False</option>
-					<option >True</option>
+				<option value="False">Aktif</option>
+				<option value="True" selected>Pasif</option>
 			}
 
 		</select>
 		<br />
-		<input class="form-control btn btn-primary" type="submit" value="Ekle" />
+		<input class="form-control btn btn-primary" type="submit" value="Güncelle" />
 
 	</form>
 </div>

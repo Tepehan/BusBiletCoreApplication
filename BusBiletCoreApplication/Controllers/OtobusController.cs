@@ -37,12 +37,12 @@ namespace BusBiletCoreApplication.Controllers
             }
             else
             {
-                foreach (var item in result.Errors)
-                {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                }
-                return View();
-            }
+				foreach (var item in result.Errors)
+				{
+					ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+				}
+				return View();
+			}
         }
         public IActionResult sil(int id)
         {
