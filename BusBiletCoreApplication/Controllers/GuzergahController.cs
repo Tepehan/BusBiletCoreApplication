@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using BusinessLayer.Validaitons;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer;
 using Microsoft.AspNetCore.Http;
@@ -26,12 +27,27 @@ namespace BusBiletCoreApplication.Controllers
         {
             return View();
         }
+        [HttpPost]
         public IActionResult Ekle(Guzergah guzergah)
         {
-            gm.GuzergahEkle(guzergah);
-            return RedirectToAction("Listele");
+            GuzergahValidator guzergahValidator = new GuzergahValidator();
+            var result = guzergahValidator.Validate(guzergah);
+            if (result.IsValid)
+            {
+                gm.GuzergahEkle(guzergah);
+                return RedirectToAction("Listele");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
 
+        [HttpGet]
         public IActionResult Guncelle(int id)
         {
             Guzergah guzergah = gm.GuzergahGetirById(id);
@@ -41,8 +57,23 @@ namespace BusBiletCoreApplication.Controllers
         [HttpPost]
         public IActionResult Guncelle(Guzergah guzergah)
         {
-            gm.GuzergahGuncelle(guzergah);
-            return RedirectToAction("Listele");
+            GuzergahValidator guzergahValidator = new GuzergahValidator();
+            var result = guzergahValidator.Validate(guzergah);
+            if (result.IsValid)
+            {
+                gm.GuzergahGuncelle(guzergah);
+                return RedirectToAction("Listele");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
+
+           
         }
 
     }
