@@ -21,6 +21,7 @@ namespace EntityLayer
         [StringLength(11)]
         public string yolcuTc { get; set; }
         public bool yolcuCinsiyet { get; set; }
+        public bool silindi { get; set; }
 
         //guzergahOtobus ile ilişkilendirilecek.
         public int seferId { get; set; }
