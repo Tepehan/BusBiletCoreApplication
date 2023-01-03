@@ -14,7 +14,6 @@ namespace BusBiletCoreApplication.Controllers
         GuzergahOtobusManager guzergahOtobusManager = new GuzergahOtobusManager(new EfGuzergahOtobusRepository());
         GuzergahManager guzergahManager=new GuzergahManager(new EfGuzergahRepository());
         OtobusManager otobusManager = new OtobusManager(new EfOtobusRepository());
-        GuzergahOtobusValidator validator;
         public IActionResult Index()
         {
             var guzergahOtobusler = guzergahOtobusManager.guzergahOtobusListele();
@@ -42,24 +41,23 @@ namespace BusBiletCoreApplication.Controllers
         [HttpPost]
         public IActionResult Ekle(GuzergahOtobus guzergahOtobus)
         {
-            guzergahOtobusManager.guzergahOtobusEkle(guzergahOtobus);
-            return RedirectToAction("Index");
-            //validator = new GuzergahOtobusValidator();
-            //var result = validator.Validate(guzergahOtobus);
+            GuzergahOtobusValidator guzergahValidator = new GuzergahOtobusValidator();
+            var result = guzergahValidator.Validate(guzergahOtobus);
+            if (result.IsValid)
+            {
+                guzergahOtobusManager.guzergahOtobusEkle(guzergahOtobus);
+                return RedirectToAction("Index");
 
-            //if (result.IsValid)
-            //{
-
-            //}
-            //else
-            //{
-            //    foreach (var error in result.Errors)
-            //    {
-            //        ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
-            //    }
-
-            //    return View();
-            //}
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }              
+    
         }
 
         [HttpGet]
@@ -77,9 +75,24 @@ namespace BusBiletCoreApplication.Controllers
         [HttpPost]
         public IActionResult Guncelle(GuzergahOtobus guzergahOtobus)
         {
+            GuzergahOtobusValidator guzergahValidator = new GuzergahOtobusValidator();
+            var result = guzergahValidator.Validate(guzergahOtobus);
+            if (result.IsValid)
+            {
+                guzergahOtobusManager.guzergahOtobusGuncelle(guzergahOtobus);
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View(guzergahOtobus);
+            }
+
            
-            guzergahOtobusManager.guzergahOtobusGuncelle(guzergahOtobus);
-            return RedirectToAction("Index");
         }
 
     }
