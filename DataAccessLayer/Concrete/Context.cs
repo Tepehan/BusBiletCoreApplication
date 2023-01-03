@@ -10,7 +10,7 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseLazyLoadingProxies().UseSqlServer ("server=405-00 ; database=DBBusBilet ;Encrypt=False; User ID=sa;Password=1234");
+            optionsBuilder.UseLazyLoadingProxies().UseSqlServer ("server=LAPTOP-GC0KUGMH\\SQLEXPRESS; ; database=DBBusBilet ;Encrypt=False; Integrated Security=True;");
 
         }       
         public DbSet<Firma> firmalar { get; set; }

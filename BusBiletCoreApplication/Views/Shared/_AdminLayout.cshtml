@@ -31,8 +31,13 @@
 
 
     <style>
-        * {
-            transition:0.5s ease-in-out;
+        body,#content
+        {
+            background-color:#161d30;
+            padding-right:10px;
+        }
+        *{
+            transition:0.4s ease-in-out;
         }
         ion-icon
         {
@@ -42,6 +47,38 @@
         {
             color:white;
         }
+        table thead
+        {
+            
+            color:white;
+        }
+        table tbody
+        {
+           
+            color:white;
+        }
+        table tr:hover
+        {
+            background-color:#353c56;
+            color:white;
+        }
+        h1,h2,h3
+        {
+            color:white;
+        }
+        .table
+        {
+       
+            border-color:#383f51;
+            overflow: auto;
+        } 
+        .divider{
+        border:1px solid #383f51;
+       
+        }
+        .table-holder-bg{
+        border-radius:15px;background-color:#292f45; width:100%;padding:8px;
+        }
     </style>
 </head>
 <body>
@@ -50,10 +87,10 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav sidebar accordion" id="accordionSidebar" style="background-color:#1a1c2a">@*bg-gradient-primary*@
+        <ul class="navbar-nav sidebar accordion mr-3" id="accordionSidebar" style="background-color:#292f45">@*bg-gradient-primary*@
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html" >
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/fima/index.html" >
                 <div class="sidebar-brand-icon rotate-n-15">
                     <ion-icon name="globe-outline" style="font-size:50px"></ion-icon>@*<i class="fas fa-laugh-wink"></i>*@
                 </div>
@@ -61,7 +98,7 @@
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            <hr class="divider my-0">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
@@ -71,7 +108,7 @@
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            <hr class="divider">
 
             <!-- Heading -->
             <div class="sidebar-heading text-light">
@@ -209,7 +246,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light topbar mb-0 static-top shadow" style="background-color:#1a1c2a">
+                <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow rounded" style="background-color:#292f45">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -218,9 +255,9 @@
 
                     <!-- Topbar Search -->
                     <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control border-0 small text-white" placeholder="Search for..." style="background-color:#1a1c2a"
+                        class="d-none d-sm-inline-block form-inline mr-auto md-3 my-md-0 mw-100 navbar-search">
+                        <div class="input-group ms-3">
+                            <input type="text" class="form-control border-0 small text-white" placeholder="Search for..." 
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-light" type="button">
@@ -382,7 +419,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="~/admin_dashboard/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -413,14 +450,17 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                @RenderBody()
+                <div class="overflow-auto table-holder-bg">
+                    @RenderBody()
+                </div>
+               
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <footer class="sticky-footer" style="background-color:#161d30;color:white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2021</span>
