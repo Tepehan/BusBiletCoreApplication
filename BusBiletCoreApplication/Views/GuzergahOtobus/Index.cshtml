@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<table class="table table-hover table-dark table-bordered">
+<table class="table table-hover table-bordered">
     <thead>
         <tr>
             <th>Sefer Id</th>
@@ -15,6 +15,7 @@
             <th>Kalkış Saati</th>
             <th>Bilet Fiyatı</th>
             <th>Güzergah</th>
+            <th>Otobüs Plaka</th>
             <th>Sil</th>
             <th>Güncelle</th>
         </tr>
@@ -29,10 +30,11 @@
                 <td>@item.kalkisSaat</td>
                 <td>@item.biletFiyat</td>
                 <td>@item.guzergah.kalkisYeri - @item.guzergah.varisYeri</td>
+                <td>@item.otobus.plaka</td>
                 <td>
-                    <button type="button" class="btn btn-danger text-center" data-bs-whatever="@item.seferId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Sil </button>
+                            <button type="button"class="btn btn-outline-danger  text-center" data-bs-whatever="@item.seferId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fas fa-trash"></i> </button>
                 </td>
-                <td><a href="/GuzergahOtobus/guncelle/@item.seferId" type="button" class="btn btn-primary p-2">Güncelle</a></td>
+                    <td><a href="/GuzergahOtobus/guncelle/@item.seferId" type="button" class="btn btn-outline-primary p-2 ">Güncelle</a></td>
             </tr>
         }
 

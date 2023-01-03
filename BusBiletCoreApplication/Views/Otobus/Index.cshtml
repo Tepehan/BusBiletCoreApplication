@@ -5,7 +5,8 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <h2>Otobüsler</h2>
-<table class="table table-hover table-bordered">
+
+<table class="table">
     <thead>
         <tr>
              <th>Firma Ad</th>
@@ -26,23 +27,44 @@
                 <tr>
                     <td>@item.firma.firmaAd</td>
                     <td>@item.koltukSayisi</td>
-                    <td>@item.wifi</td>
-                    <td>@item.tv</td>
+                    @if (@item.wifi)
+                    {
+                        <td>Var</td>
+                    }
+                    else
+                    {
+                        <td>Yok</td>
+                    }
+                    @if (@item.tv)
+                    {
+                            <td>Var</td>
+                    }
+                    else
+                    {
+                            <td>Yok</td>
+                    }
                     <td>@item.plaka</td>
                     <td>@item.marka</td>
                     <td>@item.model</td>
-                    <td>@item.otobusSilindi</td>
+                    @if(@item.otobusSilindi)
+                    {
+                            <td>Pasif</td>
+                    }
+                    else
+                    {
+                            <td>Aktif</td>
+                    }
                     <td>
-                            <button type="button" class="btn btn-danger  text-center" data-bs-whatever="@item.otobusId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fas fa-trash"></i> </button>
+                            <button type="button" class="btn btn-outline-danger  text-center" data-bs-whatever="@item.otobusId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fas fa-trash"></i> </button>
                     </td>
-                        <td><a href="/Otobus/guncelle/@item.otobusId" type="button" class="btn btn-primary p-2 ">Güncelle</a></td>
+                            <td><a href="/Otobus/guncelle/@item.otobusId" type="button" class="btn btn-outline-primary p-2 ">Güncelle</a></td>
                 </tr>
         }
 
     </tbody>
 </table>
-<div class="text-center d-flex justify-content-end p-2 me-4">
-    <a href="/Otobus/ekle" class="btn btn-success">Otobüs Ekle</a>
+<div class="text-center d-flex justify-content-end p-2">
+    <a href="/Otobus/ekle" class="btn btn-success"><ion-icon name="add" style="font-size:30px"></ion-icon></a>
 </div>
 
 
