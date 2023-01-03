@@ -10,7 +10,6 @@
 	<form action="/Otobus/Ekle" method="post">
 		<label>Firma Ad</label>
 		<select class="form-control" name="firmaId">
-			<option>Seçiniz...</option>
 			@foreach (var item in Model.firmaModal)
 			{
 							<option value="@item.firmaId">@item.firmaAd</option>
@@ -19,46 +18,36 @@
 		<br />
 		<label>Koltuk Sayısı</label>
 		<input class="form-control" type="text" name="koltukSayisi"/>
-		<div id="koltukSayisi" class="validation-container">
-			@Html.ValidationMessageFor(x => x.otobusModal.koltukSayisi)
-	</div>
+		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.koltukSayisi,"",new { @class ="text-danger" })
 		<br />
 		<label>Wifi</label>
 		<select class="form-control" name="wifi" >
-		<option>Seçiniz...</option>
-		<option value="False">Yok</option>
-		<option value="True">Var</option>
+		<option>False</option>
+		<option>True</option>
 		</select>
 		<br />
 		<label>Tv</label>
 		<select class="form-control" name="tv">
-		<option>Seçiniz...</option>
-		<option value="False">Yok</option>
-		<option value="True">Var</option>
+		<option>False</option>
+		<option>True</option>
 		</select>
 		<br />
 		<label>Plaka</label>
 		<input class="form-control" type="text" name="plaka"/>
-		<div id="plaka" class="validation-container">
-			@Html.ValidationMessageFor(x => x.otobusModal.plaka)
-	</div>
+		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.plaka,"",new { @class ="text-danger" })
 		<br />
 		<label>Marka</label>
 		<input class="form-control" type="text" name="marka"/>
-		<div id="marka" class="validation-container">
-			@Html.ValidationMessageFor(x => x.otobusModal.marka)
-	</div>
+		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.marka,"",new { @class ="text-danger" })
 		<br />
 		<label>Model</label>
 		<input class="form-control" type="text" name="model"/>
-		<div id="model" class="validation-container">
-			@Html.ValidationMessageFor(x => x.otobusModal.model)
-	</div>	
+		@Html.ValidationMessageFor(otobus=>otobus.otobusModal.model,"",new { @class ="text-danger" })
 		<br />
 		<label>Durum</label>
 		<select class="form-control" name="otobusSilindi" >
-		<option value="False">Aktif</option>
-		<option value="True">Pasif</option>
+			<option>False</option>
+			<option>True</option>
 		</select>
 		<br />
 		<input class="form-control btn btn-primary" type="submit" value="Ekle" />
