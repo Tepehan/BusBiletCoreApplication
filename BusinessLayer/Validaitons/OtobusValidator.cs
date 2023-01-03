@@ -12,9 +12,9 @@ namespace BusinessLayer.Validaitons
     {
         public OtobusValidator() 
         {
-			//Rule for KoltukSayisi
+			//RuleFor KoltukSayisi
 			RuleFor(otobus => otobus.koltukSayisi).NotEmpty().WithMessage("Boş geçilemez");
-			//Rule for Plaka
+			//RuleFor Plaka
 			RuleFor(otobus => otobus.plaka).NotEmpty().WithMessage("Boş geçilemez");
             RuleFor(otobus => otobus.plaka).MaximumLength(9).WithMessage("Maximum 9 karakter girilebilir.");
             RuleFor(otobus => otobus.plaka).MinimumLength(5).WithMessage("Minimum 5 karakter girilmedilir.");

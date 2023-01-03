@@ -26,12 +26,33 @@
                 <tr>
                     <td>@item.firma.firmaAd</td>
                     <td>@item.koltukSayisi</td>
-                    <td>@item.wifi</td>
-                    <td>@item.tv</td>
+                    @if (@item.wifi)
+                    {
+                        <td>Var</td>
+                    }
+                    else
+                    {
+                        <td>Yok</td>
+                    }
+                    @if (@item.tv)
+                    {
+                            <td>Var</td>
+                    }
+                    else
+                    {
+                            <td>Yok</td>
+                    }
                     <td>@item.plaka</td>
                     <td>@item.marka</td>
                     <td>@item.model</td>
-                    <td>@item.otobusSilindi</td>
+                    @if(@item.otobusSilindi)
+                    {
+                            <td>Pasif</td>
+                    }
+                    else
+                    {
+                            <td>Aktif</td>
+                    }
                     <td>
                             <button type="button" class="btn btn-danger  text-center" data-bs-whatever="@item.otobusId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fas fa-trash"></i> </button>
                     </td>
