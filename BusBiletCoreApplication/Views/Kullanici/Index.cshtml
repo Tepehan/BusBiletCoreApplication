@@ -5,15 +5,14 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1 class="text-dark">Kullanıcılar</h1>
+<h3>Kullanıcılar</h3>
 
-<div class="overflow-auto">
-<table class="table table-hover table-bordered">
+
+<table class="table">
     <thead>
         <tr>
-            <th>Kullanici Id</th>
             <th>Kullanici Ad</th>
-            <th>Kullanici Şifre</th>
+            <th>Şifre</th>
             <th>Ad</th>
             <th>Soyad</th>
             <th>Doğum Tarihi</th>
@@ -31,7 +30,6 @@
         @foreach (var item in Model)
         {
                 <tr>
-                    <td>@item.kullaniciId</td>
                     <td>@item.kullaniciAd</td>
                     <td>@item.kullaniciSifre</td>
                     <td>@item.ad</td>
@@ -43,7 +41,7 @@
                     <td>@item.tel</td>
                     <td>@item.silindi</td>
                     <td>
-                    <button type="button" class="btn btn-outline-danger  text-center" data-bs-whatever="@item.kullaniciId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Sil </button>
+                    <button type="button" class="btn btn-outline-danger  text-center" data-bs-whatever="@item.kullaniciId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fas fa-trash"></i></button>
                 </td>
                 <td><a href="/Kullanici/guncelle/@item.kullaniciId" type="button" class="btn btn-outline-primary p-2">Güncelle</a></td>
             </tr>
@@ -52,10 +50,10 @@
 
     </tbody>
 </table>
-</div>
+
 
 <div class="text-center d-flex justify-content-start p-2">
-    <a href="/Kullanici/ekle" class="btn btn-info">Yeni Kullanıcı Ekle</a>
+    <a href="/Kullanici/ekle" class="btn btn-success"><ion-icon name="add" style="font-size:30px"></ion-icon></a>
 </div>
 
 <!-- Modal -->
