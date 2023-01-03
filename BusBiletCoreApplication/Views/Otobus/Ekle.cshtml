@@ -10,6 +10,7 @@
 	<form action="/Otobus/Ekle" method="post">
 		<label>Firma Ad</label>
 		<select class="form-control" name="firmaId">
+			<option>Seçiniz...</option>
 			@foreach (var item in Model.firmaModal)
 			{
 							<option value="@item.firmaId">@item.firmaAd</option>
@@ -24,12 +25,14 @@
 		<br />
 		<label>Wifi</label>
 		<select class="form-control" name="wifi" >
+		<option>Seçiniz...</option>
 		<option value="False">Yok</option>
 		<option value="True">Var</option>
 		</select>
 		<br />
 		<label>Tv</label>
 		<select class="form-control" name="tv">
+		<option>Seçiniz...</option>
 		<option value="False">Yok</option>
 		<option value="True">Var</option>
 		</select>
