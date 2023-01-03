@@ -37,11 +37,13 @@ namespace BusBiletCoreApplication.Controllers
             }
             else
             {
-				foreach (var item in result.Errors)
+                OtobusFirmaModel model = new OtobusFirmaModel();
+                model.firmaModal = fm.firmaListele();
+                foreach (var item in result.Errors)
 				{
 					ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
 				}
-				return View(otobus);
+				return View(model);
             }
         }
         public IActionResult sil(int id)

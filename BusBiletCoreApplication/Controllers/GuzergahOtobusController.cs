@@ -51,11 +51,15 @@ namespace BusBiletCoreApplication.Controllers
             }
             else
             {
+                SeferGuzergahModel seferGuzergahModel = new SeferGuzergahModel();
+                seferGuzergahModel.guzergahModel = guzergahManager.GuzergahListele();
+                seferGuzergahModel.otobusModel = otobusManager.otobusListele();
+                seferGuzergahModel.guzergahOtobusModel = new GuzergahOtobus();
                 foreach (var item in result.Errors)
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-                return View();
+                return View(seferGuzergahModel);
             }              
     
         }
@@ -74,7 +78,7 @@ namespace BusBiletCoreApplication.Controllers
 
         [HttpPost]
         public IActionResult Guncelle(GuzergahOtobus guzergahOtobus)
-        {
+       {
             GuzergahOtobusValidator guzergahValidator = new GuzergahOtobusValidator();
             var result = guzergahValidator.Validate(guzergahOtobus);
             if (result.IsValid)
@@ -85,11 +89,15 @@ namespace BusBiletCoreApplication.Controllers
             }
             else
             {
+                SeferGuzergahModel seferGuzergahModel = new SeferGuzergahModel();
+                seferGuzergahModel.guzergahModel = guzergahManager.GuzergahListele();
+                seferGuzergahModel.guzergahOtobusModel = guzergahOtobus;
+                seferGuzergahModel.otobusModel = otobusManager.otobusListele();
                 foreach (var item in result.Errors)
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-                return View(guzergahOtobus);
+                return View(seferGuzergahModel);
             }
 
            

@@ -29,15 +29,12 @@
         <label>Güzergah</label>
         <select  class="form-control" name="guzergahId">
 
-            @{var seferKalkisVaris = string.Concat(Model.guzergahOtobusModel.guzergah.kalkisYeri,
-                                                   Model.guzergahOtobusModel.guzergah.varisYeri);
-            }
-
+           
             @foreach (var item in @Model.guzergahModel)
             {
-                var kalkisVaris = item.kalkisYeri + item.varisYeri;
 
-                if (kalkisVaris == seferKalkisVaris)
+
+                if (item.guzergahId == @Model.guzergahOtobusModel.guzergahId)
                 {
                     <option value="@item.guzergahId" selected="@item.kalkisYeri-@item.varisYeri">@item.kalkisYeri-@item.varisYeri</option>
                 }
@@ -53,7 +50,7 @@
         <select  class="form-control" name="otobusId">
             @foreach (var item in @Model.otobusModel)
             {
-                if(@item.plaka == Model.guzergahOtobusModel.otobus.plaka)
+                if (@item.otobusId == @Model.guzergahOtobusModel.otobusId)
                 {
                     <option value="@item.otobusId" selected="@item.plaka">@item.plaka</option>
                 }
@@ -62,6 +59,8 @@
                     <option value="@item.otobusId">@item.plaka</option>
                 }
             }
+           
+ }
         </select>
         <br />
 
