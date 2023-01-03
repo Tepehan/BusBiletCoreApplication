@@ -33,7 +33,7 @@ namespace BusBiletCoreApplication.Validaitons
             //Rule for  tc
             RuleFor(kullanici => kullanici.tc).NotEmpty().WithMessage("Boş geçilemez");
             RuleFor(kullanici => kullanici.tc).MaximumLength(11).WithMessage("Maximum 11 karakter girilmelidir.");
-            RuleFor(kullanici => kullanici.tc).MinimumLength(5).WithMessage("Minimum 5 karakter girilmelidir.");
+            RuleFor(kullanici => kullanici.tc).MinimumLength(11).WithMessage("Minimum 11 karakter girilmelidir.");
 
             //Rule for cinsiyet
             RuleFor(kullanici => kullanici.cinsiyet).NotNull().WithMessage("Cinsiyet Gereklidir.");
@@ -46,7 +46,7 @@ namespace BusBiletCoreApplication.Validaitons
             //Rule for  tel
             RuleFor(kullanici => kullanici.tel).NotEmpty().WithMessage("Boş geçilemez");
             RuleFor(kullanici => kullanici.tel).MaximumLength(11).WithMessage("Maximum 11 karakter girilmelidir.");
-            RuleFor(kullanici => kullanici.tel).MinimumLength(5).WithMessage("Minimum 5  karakter girilmelidir.");
+            RuleFor(kullanici => kullanici.tel).MinimumLength(11).WithMessage("Minimum 11  karakter girilmelidir.");
 
         }
     }
