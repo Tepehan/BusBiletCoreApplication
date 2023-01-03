@@ -1,4 +1,6 @@
-﻿using BusBiletCoreApplication.Validaitons;
+﻿using BusBiletCoreApplication.Models;
+using BusBiletCoreApplication.Validaitons;
+using BusinessLayer;
 using BusinessLayer.Concrete;
 using BusinessLayer.Validaitons;
 using DataAccessLayer.Concrete.EntityFramework;
@@ -10,6 +12,8 @@ namespace BusBiletCoreApplication.Controllers
     public class GuzergahOtobusKullaniciController : Controller
     {
         GuzergahOtobusKullaniciManager gokm = new GuzergahOtobusKullaniciManager(new EfGuzergahOtobusKullaniciRepository());
+        GuzergahOtobusManager guzergahOtobusManager = new GuzergahOtobusManager(new EfGuzergahOtobusRepository());
+        KullaniciManager kullaniciManager = new KullaniciManager(new EfKullaniciRepository());
         public IActionResult Index()
         {
             var guzergahOtobusKullaniciler = gokm.BiletListele();
@@ -18,12 +22,19 @@ namespace BusBiletCoreApplication.Controllers
         [HttpGet]
         public IActionResult Ekle()
         {
-            return View();
+            BiletSeferGuzergahKullaniciModel biletSeferGuzergahKullaniciModel = new BiletSeferGuzergahKullaniciModel();
+            biletSeferGuzergahKullaniciModel.seferModel = guzergahOtobusManager.guzergahOtobusListele();
+            biletSeferGuzergahKullaniciModel.kullaniciModel = kullaniciManager.KullaniciListele();
+            biletSeferGuzergahKullaniciModel.biletModel = new GuzergahOtobusKullanici();
+            return View(biletSeferGuzergahKullaniciModel);
         }
 
-       [HttpPost]
+        [HttpPost]
         public IActionResult Ekle(GuzergahOtobusKullanici guzergahOtobusKullanici)
         {
+
+            //gokm.BiletEkle(guzergahOtobusKullanici);
+            //return RedirectToAction("index");
             GuzergahOtobusKullaniciValidator gokValidator = new GuzergahOtobusKullaniciValidator();
             var result = gokValidator.Validate(guzergahOtobusKullanici);
             if (result.IsValid)
@@ -71,7 +82,7 @@ namespace BusBiletCoreApplication.Controllers
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-                return View();
+                return View(guzergahOtobusKullanici);
             }
 
         }
