@@ -1,6 +1,7 @@
 ﻿
 @{
     Layout = null;
+    var data=TempData["init"];
 }
 
 <!DOCTYPE html>
@@ -8,21 +9,28 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="~/admin_dashboard/css/adminlogin.css" rel="stylesheet" />
 </head>
 <body>
+   
+    @if (@data!=null&&(int)@data==1)
+    {
+        TempData["init"] = 0;
+        @await Component.InvokeAsync("NToastNotify")
+    }
     <div class="background-wrap">
         <div class="background"></div>
     </div>
 
-    <form id="accesspanel" action="login" method="post">
+    <form id="accesspanel" action="/admin/giris" method="post">
         <h1 id="litheader">LOGIN</h1>
         <div class="inset">
             <p>
-                <input type="text" name="username" id="email" placeholder="Email address">
+                <input type="text" name="adminEmail" id="email" placeholder="Email address">
             </p>
             <p>
-                <input type="password" name="password" id="password" placeholder="Access code">
+                <input type="password" name="adminPassword" id="password" placeholder="Access code">
             </p>
             <div style="text-align: center;">
                 <div class="checkboxouter">
@@ -37,6 +45,7 @@
             <input type="submit" name="Login" id="go" value="Authorize">
         </p>
     </form>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
  

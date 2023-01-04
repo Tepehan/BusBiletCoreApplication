@@ -19,6 +19,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<Kullanici> kullanicilar { get; set; }
         public DbSet<GuzergahOtobus> seferler { get; set; }
         public DbSet<GuzergahOtobusKullanici> biletler { get; set; }
-        
+        public DbSet<Admin> adminler { get; set; }
+
     }
 }
