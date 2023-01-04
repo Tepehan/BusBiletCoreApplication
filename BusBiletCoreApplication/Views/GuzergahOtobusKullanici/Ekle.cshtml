@@ -1,10 +1,36 @@
 ﻿@using EntityLayer;
+@using System.Text;
 @model BiletSeferGuzergahKullaniciModel
 @{
     ViewData["Title"] = "Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+  
+    var s = 1;
 }
 
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .card-header .fa {
+            transition: .3s transform ease-in-out;
+        }
+
+        .card-header .collapsed .fa {
+            transform: rotate(90deg);
+        }
+
+        .card {
+            margin: 10px 0px;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width" />
+    <title>admin</title>
+    <link href="~/admin_dashboard/css/biletcollapse.css" rel="stylesheet" />
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</head>
+<body>
 <div class="p-2">
     <h3>Bilet Ekle</h3>
     @using (Html.BeginForm("Ekle", "GuzergahOtobusKullanici", FormMethod.Post, new { @class = "form-group" }))
@@ -45,10 +71,44 @@
             <option>False</option>
             <option>True</option>
         </select>
-        <br />
-     
-        
-        @Html.Label("Seferler")
+            <br />
+
+            var distinctSefer = Model.seferModel
+                .GroupBy(sefer => new { sefer.guzergah.kalkisYeri, sefer.guzergah.varisYeri })
+                .Select(g => g.First())
+                .ToList();
+            <div id="accordion" role="tablist" aria-multiselectable="true">
+                
+                @for(var i=0;i<distinctSefer.Count;i++)
+                {
+                   var idName = "";
+                    @for (var j=0;j<i+1;j++)
+                    {
+                        idName += "a"; 
+                    }
+                    <div class="card">
+                        <h5 class="card-header" role="tab" id="headingOne">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#@idName" aria-expanded="true" aria-controls="collapseOne" class="d-block">
+                                <i class="fa fa-chevron-down pull-right"></i> @distinctSefer.ElementAt(i).guzergah.kalkisYeri @distinctSefer.ElementAt(i).guzergah.varisYeri
+                            </a>
+                        </h5>
+
+                        <div id="@idName" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+       
+        @*@Html.Label("Seferler")
         <select name="seferId" class="form-control">
 
             @foreach (var item in Model.seferModel)
@@ -56,7 +116,7 @@
                 var combine = "Tarih : " + @item.tarih + " | Kalkış Saati : " + @item.kalkisSaat + " | Bilet Fiyatı : " + @item.biletFiyat + "TL" + " | " + @item.guzergah.kalkisYeri.ToUpper() + "-" + @item.guzergah.varisYeri.ToUpper();
                 <option value=" @item.seferId">@combine</option>
             }
-        </select>
+        </select>*@
         <br />
         @Html.Label("Kullanıcı Adı")
         <select name="kullaniciId" class="form-control">
@@ -77,52 +137,12 @@
         <input class="form-control btn btn-primary" type="submit" value="Ekle" />
     }
 </div>
+  
 
-@*<style>
-    .wrapper{
-  width:70%;
-}
-@media(max-width:992px){
- .wrapper{
-  width:100%;
-} 
-}
-.panel-heading {
-  padding: 0;
-	border:0;
-}
-.panel-title>a, .panel-title>a:active{
-	display:block;
-	padding:15px;
-  color:#555;
-  font-size:16px;
-  font-weight:bold;
-	text-transform:uppercase;
-	letter-spacing:1px;
-  word-spacing:3px;
-	text-decoration:none;
-}
-.panel-heading  a:before {
-   font-family: 'Glyphicons Halflings';
-   content: "\e114";
-   float: right;
-   transition: all 0.5s;
-}
-.panel-heading.active a:before {
-	-webkit-transform: rotate(180deg);
-	-moz-transform: rotate(180deg);
-	transform: rotate(180deg);
-} 
-</style>
- <script>
-     $('.panel-collapse').on('show.bs.collapse', function () {
-    $(this).siblings('.panel-heading').addClass('active');
-  });
-
-  $('.panel-collapse').on('hide.bs.collapse', function () {
-    $(this).siblings('.panel-heading').removeClass('active');
-  });
- </script>
+</body>
+</html>
+@*
+ 
 
    var distinctSefer = Model.seferModel
         .GroupBy(sefer => new { sefer.guzergah.kalkisYeri, sefer.guzergah.varisYeri })

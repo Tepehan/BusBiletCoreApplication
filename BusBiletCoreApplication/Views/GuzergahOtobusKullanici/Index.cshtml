@@ -4,6 +4,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<h2>Biletler</h2>
 
 <table class="table">
     <thead>
@@ -20,6 +21,8 @@
             <th>Sefer Ad</th>
             <th>Kullanici Ad</th>
             <th>Durum</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -48,7 +51,7 @@
     </tbody>
 </table>
 <div class="text-center d-flex justify-content-start p-2">
-    <a href="/GuzergahOtobusKullanici/ekle" class="btn btn-info">Yeni Bilet Ekle</a>
+    <a href="/GuzergahOtobusKullanici/ekle" class="btn btn-info"><ion-icon name="add" style=" font-size:30px;"></ion-icon></a>
 </div>
 <!-- Modal -->
 @*#decisionPopup Model*@
