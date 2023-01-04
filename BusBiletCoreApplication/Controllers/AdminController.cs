@@ -17,9 +17,9 @@ namespace BusBiletCoreApplication.Controllers
             _logger = logger;
             _toastNotification = toastNotification;
         }
-        public IActionResult Index()
-        {
-           
+        [HttpGet]
+        public IActionResult login()
+        {           
             return View();
         }
         [HttpPost]
@@ -33,7 +33,8 @@ namespace BusBiletCoreApplication.Controllers
             }
             _toastNotification.AddErrorToastMessage("Kullanıcı adı veya password hatalı");
             TempData["init"] = 1;
-            return RedirectToAction("Index");
+            return RedirectToAction("login");
         }
+       
     }
 }

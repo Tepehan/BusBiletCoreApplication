@@ -4,13 +4,15 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<table class="table table-hover">
+<table class="table">
     <thead>
         <tr>
             <th>Firma Adı</th>
             <th>İletişim Bilgisi</th>
             <th>Logo</th>
             <th>Durum</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -31,13 +33,13 @@
     </tbody>
 </table>
 <div class="text-center d-flex justify-content-start p-2">
-    <a href="/Firma/ekle" class="btn btn-info">Yeni Firma Ekle</a>
+    <a href="/Firma/ekle" class="btn btn-success"><ion-icon name="add" style=" font-size:30px;"></ion-icon></a>
 </div>
 
 
 <!-- Modal -->
 @*#decisionPopup Model*@
-@*<div class="modal fade" id="decisionPopup" tabindex="=-1" aria-labelledby="silLabel" aria-hidden="true">
+<div class="modal fade" id="decisionPopup" tabindex="=-1" aria-labelledby="silLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -53,7 +55,7 @@
             </div>
         </div>
     </div>
-</div>*@
+</div>
  
 
     <script> 
