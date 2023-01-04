@@ -4,16 +4,15 @@
     ViewData["Title"] = "Listele";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
-<h1 style="text-aligncenter;">GÜZERGAHLAR</h1>
+<h2 style="text-aligncenter;">GÜZERGAHLAR</h2>
 <table class="table">
     <thead>
         <tr>
-            <th>Guzergah Id</th>
             <th>Kalkış Yeri</th>
             <th>Varış Yeri</th>
             <th>Durum</th>
-            <th></th>
-            <th></th>
+            <th>Sil</th>
+            <th>Güncelle</th>
             
         </tr>
     </thead>
@@ -21,7 +20,6 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.guzergahId</td>
                 <td>@item.kalkisYeri</td>
                 <td>@item.varisYeri</td>
                 <td>@item.silindi</td>
@@ -36,7 +34,7 @@
     </tbody>
 </table>
 <div class="text-center d-flex justify-content-start p-2">
-    <a href="/Guzergah/Ekle" class="btn btn-info">Yeni Güzergah Ekle</a>
+    <a href="/Guzergah/ekle" class="btn btn-success"><ion-icon name="add" style="font-size:30px"></ion-icon></a>
 </div>
 <!-- Modal -->
 @*#decisionPopup Model*@
