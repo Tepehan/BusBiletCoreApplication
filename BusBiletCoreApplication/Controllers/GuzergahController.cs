@@ -43,7 +43,7 @@ namespace BusBiletCoreApplication.Controllers
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-                return View();
+                return View(guzergah);
             }
         }
 
@@ -70,7 +70,7 @@ namespace BusBiletCoreApplication.Controllers
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-                return View();
+                return View(guzergah);
             }
 
            

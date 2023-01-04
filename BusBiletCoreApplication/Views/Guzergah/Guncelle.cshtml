@@ -19,11 +19,18 @@
         @Html.ValidationMessageFor(guzergah=>guzergah.varisYeri,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Durum")
-        <select class="form-control" name="silindi">
-            <option>False</option>
-            <option>True</option>
+          <select class="form-control" name="silindi">
+            @if (Model.silindi)
+            {
+                <option selected>True</option>
+                <option>False</option>
+            }
+            else
+            {
+                <option>True</option>
+                <option selected>False</option>
+            }
         </select>
-        <br />
         <input class="form-control btn btn-primary" type="submit" value="Güncelle" />
     }
 </div>
