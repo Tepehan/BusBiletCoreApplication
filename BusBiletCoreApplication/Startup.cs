@@ -31,7 +31,7 @@ namespace BusBiletCoreApplication
             services.AddRazorPages().AddNToastNotifyNoty(new NotyOptions
             {
                 ProgressBar = true,
-                Timeout = 2000
+                Timeout = 5000
             });
         }
 
