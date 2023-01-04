@@ -1,17 +1,18 @@
 ﻿@using EntityLayer;
-@model GuzergahOtobusKullanici
+@model BiletSeferGuzergahKullaniciModel
 @{
     ViewData["Title"] = "Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 <div class="p-2">
     <h3>Bilet Ekle</h3>
     @using (Html.BeginForm("Ekle", "GuzergahOtobusKullanici", FormMethod.Post, new { @class = "form-group" }))
     {
         
         @Html.Label("Seri No")
-        @Html.TextBoxFor(bilet=>bilet.seriNo,new { @class = "form-control" })
-        @Html.ValidationMessageFor(bilet=>bilet.seriNo,"",new { @class ="text-danger" })
+        @Html.TextBox("seriNo","",new { @class = "form-control" })
+        @Html.ValidationMessageFor(bilet=>bilet.biletModel.seriNo,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Ödeme Tipi")
         <select class="form-control" name="odemeTipi">
@@ -20,24 +21,24 @@
         </select>
         <br />
         @Html.Label("Koltuk No")
-        @Html.TextBoxFor(bilet=>bilet.koltukNo ,new { @class = "form-control" })
-        @Html.ValidationMessageFor(bilet=>bilet.koltukNo ,"",new { @class ="text-danger" })
+        @Html.TextBox("koltukNo","",new { @class = "form-control" })
+        @Html.ValidationMessageFor(bilet=>bilet.biletModel.koltukNo ,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Bilet Kesim Tarihi")
-        @Html.TextBoxFor(bilet=>bilet.biletKesimTarihi ,new { @class = "form-control" })
-        @Html.ValidationMessageFor(bilet=>bilet.biletKesimTarihi ,"",new { @class ="text-danger" })
+        @Html.TextBox("biletKesimTarihi","",new { @class = "form-control" })
+        @Html.ValidationMessageFor(bilet=>bilet.biletModel.biletKesimTarihi ,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Yolcu Ad")
-        @Html.TextBoxFor(bilet=>bilet.yolcuAd ,new { @class = "form-control" })
-        @Html.ValidationMessageFor(bilet=>bilet.yolcuAd ,"",new { @class ="text-danger" })
+        @Html.TextBox("yolcuAd","",new { @class = "form-control" })
+        @Html.ValidationMessageFor(bilet=>bilet.biletModel.yolcuAd,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Yolcu Soyad")
-        @Html.TextBoxFor(bilet=>bilet.yolcuSoyad ,new { @class = "form-control" })
-        @Html.ValidationMessageFor(bilet=>bilet.yolcuSoyad ,"",new { @class ="text-danger" })
+        @Html.TextBox("yolcuSoyad","",new { @class = "form-control" })
+        @Html.ValidationMessageFor(bilet=>bilet.biletModel.yolcuSoyad ,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Yolcu Tc")
-        @Html.TextBoxFor(bilet=>bilet.yolcuTc ,new { @class = "form-control" })
-        @Html.ValidationMessageFor(bilet=>bilet.yolcuTc ,"",new { @class ="text-danger" })
+        @Html.TextBox("yolcuTc","",new { @class = "form-control" })
+        @Html.ValidationMessageFor(bilet=>bilet.biletModel.yolcuTc ,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Yolcu Cinsiyet")
         <select class="form-control" name="yolcuCinsiyet">
@@ -45,13 +46,27 @@
             <option>True</option>
         </select>
         <br />
-        @Html.Label("Sefer Id")
-        @Html.TextBoxFor(bilet=>bilet.seferId ,new { @class = "form-control" })
-        @Html.ValidationMessageFor(bilet=>bilet.seferId ,"",new { @class ="text-danger" })
+     
+        
+        @Html.Label("Seferler")
+        <select name="seferId" class="form-control">
+
+            @foreach (var item in Model.seferModel)
+            {
+                var combine = "Tarih : " + @item.tarih + " | Kalkış Saati : " + @item.kalkisSaat + " | Bilet Fiyatı : " + @item.biletFiyat + "TL" + " | " + @item.guzergah.kalkisYeri.ToUpper() + "-" + @item.guzergah.varisYeri.ToUpper();
+                <option value=" @item.seferId">@combine</option>
+            }
+        </select>
         <br />
-        @Html.Label("Kullanıcı Id")
-        @Html.TextBoxFor(bilet=>bilet.kullaniciId ,new { @class = "form-control" })
-        @Html.ValidationMessageFor(bilet=>bilet.kullaniciId ,"",new { @class ="text-danger" })
+        @Html.Label("Kullanıcı Adı")
+        <select name="kullaniciId" class="form-control">
+
+            @foreach (var item in Model.kullaniciModel)
+            {
+                var combine = @item.kullaniciAd;
+                <option value=" @item.kullaniciId">@combine</option>
+            }
+        </select>
         <br />
         @Html.Label("Durum")
         <select class="form-control" name="silindi">
@@ -62,3 +77,81 @@
         <input class="form-control btn btn-primary" type="submit" value="Ekle" />
     }
 </div>
+
+@*<style>
+    .wrapper{
+  width:70%;
+}
+@media(max-width:992px){
+ .wrapper{
+  width:100%;
+} 
+}
+.panel-heading {
+  padding: 0;
+	border:0;
+}
+.panel-title>a, .panel-title>a:active{
+	display:block;
+	padding:15px;
+  color:#555;
+  font-size:16px;
+  font-weight:bold;
+	text-transform:uppercase;
+	letter-spacing:1px;
+  word-spacing:3px;
+	text-decoration:none;
+}
+.panel-heading  a:before {
+   font-family: 'Glyphicons Halflings';
+   content: "\e114";
+   float: right;
+   transition: all 0.5s;
+}
+.panel-heading.active a:before {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	transform: rotate(180deg);
+} 
+</style>
+ <script>
+     $('.panel-collapse').on('show.bs.collapse', function () {
+    $(this).siblings('.panel-heading').addClass('active');
+  });
+
+  $('.panel-collapse').on('hide.bs.collapse', function () {
+    $(this).siblings('.panel-heading').removeClass('active');
+  });
+ </script>
+
+   var distinctSefer = Model.seferModel
+        .GroupBy(sefer => new { sefer.guzergah.kalkisYeri, sefer.guzergah.varisYeri })
+        .Select(g => g.First())
+        .ToList();
+        <div id="seferCollapse" class="wrapper center-block">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                @foreach (var item in distinctSefer)
+                {
+                    <div class="panel panel-default">
+                        <div class="panel-heading active" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  @item.guzergah.kalkisYeri @item.guzergah.varisYeri
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+*@
+
+
+
+
+
