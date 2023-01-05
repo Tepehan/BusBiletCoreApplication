@@ -1,12 +1,18 @@
 ﻿using DataAccessLayer.Concrete;
 using EntityLayer;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NToastNotify;
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace BusBiletCoreApplication.Controllers
 {
+    [AllowAnonymous]
     public class AdminController : Controller
     {
         private readonly ILogger<AdminController> _logger;
@@ -21,14 +27,19 @@ namespace BusBiletCoreApplication.Controllers
         public IActionResult login()
         {           
             return View();
+            
         }
         [HttpPost]
-        public IActionResult Giris(Admin admin)
+        public async Task<IActionResult>Giris(Admin admin)
         {
             Context c=new Context();
             var result= c.adminler.Where(x=>x.adminEmail==admin.adminEmail&&x.adminPassword==admin.adminPassword).SingleOrDefault();
             if (result!=null) {
-               
+                var claims = new List<Claim> { new Claim(ClaimTypes.Email, admin.adminEmail) };
+
+                var userIdentify = new ClaimsIdentity(claims, "Login");
+                ClaimsPrincipal principal = new ClaimsPrincipal(userIdentify);
+                await HttpContext.SignInAsync(principal);
                 return RedirectToAction("Index","Firma");
             }
             _toastNotification.AddErrorToastMessage("Kullanıcı adı veya password hatalı");
