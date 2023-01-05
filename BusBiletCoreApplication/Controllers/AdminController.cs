@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace BusBiletCoreApplication.Controllers
 {
-    [AllowAnonymous]
+    
     public class AdminController : Controller
     {
         private readonly ILogger<AdminController> _logger;
@@ -25,12 +25,17 @@ namespace BusBiletCoreApplication.Controllers
             _logger = logger;
             _toastNotification = toastNotification;
         }
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult login()
         {           
             return View();
             
         }
+        public IActionResult profile() {
+            return View();
+        }
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult>Giris(Admin admin)
         {
