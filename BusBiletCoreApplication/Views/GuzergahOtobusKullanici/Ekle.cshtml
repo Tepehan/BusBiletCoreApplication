@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-  
+
     var s = 1;
 }
 
@@ -23,126 +23,116 @@
         .card {
             margin: 10px 0px;
         }
+        .text-type{
+            text-decoration:none;
+            color: #262838;
+        }
     </style>
     <meta name="viewport" content="width=device-width" />
     <title>admin</title>
     <link href="~/admin_dashboard/css/biletcollapse.css" rel="stylesheet" />
     <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="p-2">
-    <h3>Bilet Ekle</h3>
-    @using (Html.BeginForm("Ekle", "GuzergahOtobusKullanici", FormMethod.Post, new { @class = "form-group" }))
-    {
-        
-        @Html.Label("Seri No")
-        @Html.TextBox("seriNo","",new { @class = "form-control" })
-        @Html.ValidationMessageFor(bilet=>bilet.biletModel.seriNo,"",new { @class ="text-danger" })
-        <br />
-        @Html.Label("Ödeme Tipi")
-        <select class="form-control" name="odemeTipi">
-            <option>False</option>
-            <option>True</option>
-        </select>
-        <br />
-        @Html.Label("Koltuk No")
-        @Html.TextBox("koltukNo","",new { @class = "form-control" })
-        @Html.ValidationMessageFor(bilet=>bilet.biletModel.koltukNo ,"",new { @class ="text-danger" })
-        <br />
-        @Html.Label("Bilet Kesim Tarihi")
-        @Html.TextBox("biletKesimTarihi","",new { @class = "form-control" })
-        @Html.ValidationMessageFor(bilet=>bilet.biletModel.biletKesimTarihi ,"",new { @class ="text-danger" })
-        <br />
-        @Html.Label("Yolcu Ad")
-        @Html.TextBox("yolcuAd","",new { @class = "form-control" })
-        @Html.ValidationMessageFor(bilet=>bilet.biletModel.yolcuAd,"",new { @class ="text-danger" })
-        <br />
-        @Html.Label("Yolcu Soyad")
-        @Html.TextBox("yolcuSoyad","",new { @class = "form-control" })
-        @Html.ValidationMessageFor(bilet=>bilet.biletModel.yolcuSoyad ,"",new { @class ="text-danger" })
-        <br />
-        @Html.Label("Yolcu Tc")
-        @Html.TextBox("yolcuTc","",new { @class = "form-control" })
-        @Html.ValidationMessageFor(bilet=>bilet.biletModel.yolcuTc ,"",new { @class ="text-danger" })
-        <br />
-        @Html.Label("Yolcu Cinsiyet")
-        <select class="form-control" name="yolcuCinsiyet">
-            <option>False</option>
-            <option>True</option>
-        </select>
+    <div class="p-2">
+        <h3>Bilet Ekle</h3>
+        @using (Html.BeginForm("Ekle", "GuzergahOtobusKullanici", FormMethod.Post, new { @class = "form-group" }))
+        {
+
+            @Html.Label("Seri No")
+            @Html.TextBox("seriNo","",new { @class = "form-control" })
+            @Html.ValidationMessageFor(bilet=>bilet.biletModel.seriNo,"",new { @class ="text-danger" })
             <br />
-
+            @Html.Label("Ödeme Tipi")
+            <select class="form-control" name="odemeTipi">
+                <option>False</option>
+                <option>True</option>
+            </select>
+            <br />
+            @Html.Label("Koltuk No")
+            @Html.TextBox("koltukNo","",new { @class = "form-control" })
+            @Html.ValidationMessageFor(bilet=>bilet.biletModel.koltukNo ,"",new { @class ="text-danger" })
+            <br />
+            @Html.Label("Bilet Kesim Tarihi")
+            @Html.TextBox("biletKesimTarihi","",new { @class = "form-control" })
+            @Html.ValidationMessageFor(bilet=>bilet.biletModel.biletKesimTarihi ,"",new { @class ="text-danger" })
+            <br />
+            @Html.Label("Yolcu Ad")
+            @Html.TextBox("yolcuAd","",new { @class = "form-control" })
+            @Html.ValidationMessageFor(bilet=>bilet.biletModel.yolcuAd,"",new { @class ="text-danger" })
+            <br />
+            @Html.Label("Yolcu Soyad")
+            @Html.TextBox("yolcuSoyad","",new { @class = "form-control" })
+            @Html.ValidationMessageFor(bilet=>bilet.biletModel.yolcuSoyad ,"",new { @class ="text-danger" })
+            <br />
+            @Html.Label("Yolcu Tc")
+            @Html.TextBox("yolcuTc","",new { @class = "form-control" })
+            @Html.ValidationMessageFor(bilet=>bilet.biletModel.yolcuTc ,"",new { @class ="text-danger" })
+            <br />
+            @Html.Label("Yolcu Cinsiyet")
+            <select class="form-control" name="yolcuCinsiyet">
+                <option>False</option>
+                <option>True</option>
+            </select>
+            <br />
+            @Html.Label("Seferler")
             var distinctSefer = Model.seferModel
-                .GroupBy(sefer => new { sefer.guzergah.kalkisYeri, sefer.guzergah.varisYeri })
-                .Select(g => g.First())
-                .ToList();
-            <div id="accordion" role="tablist" aria-multiselectable="true">
-                
-                @for(var i=0;i<distinctSefer.Count;i++)
+            .GroupBy(sefer => new { sefer.guzergah.kalkisYeri, sefer.guzergah.varisYeri })
+            .Select(g => g.First())
+            .ToList();
+            List<SelectListItem> selectListitem = distinctSefer.ConvertAll(sefer =>
                 {
-                   var idName = "";
-                    @for (var j=0;j<i+1;j++)
+           
+                    return new SelectListItem()
                     {
-                        idName += "a"; 
-                    }
-                    <div class="card">
-                        <h5 class="card-header" role="tab" id="headingOne">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#@idName" aria-expanded="true" aria-controls="collapseOne" class="d-block">
-                                <i class="fa fa-chevron-down pull-right"></i> @distinctSefer.ElementAt(i).guzergah.kalkisYeri @distinctSefer.ElementAt(i).guzergah.varisYeri
-                            </a>
-                        </h5>
-
-                        <div id="@idName" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-                            <div class="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
-                }
-
-            </div>
-       
-        @*@Html.Label("Seferler")
+                        Text = (sefer.guzergah.kalkisYeri + sefer.guzergah.varisYeri).ToUpper().ToString(),
+                        Value = sefer.guzergahId.ToString(),
+                        Selected = false
+                    };
+                });
+            @Html.DropDownList("sehirlerDropdown",selectListitem, new { @onchange = "SelectSubItem()",@class = "form-control"})
+            
+           
+            @Html.Label("Sefer Tarih Saatleri")
+            <select name="seferId" class="form-control">
+               
+            </select>
+            @*@Html.Label("Seferler")
         <select name="seferId" class="form-control">
 
-            @foreach (var item in Model.seferModel)
-            {
-                var combine = "Tarih : " + @item.tarih + " | Kalkış Saati : " + @item.kalkisSaat + " | Bilet Fiyatı : " + @item.biletFiyat + "TL" + " | " + @item.guzergah.kalkisYeri.ToUpper() + "-" + @item.guzergah.varisYeri.ToUpper();
-                <option value=" @item.seferId">@combine</option>
-            }
+        @foreach (var item in Model.seferModel)
+        {
+        var combine = "Tarih : " + @item.tarih + " | Kalkış Saati : " + @item.kalkisSaat + " | Bilet Fiyatı : " + @item.biletFiyat + "TL" + " | " + @item.guzergah.kalkisYeri.ToUpper() + "-" + @item.guzergah.varisYeri.ToUpper();
+        <option value=" @item.seferId">@combine</option>
+        }
         </select>*@
-        <br />
-        @Html.Label("Kullanıcı Adı")
-        <select name="kullaniciId" class="form-control">
+            <br />
+            @Html.Label("Kullanıcı Adı")
+            <select name="kullaniciId" class="form-control">
 
-            @foreach (var item in Model.kullaniciModel)
-            {
-                var combine = @item.kullaniciAd;
-                <option value=" @item.kullaniciId">@combine</option>
-            }
-        </select>
-        <br />
-        @Html.Label("Durum")
-        <select class="form-control" name="silindi">
-            <option>False</option>
-            <option>True</option>
-        </select>
-        <br />
-        <input class="form-control btn btn-primary" type="submit" value="Ekle" />
-    }
-</div>
-  
+                @foreach (var item in Model.kullaniciModel)
+                {
+                    var combine = @item.kullaniciAd;
+                    <option value=" @item.kullaniciId">@combine</option>
+                }
+            </select>
+            <br />
+            @Html.Label("Durum")
+            <select class="form-control" name="silindi">
+                <option>False</option>
+                <option>True</option>
+            </select>
+            <br />
+            <input class="form-control btn btn-primary" type="submit" value="Ekle" />
+        }
+    </div>
+
 
 </body>
 </html>
 @*
- 
+
 
    var distinctSefer = Model.seferModel
         .GroupBy(sefer => new { sefer.guzergah.kalkisYeri, sefer.guzergah.varisYeri })
