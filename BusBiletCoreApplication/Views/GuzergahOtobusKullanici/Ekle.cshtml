@@ -4,13 +4,11 @@
 @{
     ViewData["Title"] = "Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-
-    var s = 1;
 }
-
 <!DOCTYPE html>
 <html>
 <head>
+    
     <style>
         .card-header .fa {
             transition: .3s transform ease-in-out;
@@ -23,8 +21,9 @@
         .card {
             margin: 10px 0px;
         }
-        .text-type{
-            text-decoration:none;
+
+        .text-type {
+            text-decoration: none;
             color: #262838;
         }
     </style>
@@ -39,7 +38,7 @@
         <h3>Bilet Ekle</h3>
         @using (Html.BeginForm("Ekle", "GuzergahOtobusKullanici", FormMethod.Post, new { @class = "form-group" }))
         {
-
+            
             @Html.Label("Seri No")
             @Html.TextBox("seriNo","",new { @class = "form-control" })
             @Html.ValidationMessageFor(bilet=>bilet.biletModel.seriNo,"",new { @class ="text-danger" })
@@ -76,27 +75,30 @@
                 <option>True</option>
             </select>
             <br />
+            
             @Html.Label("Seferler")
             var distinctSefer = Model.seferModel
+            
             .GroupBy(sefer => new { sefer.guzergah.kalkisYeri, sefer.guzergah.varisYeri })
             .Select(g => g.First())
             .ToList();
             List<SelectListItem> selectListitem = distinctSefer.ConvertAll(sefer =>
-                {
-           
-                    return new SelectListItem()
+            {
+
+                return new SelectListItem()
                     {
-                        Text = (sefer.guzergah.kalkisYeri + sefer.guzergah.varisYeri).ToUpper().ToString(),
+                        Text = (sefer.guzergah.kalkisYeri + " - " + sefer.guzergah.varisYeri).ToUpper().ToString(),
                         Value = sefer.guzergahId.ToString(),
                         Selected = false
                     };
-                });
-            @Html.DropDownList("sehirlerDropdown",selectListitem, new { @onchange = "SelectSubItem()",@class = "form-control"})
+            });
+            @Html.DropDownList("sehirlerDropdown",selectListitem, new { @onchange = "SelectSubItem()",@class = "form-control sehirlerDropdown"})
+
             
-           
+
             @Html.Label("Sefer Tarih Saatleri")
-            <select name="seferId" class="form-control">
-               
+            <select id="seferId" name="seferId" class="form-control">
+
             </select>
             @*@Html.Label("Seferler")
         <select name="seferId" class="form-control">
@@ -128,7 +130,7 @@
         }
     </div>
 
-
+    <script src="~/admin_dashboard/js/dropdown.js"></script>
 </body>
 </html>
 @*
@@ -160,7 +162,41 @@
             </div>
         </div>
 *@
+<script>
+    function SelectSubItem() {
+        //sehilerDropdown'ın kendisine ulaşıyoruz
+    var sehirlerDropdown = document.getElementsByClassName("sehirlerDropdown")[0];
 
+    
+    //Seçilen itemın değerine (guzergahId) ulaşıyoruz.
+    var selectedItemValue = sehirlerDropdown.options[sehirlerDropdown.selectedIndex].value;
+    //çalışma zamanlı ilgili güzergahın seferlerini oluşturmak için sefer selectine ulaşıyoruz. 
+    var seferSelect = document.getElementById("seferId");
+    
+    //önceden eklenmiş seferleri temizlemek için bu while döngüsünü kullanıyoruz.
+    while (seferSelect.children[0]) {
+        seferSelect.children[0].remove();
+    }
+        //Razor tarafında ki listeye erişiyoruz.
+        var list =@Json.Serialize(Model.seferModel);
+
+        //çalışma zamanlı ilgili güzergahın seferlerini oluşturmak için sefer selectine optionlar ekliyoruz.
+        for(var i=0;i<list.length;i++){
+            if (list[i].guzergahId==selectedItemValue) { 
+                     var option = document.createElement("option");
+                option.setAttribute("value", parseInt(list[i].seferId));
+                option.innerHTML  = "Tarih : " + list[i].tarih + " | Kalkış Saati : " + list[i].kalkisSaat + " | Bilet Fiyatı : " + list[i].biletFiyat + "TL";
+                console.log(list[i].seferId);
+                seferSelect.appendChild(option);
+            }
+        }
+   
+
+       
+
+    
+}
+</script>
 
 
 
