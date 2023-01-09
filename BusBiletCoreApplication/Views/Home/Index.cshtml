@@ -1,6 +1,32 @@
-﻿@{
+﻿@using EntityLayer
+@model List<Menu>
+@{
     ViewData["Title"] = "Home Page";
 }
-
-
+<ul>
+@foreach (var item in Model)
+{
+        if (@item.parentId==null){
+            <li>@item.name</li>
+    @if (@item.children.Count>0)
+        {
+           <ul>
+               @for (int i = 0; i < item.children.Count; i++)
+                {
+                    <li>@item.children.ElementAt(i).name</li>
+                    if (@item.children.ElementAt(i).children.Count > 0)
+                    {
+                        <ul>
+                            @for (int j = 0; j< @item.children.ElementAt(i).children.Count; j++)
+                            {
+                            <li>@item.children.ElementAt(i).children.ElementAt(j).name</li>    
+                            }
+                        </ul>
+                    }
+                }
+           </ul> 
+        }
+}
+    }
+</ul>
 

@@ -13,7 +13,7 @@ namespace EntityLayer
         public int adminId { get; set; }
         [StringLength(20)]
         public string adminName { get; set; }
-        [StringLength(20)]
+        [StringLength(60)]
         public string adminPassword { get; set; }
         [StringLength(50)]
         public string adminEmail { get; set; }

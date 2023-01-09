@@ -4,6 +4,7 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20230106080023_sifreboyut")]
+    partial class sifreboyut
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -252,30 +255,6 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("kullanicilar");
                 });
 
-            modelBuilder.Entity("EntityLayer.Menu", b =>
-                {
-                    b.Property<int>("menuId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("menuId"));
-
-                    b.Property<bool>("isActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("parentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("menuId");
-
-                    b.HasIndex("parentId");
-
-                    b.ToTable("menuler");
-                });
-
             modelBuilder.Entity("EntityLayer.Otobus", b =>
                 {
                     b.Property<int>("otobusId")
@@ -356,15 +335,6 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("sefer");
                 });
 
-            modelBuilder.Entity("EntityLayer.Menu", b =>
-                {
-                    b.HasOne("EntityLayer.Menu", "parent")
-                        .WithMany("children")
-                        .HasForeignKey("parentId");
-
-                    b.Navigation("parent");
-                });
-
             modelBuilder.Entity("EntityLayer.Otobus", b =>
                 {
                     b.HasOne("EntityLayer.Firma", "firma")
@@ -394,11 +364,6 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("EntityLayer.Kullanici", b =>
                 {
                     b.Navigation("biletler");
-                });
-
-            modelBuilder.Entity("EntityLayer.Menu", b =>
-                {
-                    b.Navigation("children");
                 });
 
             modelBuilder.Entity("EntityLayer.Otobus", b =>
