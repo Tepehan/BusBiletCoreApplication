@@ -28,18 +28,18 @@ namespace BusBiletCoreApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
+          
            
             services.AddMvc();
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
-                AddCookie(options => { options.LoginPath = "/Admin/Login"; });
-            services.AddControllers(config =>
-                {
-                    var policy = new AuthorizationPolicyBuilder()
-                                     .RequireAuthenticatedUser()
-                                     .Build();
-                    config.Filters.Add(new AuthorizeFilter(policy));
-                });
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
+            //    AddCookie(options => { options.LoginPath = "/Admin/Login"; });
+            //services.AddControllers(config =>
+            //    {
+            //        var policy = new AuthorizationPolicyBuilder()
+            //                         .RequireAuthenticatedUser()
+            //                         .Build();
+            //        config.Filters.Add(new AuthorizeFilter(policy));
+            //    });
             // Add services to the container.
             services.AddRazorPages().AddNToastNotifyNoty(new NotyOptions
             {
@@ -51,7 +51,7 @@ namespace BusBiletCoreApplication
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseAuthentication();
+            //app.UseAuthentication();
             app.UseStatusCodePages();
             app.UseStatusCodePagesWithReExecute("/Error/HandleError/{0}");
             if (env.IsDevelopment())

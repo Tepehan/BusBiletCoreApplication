@@ -10,7 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using XSystem.Security.Cryptography;
 
 namespace BusBiletCoreApplication.Controllers
 {
@@ -43,7 +45,7 @@ namespace BusBiletCoreApplication.Controllers
             Context c=new Context();
             var result= c.adminler.Where(x=>x.adminEmail==admin.adminEmail&&x.adminPassword==admin.adminPassword).SingleOrDefault();
             if (result!=null) {
-               
+            
               var claims = new List<Claim> { new Claim(ClaimTypes.Email, admin.adminEmail) };
 
                 var userIdentify = new ClaimsIdentity(claims, "Login");
@@ -66,6 +68,16 @@ namespace BusBiletCoreApplication.Controllers
            
             return RedirectToAction("login");
 
+        }
+        public string sifreleme(string value) { 
+        MD5CryptoServiceProvider provider=new MD5CryptoServiceProvider();
+            byte[] dizi = Encoding.UTF8.GetBytes(value);
+            dizi= provider.ComputeHash(dizi);
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (byte bayt in dizi) {
+                stringBuilder.Append(bayt.ToString().ToLower());
+            }
+            return stringBuilder.ToString();
         }
 
 

@@ -1,6 +1,8 @@
 ﻿using BusBiletCoreApplication.Models;
 using BusinessLayer;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
+using EntityLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -9,22 +11,25 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace BusBiletCoreApplication.Controllers
 {
     public class HomeController : Controller
     {
 
         private readonly ILogger<HomeController> _logger;
-
+        Context c;
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            c = new Context();
         }
 
         public IActionResult Index()
         {
-           
-            return View();
+            var menus = c.menuler.ToList();
+            var mappedTree=mapListToTreview(menus);
+            return View(mappedTree);
         }
 
         public IActionResult Privacy()
@@ -40,6 +45,22 @@ namespace BusBiletCoreApplication.Controllers
             { 
                 RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier 
             });
+        }
+        private List<Menu> mapListToTreview(List<Menu> menus)
+        { //Menü listesi dönen bir fonksiyon oluşturdum. Parametre olarak menü listesi yollanıyor.
+            var altMenuler = new List<Menu>(); // alt menüler için bir menü liste oluşturdum.
+            foreach (var menu in menus)
+            { //parametre olarak alınan menü listesini foreach ile döndürüyorum.
+                altMenuler.Add(new Menu
+                { //dönülen listeyi oluşturdugum alt listeye ekledim.
+                    menuId = menu.menuId,
+                    parentId = menu.parentId,
+                    name = menu.name,
+                    children = menu.children.Count > 0 ? mapListToTreview(menu.children.ToList()) // childleri varsa tekrardan recursive ediyor. Fonksiyon tekrardan çalışıyor. Yoksada boş liste dönüyor.
+                        : new List<Menu>()
+                });
+            }
+            return altMenuler;
         }
     }
 }
