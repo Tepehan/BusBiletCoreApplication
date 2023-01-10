@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using NToastNotify;
 using System;
 using System.Collections.Generic;
@@ -28,8 +29,12 @@ namespace BusBiletCoreApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-          
-           
+            services.AddMvc()
+       .AddNewtonsoftJson(
+            options => {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
+
             services.AddMvc();
             //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
             //    AddCookie(options => { options.LoginPath = "/Admin/Login"; });
