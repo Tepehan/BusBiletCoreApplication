@@ -11,7 +11,7 @@ namespace BusBiletCoreApplication.Controllers
     public class FirmaController : Controller
     {
         FirmaManager fm = new FirmaManager(new EfFirmaRepository());
-       
+        
         public IActionResult Index()
         {
             var firmalar = fm.firmaListele();

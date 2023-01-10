@@ -1,48 +1,94 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BusBiletCoreApplication</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/website-menu-07/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="~/website-menu-07/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/website-menu-07/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="~/website-menu-07/css/style.css">
+    
+    <title>OBilet</title>
+    <style>
+        body{
+   background-color:black;
+    }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BusBiletCoreApplication</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div> 
+    <!-- .site-mobile-menu -->
+    <div class="site-navbar-wrap">
+        <div class="site-navbar-top">
+            <div class="container py-3">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <div class="d-flex mr-auto">
+                            <a href="#" class="d-flex align-items-center mr-4">
+                                <span class="icon-envelope mr-2"></span>
+                                <span class="d-none d-md-inline-block">info@domain.com</span>
+                            </a>
+                            <a href="#" class="d-flex align-items-center mr-auto">
+                                <span class="icon-phone mr-2"></span>
+                                <span class="d-none d-md-inline-block">+1 234 4567 8910</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-6 text-right">
+                        <div class="mr-auto">
+                            <a href="#" class="p-2 pl-0"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-2 pl-0"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-2 pl-0"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-2 pl-0"><span class="icon-instagram"></span></a>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </div>
+
+        <div class="site-navbar site-navbar-target js-sticky-header">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-2">
+                        <h1 class="my-0 site-logo"><a href="index.html">Brand</a></h1>
+                    </div>
+                    <div class="col-10">
+                       @RenderSection("menu",false);
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - BusBiletCoreApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+
+   
+
+      @RenderBody();
+
+
+    <script src="~/website-menu-07/js/jquery-3.3.1.min.js"></script>
+    <script src="~/website-menu-07/js/popper.min.js"></script>
+    <script src="~/website-menu-07/js/bootstrap.min.js"></script>
+    <script src="~/website-menu-07/js/jquery.sticky.js"></script>
+    <script src="~/website-menu-07/js/main.js"></script>
 </body>
 </html>

@@ -24,7 +24,7 @@ namespace BusBiletCoreApplication.Controllers
             _logger = logger;
             c = new Context();
         }
-
+       
         public IActionResult Index()
         {
             var menus = c.menuler.ToList();

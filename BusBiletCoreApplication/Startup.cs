@@ -79,11 +79,19 @@ namespace BusBiletCoreApplication
             app.UseAuthorization();
             app.UseNToastNotify();
 
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(name: "denemegstrdt",
+                pattern: "firma/deneme",
+                defaults: new { controller = "Firma", action = "Index" });
+
+
+
             });
         }
     }
