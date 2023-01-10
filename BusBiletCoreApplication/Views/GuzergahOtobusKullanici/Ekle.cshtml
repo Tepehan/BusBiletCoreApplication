@@ -100,15 +100,7 @@
             <select id="seferId" name="seferId" class="form-control">
 
             </select>
-            @*@Html.Label("Seferler")
-        <select name="seferId" class="form-control">
-
-        @foreach (var item in Model.seferModel)
-        {
-        var combine = "Tarih : " + @item.tarih + " | Kalkış Saati : " + @item.kalkisSaat + " | Bilet Fiyatı : " + @item.biletFiyat + "TL" + " | " + @item.guzergah.kalkisYeri.ToUpper() + "-" + @item.guzergah.varisYeri.ToUpper();
-        <option value=" @item.seferId">@combine</option>
-        }
-        </select>*@
+            
             <br />
             @Html.Label("Kullanıcı Adı")
             <select name="kullaniciId" class="form-control">
@@ -133,43 +125,16 @@
     <script src="~/admin_dashboard/js/dropdown.js"></script>
 </body>
 </html>
-@*
 
-
-   var distinctSefer = Model.seferModel
-        .GroupBy(sefer => new { sefer.guzergah.kalkisYeri, sefer.guzergah.varisYeri })
-        .Select(g => g.First())
-        .ToList();
-        <div id="seferCollapse" class="wrapper center-block">
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                @foreach (var item in distinctSefer)
-                {
-                    <div class="panel panel-default">
-                        <div class="panel-heading active" role="tab" id="headingOne">
-                            <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                  @item.guzergah.kalkisYeri @item.guzergah.varisYeri
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                            <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
-*@
 <script>
     function SelectSubItem() {
+        
         //sehilerDropdown'ın kendisine ulaşıyoruz
     var sehirlerDropdown = document.getElementsByClassName("sehirlerDropdown")[0];
-
     
     //Seçilen itemın değerine (guzergahId) ulaşıyoruz.
     var selectedItemValue = sehirlerDropdown.options[sehirlerDropdown.selectedIndex].value;
+    
     //çalışma zamanlı ilgili güzergahın seferlerini oluşturmak için sefer selectine ulaşıyoruz. 
     var seferSelect = document.getElementById("seferId");
     
@@ -191,10 +156,6 @@
             }
         }
    
-
-       
-
-    
 }
 </script>
 
