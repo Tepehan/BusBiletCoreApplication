@@ -49,7 +49,11 @@ namespace BusBiletCoreApplication.Controllers
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-                return View();
+                BiletSeferGuzergahKullaniciModel biletSeferGuzergahKullaniciModel = new BiletSeferGuzergahKullaniciModel();
+                biletSeferGuzergahKullaniciModel.seferModel = guzergahOtobusManager.guzergahOtobusListele();
+                biletSeferGuzergahKullaniciModel.kullaniciModel = kullaniciManager.KullaniciListele();
+                biletSeferGuzergahKullaniciModel.biletModel = guzergahOtobusKullanici;
+                return View(biletSeferGuzergahKullaniciModel);
             }
         }
         public IActionResult Sil(int id)
