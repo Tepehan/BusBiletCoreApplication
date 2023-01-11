@@ -1,0 +1,55 @@
+﻿@using EntityLayer
+@model MenuParentListModel
+@{
+    ViewData["Title"] = "guncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>guncelle</h2>
+@using (Html.BeginForm("Guncelle", "Menu", FormMethod.Post, new { @class = "form-group" }))
+{
+   
+    @Html.TextBox("menuId",Model.menuModel.menuId,new { @class = "form-control" ,@type="hidden"})
+    <br />
+   @Html.Label("Menu Adı")
+    @Html.TextBox("name",Model.menuModel.name,new { @class = "form-control"})
+    <br />
+    @Html.Label("Seo Url")
+    @Html.TextBox("seoUrl",Model.menuModel.seoUrl,new { @class = "form-control"})
+    <br />
+   @Html.Label("Parent")
+
+    <select name="parentId" class="form-control">
+        <option value="Null">Kendisi</option>
+        @foreach (var item in Model.menuListModel)
+        {
+            if (item.menuId != Model.menuModel.menuId)
+            {
+                @if (item.menuId == Model.menuModel.parentId)
+                {
+                    <option value="@item.menuId" selected>@item.name</option>
+                }else{
+                    <option value="@item.menuId">@item.name</option>
+                }
+                
+            }
+        }
+    </select>
+    <br />
+    @Html.Label("Silindi")
+     <select name="silindi" class="form-control">
+        @if (Model.menuModel.silindi)
+        {
+            <option value="true" selected>evet</option>
+            <option value="false">hayır</option>
+        }
+        else
+        {
+            <option value="false" selected>hayır</option>
+            <option value="true">evet</option>
+        }
+    </select>
+    <br />
+    <input class="form-control btn btn-primary" type="submit" value="Menu Güncelle" />
+}
+

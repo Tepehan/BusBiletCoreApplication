@@ -62,5 +62,7 @@ namespace BusBiletCoreApplication.Controllers
             }
             return altMenuler;
         }
+      
     }
+   
 }

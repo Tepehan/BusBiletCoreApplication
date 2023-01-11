@@ -6,67 +6,63 @@
 }
 
 @section menu{
-
     @{
-        void subMenuAdd(List<Menu> menu,bool first)
+        void subMenuAdd(List<Menu>submenu,bool first)
         {
-            var mclass = " ";
+            var mclass = "";
             if (first)
-                mclass = "arrow-top";
-         
-
-            <ul class="dropdown @mclass">
-                @foreach (var item in @menu)
             {
-                 @if (@item.children.Count > 0)
-                        {
-                            <li class="has-children"><a href="#home-section" class="nav-link">@item.name</a>
-                                @{
-                                    subMenuAdd(@item.children.ToList(),false);
-                                }
-                            </li>
-                           
-                            
-                        }
-                        else
-                        {
-
-                            <li><a href="#home-section" class="nav-link">@item.name</a></li>
-                        }
+                mclass = "arrow-top";
             }
-                
+            <ul class="dropdown @mclass">
+                @foreach(var item in submenu)
+                {
+                    if (item.children.Count>0)
+                    {
+                        <li class="has-children"><a href="#" class="nav-link">@item.name</a>
+                            @{
+                                subMenuAdd(item.children.ToList(),false);
+                            }
+                        </li>
+                    }
+                    else
+                    {
+                        <li><a href="#" class="nav-link">@item.name</a></li>
+                    }
+                }
             </ul>
         }
     }
-    <nav class="site-navigation text-right" role="navigation">
+    <nav class="site-navigation text-left" role="navigation">
         <div class="container">
             <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
 
             <ul class="site-menu main-menu js-clone-nav d-none d-lg-block">
-                @foreach (var item in Model)
-            {
-                    if (@item.parentId == null)
+                @foreach(var item in Model)
+                {
+
+                    if (item.parentId==null)
                     {
-                        @if (@item.children.Count > 0)
+                        if (item.children.Count>0)
                         {
-                            <li class="has-children"><a href="#home-section" class="nav-link">@item.name</a>
+                            <li class="has-children"><a href="#home-section" class="nav-link" style="padding:0px 20px;">@item.name</a>
                                 @{
-                                    subMenuAdd(@item.children.ToList(),true);
+                                    subMenuAdd(item.children.ToList(),true);
                                 }
                             </li>
-                           
-                            
+          
                         }
                         else
                         {
-
-                            <li><a href="#home-section" class="nav-link">@item.name</a></li>
+                            <li><a href="#home-section" class="nav-link" style="padding:0px 20px;">@item.name</a></li>
                         }
+                       
                     }
-            }   
-               
+                }
             </ul>
         </div>
     </nav>
+
+  
 }
 

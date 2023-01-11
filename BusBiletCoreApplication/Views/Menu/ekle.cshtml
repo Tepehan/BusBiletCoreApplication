@@ -1,0 +1,36 @@
+﻿@using EntityLayer
+@model MenuParentListModel
+@{
+    ViewData["Title"] = "ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Ekle</h2>
+
+@using (Html.BeginForm("Ekle", "Menu", FormMethod.Post, new { @class = "form-group" }))
+{
+
+    @Html.Label("Menu Adı")
+    @Html.TextBox("name","",new { @class = "form-control"})
+    <br />
+    @Html.Label("Seo Url")
+    @Html.TextBox("seoUrl","",new { @class = "form-control"})
+    <br />
+    @Html.Label("Parent")
+  <select name="parentId" class="form-control">
+        <option value="Null">Kendisi</option>
+        @foreach (var item in Model.menuListModel)
+        {
+            <option value="@item.menuId">@item.name</option>
+        }
+    </select>
+    <br />
+    @Html.Label("Silindi")
+    <select name="silindi" class="form-control">
+        <option value="false" selected>hayır</option>
+        <option value="true">sil</option>
+        
+    </select>
+    <br />
+    <input class="form-control btn btn-primary" type="submit" value="Menu Ekle" />
+}
