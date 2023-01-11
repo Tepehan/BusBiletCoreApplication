@@ -1,6 +1,5 @@
-﻿@using EntityLayer;
-@model List<GuzergahOtobus>;
-
+﻿@using EntityLayer
+@model List<Menu>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -9,7 +8,7 @@
     <!-- Topbar Search -->
     <form class="d-none d-sm-inline-block form-inline mr-auto md-3 my-md-0 mw-100 navbar-search">
         <div class="input-group ms-3">
-            <input type="text" class="form-control border-0 small" placeholder="Sefer Ara"
+            <input type="text" class="form-control border-0 small" placeholder="Bilet Ara"
                aria-label="Search" aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <button class="btn btn-light" type="button">
@@ -20,47 +19,46 @@
     </form>
 
 }
-<h2>Seferler</h2>
-
+<h2>Menüler</h2>
 <table class="table">
     <thead>
         <tr>
-            <th>Sefer Id</th>
-            <th>Süre</th>
-            <th>Tarih</th>
-            <th>Kalkış Saati</th>
-            <th>Bilet Fiyatı</th>
-            <th>Güzergah</th>
-            <th>Otobüs Plaka</th>
-            <th>Sil</th>
-            <th>Güncelle</th>
+            <th>Menü Ad</th>
+            <th>Parent</th>
+            <th>Seo Url</th>         
+            <th>Silindi</th>
+            <th></th>
+            <th></th>
+
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.seferId</td>
-                <td>@item.sure</td>
-                <td>@item.tarih</td>
-                <td>@item.kalkisSaat</td>
-                <td>@item.biletFiyat</td>
-                <td>@item.guzergah.kalkisYeri - @item.guzergah.varisYeri</td>
-                <td>@item.otobus.plaka</td>
+                <td>@item.name</td>
+                @if (@item.parentId==null)
+                {
+                    <td>Kendisi</td>
+                }
+                else
+                {
+
+                    <td>@item.parent.name</td>
+                }
+                <td>@item.seoUrl</td>
+                <td>@item.silindi</td>
+               
                 <td>
-                            <button type="button"class="btn btn-outline-danger  text-center" data-bs-whatever="@item.seferId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fas fa-trash"></i> </button>
+                    <button type="button" class="btn btn-outline-danger  text-center" data-bs-whatever="@item.menuId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fas fa-trash"></i></button>
                 </td>
-                    <td><a href="/GuzergahOtobus/guncelle/@item.seferId" type="button" class="btn btn-outline-primary p-2 ">Güncelle</a></td>
+                <td><a href="/Menu/guncelle/@item.menuId" type="button" class="btn btn-outline-primary p-2">Güncelle</a></td>
             </tr>
+
         }
 
     </tbody>
 </table>
-<div class="text-center d-flex justify-content-start p-2">
-    <a href="/GuzergahOtobus/ekle" class="btn btn-success"><ion-icon name="add" style=" font-size:30px;"></ion-icon></a>
-</div>
-
-
 <!-- Modal -->
 @*#decisionPopup Model*@
 <div class="modal fade" id="decisionPopup" tabindex="=-1" aria-labelledby="silLabel" aria-hidden="true">
@@ -80,16 +78,17 @@
         </div>
     </div>
 </div>
-
+<div class="text-center d-flex justify-content-start p-2">
+    <a href="/menu/ekle" class="btn btn-success"><ion-icon name="add" style="font-size:30px"></ion-icon></a>
+</div>
 
 <script>
     $(document).ready(function () {
         $('#decisionPopup').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            var firmaId = button.attr('data-bs-whatever');
-            console.log(firmaId);
+            var menuId = button.attr('data-bs-whatever');
             var a = document.querySelector("#delete-btn");
-            a.href = "/Firma/sil/" + firmaId;
+            a.href = "/Menu/sil/" + menuId;
         });
     });
 </script>
