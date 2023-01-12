@@ -1,0 +1,40 @@
+﻿@using EntityLayer
+@model Slider
+@{
+    ViewData["Title"] = "Güncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="p-2">
+    <h2>Güncelle</h2>
+    @using (Html.BeginForm("Guncelle", "Slider", FormMethod.Post, new { @class = "form-group" }))
+    {
+    
+        @Html.TextBoxFor(slider=>slider.sliderId,new { @class = "form-control",@type="hidden" })
+       
+
+        @Html.Label("Slider Adı")
+        @Html.TextBoxFor(slider=>slider.sliderName,new { @class = "form-control" })
+        @Html.ValidationMessageFor(slider=>slider.sliderName,"",new { @class ="text-danger" })
+        <br />
+        @Html.Label("Resim Seç");
+        @Html.TextBoxFor(slider=>slider.resimUrl, "", new { type="file", @class="form-control",@value="enesdfsdgf" })
+        @Html.ValidationMessageFor(slider=>slider.resimUrl,"",new { @class ="text-danger" })
+        <br />
+        @Html.Label("Silindi")
+        <select class="form-control" name="silindi">
+            if (Model.silindi)
+            {
+            <option selected>True</option>
+            <option>False</option>
+            }
+            else
+            {
+            <option>True</option>
+            <option selected>False</option>
+            }
+        </select>
+        <br />
+        <input class="form-control btn btn-primary" type="submit" value="Güncelle" />
+    }
+</div>

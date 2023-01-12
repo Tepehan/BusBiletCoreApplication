@@ -30,6 +30,7 @@ namespace BusBiletCoreApplication.Controllers
             var menus = c.menuler.ToList();
             var mappedTree=mapListToTreview(menus);
             return View(mappedTree);
+         
         }
 
         public IActionResult Privacy()
@@ -45,6 +46,10 @@ namespace BusBiletCoreApplication.Controllers
             { 
                 RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier 
             });
+        }
+        public IActionResult deneme()
+        {
+            return View();
         }
         private List<Menu> mapListToTreview(List<Menu> menus)
         { //Menü listesi dönen bir fonksiyon oluşturdum. Parametre olarak menü listesi yollanıyor.

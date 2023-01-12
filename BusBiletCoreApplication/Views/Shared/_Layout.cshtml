@@ -12,21 +12,18 @@
     <link rel="stylesheet" href="~/website-menu-07/css/owl.carousel.min.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="~/website-menu-07/css/bootstrap.min.css">
-
+   @* <link rel="stylesheet" href="~/website-menu-07/css/bootstrap.min.css">*@
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- Style -->
     <link rel="stylesheet" href="~/website-menu-07/css/style.css">
     
     <title>OBilet</title>
     <style>
-        body{
-   background-color:black;
-    }
+        
     </style>
 </head>
 <body>
-
-
+    <div class="menu-part">
     <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header">
             <div class="site-mobile-menu-close mt-3">
@@ -38,21 +35,21 @@
     <!-- .site-mobile-menu -->
     <div class="site-navbar-wrap">
         <div class="site-navbar-top">
-            <div class="container py-3">
-                <div class="row align-items-center">
-                    <div class="col-6">
+            <div class="py-3">
+                <div class="row align-items-center border">
+                        <div class="col-6 border">
                         <div class="d-flex mr-auto">
-                            <a href="#" class="d-flex align-items-center mr-4">
+                                <a href="#" class="d-flex align-items-center mr-4 border">
                                 <span class="icon-envelope mr-2"></span>
                                 <span class="d-none d-md-inline-block">info@domain.com</span>
                             </a>
-                            <a href="#" class="d-flex align-items-center mr-auto">
+                                <a href="#" class="d-flex align-items-center ms-4 border">
                                 <span class="icon-phone mr-2"></span>
                                 <span class="d-none d-md-inline-block">+1 234 4567 8910</span>
                             </a>
                         </div>
                     </div>
-                    <div class="col-6 text-right">
+                    <div class="col-6 d-flex justify-content-end border">
                         <div class="mr-auto">
                             <a href="#" class="p-2 pl-0"><span class="icon-twitter"></span></a>
                             <a href="#" class="p-2 pl-0"><span class="icon-facebook"></span></a>
@@ -66,29 +63,31 @@
         </div>
 
         <div class="site-navbar site-navbar-target js-sticky-header">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-2">
-                        <h1 class="my-0 site-logo"><a href="index.html">Brand</a></h1>
-                    </div>
-                    <div class="col-10">
-                       @RenderSection("menu",false);
-                    </div>
+            <div >
+                    <div class="row align-items-center border">
+                        <div class="sol-taraf col-2 border">
+                        <h1 class="site-logo"><a  class="d-block" href="/home/index">Brand</a></h1>
+                      </div>
+                        <div class="col-10 deneme">
+                       @RenderSection("menu",false)
+                       </div>
                 </div>
             </div>
         </div>
+    </div>     
     </div>
 
-
-   
-
-      @RenderBody();
-
-
-    <script src="~/website-menu-07/js/jquery-3.3.1.min.js"></script>
-    <script src="~/website-menu-07/js/popper.min.js"></script>
+    <div>@RenderBody()</div>
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     <script src="~/website-menu-07/js/bootstrap.min.js"></script>
     <script src="~/website-menu-07/js/jquery.sticky.js"></script>
     <script src="~/website-menu-07/js/main.js"></script>
+   @* <script src="~/website-menu-07/js/jquery-3.3.1.min.js"></script>
+    <script src="~/website-menu-07/js/popper.min.js"></script>
+    <script src="~/website-menu-07/js/bootstrap.min.js"></script>
+    <script src="~/website-menu-07/js/jquery.sticky.js"></script>
+    <script src="~/website-menu-07/js/main.js"></script>*@
 </body>
 </html>

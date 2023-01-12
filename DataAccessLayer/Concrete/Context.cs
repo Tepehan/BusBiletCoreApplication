@@ -21,6 +21,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<GuzergahOtobusKullanici> biletler { get; set; }
         public DbSet<Admin> adminler { get; set; }
         public DbSet<Menu> menuler { get; set; }
+        public DbSet<Slider> slider { get; set; }
 
     }
 }

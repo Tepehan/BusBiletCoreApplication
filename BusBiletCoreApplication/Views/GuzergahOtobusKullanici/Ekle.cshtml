@@ -77,8 +77,7 @@
             <br />
             
             @Html.Label("Seferler")
-            var distinctSefer = Model.seferModel
-            
+            var distinctSefer = Model.seferModel  
             .GroupBy(sefer => new { sefer.guzergah.kalkisYeri, sefer.guzergah.varisYeri })
             .Select(g => g.First())
             .ToList();

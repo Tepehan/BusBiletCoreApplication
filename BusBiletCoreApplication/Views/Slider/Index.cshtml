@@ -1,0 +1,87 @@
+﻿@using EntityLayer
+@model List<Slider>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+@section searchbar{
+    <!-- Topbar Search -->
+    <form class="d-none d-sm-inline-block form-inline mr-auto md-3 my-md-0 mw-100 navbar-search">
+        <div class="input-group ms-3">
+            <input type="text" class="form-control border-0 small" placeholder="Slider Ara"
+               aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-light" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Slider Ad</th>
+            <th>Slider resim url</th>
+            <th>Silindi</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.sliderName</td>
+                <td>@item.resimUrl</td>
+                <td>@item.silindi</td>
+                <td>
+                    <button type="button" class="btn btn-outline-danger  text-center" data-bs-whatever="@item.sliderId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fas fa-trash"></i> </button>
+                </td>
+                <td><a href="/Slider/guncelle/@item.sliderId" type="button" class="btn btn-outline-primary p-2 ">Güncelle</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<div class="text-center d-flex justify-content-start p-2">
+    <a href="/Slider/ekle" class="btn btn-success"><ion-icon name="add" style=" font-size:30px;"></ion-icon></a>
+</div>
+
+
+<!-- Modal -->
+@*#decisionPopup Model*@
+<div class="modal fade" id="decisionPopup" tabindex="=-1" aria-labelledby="silLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="silLabel">Uyarı</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Silmek istediğinizden emin misiniz?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hayır</button>
+                <a id="delete-btn" href="" class="btn btn-success">Evet</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#decisionPopup').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var sliderId = button.attr('data-bs-whatever');
+            console.log(sliderId);
+            var a = document.querySelector("#delete-btn");
+            a.href = "/Slider/sil/" + sliderId
+        });
+    });
+</script>
