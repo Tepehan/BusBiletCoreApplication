@@ -39,6 +39,7 @@ namespace BusBiletCoreApplication.Controllers
             {
                 OtobusFirmaModel model = new OtobusFirmaModel();
                 model.firmaModal = fm.firmaListele();
+                model.otobusModal = otobus;
                 foreach (var item in result.Errors)
 				{
 					ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
@@ -74,11 +75,14 @@ namespace BusBiletCoreApplication.Controllers
             }
             else
             {
+                OtobusFirmaModel model = new OtobusFirmaModel();
+                model.firmaModal = fm.firmaListele();
+                model.otobusModal = otobus;
                 foreach (var item in result.Errors)
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-                return View(otobus);
+                return View(model);
             }
         }
     }
