@@ -1,5 +1,6 @@
-﻿@using EntityLayer;
-@model List<Firma>;
+﻿@using EntityLayer
+@using X.PagedList;
+@model IPagedList<Firma>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -52,6 +53,9 @@
 </div>
 
 
+<div id="ListContainer" style="color:white;display:inline-block;position:relative;top:50%;left:50%;transform:translate(-50%,-50%);">
+    <partial name="partialview" model="@Model" />
+</div>
 <!-- Modal -->
 @*#decisionPopup Model*@
 <div class="modal fade" id="decisionPopup" tabindex="=-1" aria-labelledby="silLabel" aria-hidden="true">

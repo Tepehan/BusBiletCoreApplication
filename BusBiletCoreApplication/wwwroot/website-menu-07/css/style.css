@@ -13,7 +13,7 @@
     --active-clr-exp-menu: red;
     --line-hght: 45px;
     --menu-hght: 200px;
-    --menu-padd-tp:30px;
+    --menu-padd-tp:0px;
 }
 body {
     font-family: var(--font-vls);

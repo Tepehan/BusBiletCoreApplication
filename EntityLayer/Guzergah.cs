@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EntityLayer
 {
-    public class Guzergah
+    public class Guzergah:BaseEntity
     {
         [Key]
         public int guzergahId { get; set; }

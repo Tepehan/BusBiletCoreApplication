@@ -8,5 +8,6 @@ namespace BusBiletCoreApplication.Models
     {
         public Menu menuModel { get; set; }
         public IEnumerable<Menu> menuListModel { get; set; }
+       
     }
 }

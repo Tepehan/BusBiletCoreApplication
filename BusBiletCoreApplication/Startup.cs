@@ -95,7 +95,9 @@ namespace BusBiletCoreApplication
                 pattern: "firma/deneme",
                 defaults: new { controller = "Firma", action = "Index" });
 
-
+                endpoints.MapControllerRoute(name: "otobus",
+               pattern: "otobus/listele",
+               defaults: new { controller = "Firma", action = "Index" });
 
             });
         }

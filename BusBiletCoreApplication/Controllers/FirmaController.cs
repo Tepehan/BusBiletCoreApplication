@@ -4,6 +4,7 @@ using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace BusBiletCoreApplication.Controllers
 {
@@ -12,9 +13,10 @@ namespace BusBiletCoreApplication.Controllers
     {
         FirmaManager fm = new FirmaManager(new EfFirmaRepository());
         
-        public IActionResult Index()
+        public IActionResult Index(int page = 1, int pageSize = 3)
         {
-            var firmalar = fm.firmaListele();
+            var firmalar = fm.firmaListele().ToPagedList(page, pageSize);
+            ViewBag.actionName = "Index";
             return View(firmalar);
         }
        

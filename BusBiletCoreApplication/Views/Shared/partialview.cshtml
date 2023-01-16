@@ -1,0 +1,31 @@
+﻿@*use this for the fake AjaxOptions since ajax helpers were dropped in .net core*@
+@model IPagedList<BaseEntity>
+    
+@*import this so we get our HTML Helper*@
+@using EntityLayer;
+@using X.PagedList.Mvc.Core; 
+
+@*import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)*@
+@using X.PagedList;
+@using X.PagedList.Web.Common
+@{
+    var action_Name = ViewBag.actionName;
+}
+
+@Html.PagedListPager(
+    list: (IPagedList<BaseEntity>)Model, 
+    generatePageUrl: page => Url.Action((string)action_Name, new { page }),
+    options: PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+        pagedListRenderOptions: new PagedListRenderOptions 
+        { 
+            MaximumPageNumbersToDisplay = 5, 
+            DisplayPageCountAndCurrentLocation = true, 
+            LiElementClasses = new string[] { "page-item" },
+            PageClasses = new string[] { "page-link" },
+        },
+        ajaxOptions: new AjaxOptions
+        {
+            HttpMethod = "GET", 
+            UpdateTargetId = "ListContainer" 
+        })
+)

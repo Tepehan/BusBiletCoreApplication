@@ -1,9 +1,13 @@
 ﻿@using EntityLayer;
-@model List<Guzergah>;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@model PagedList<Guzergah>;
 @{
     ViewData["Title"] = "Listele";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
+
     @section searchbar{
     <!-- Topbar Search -->
     <form class="d-none d-sm-inline-block form-inline mr-auto md-3 my-md-0 mw-100 navbar-search">
@@ -17,8 +21,9 @@
             </div>
         </div>
     </form>
-
 }
+
+
 <h2 style="text-aligncenter;">GÜZERGAHLAR</h2>
 <table class="table">
     <thead>
@@ -28,7 +33,7 @@
             <th>Durum</th>
             <th>Sil</th>
             <th>Güncelle</th>
-            
+
         </tr>
     </thead>
     <tbody>
@@ -38,11 +43,11 @@
                 <td>@item.kalkisYeri</td>
                 <td>@item.varisYeri</td>
                 <td>@item.silindi</td>
-                
+
                 <td>
-                            <button type="button" class="btn btn-outline-danger  text-center" data-bs-whatever="@item.guzergahId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fas fa-trash"></i> </button>
+                    <button type="button" class="btn btn-outline-danger  text-center" data-bs-whatever="@item.guzergahId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fas fa-trash"></i> </button>
                 </td>
-                    <td><a href="/Guzergah/Guncelle/@item.guzergahId" type="button" class="btn btn-outline-primary p-2 ">Güncelle</a></td>
+                <td><a href="/Guzergah/Guncelle/@item.guzergahId" type="button" class="btn btn-outline-primary p-2 ">Güncelle</a></td>
             </tr>
         }
 
@@ -72,6 +77,9 @@
 </div>
 
 
+<div id="ListContainer" style="color:white;display:inline-block;position:relative;top:50%;left:50%;transform:translate(-50%,-50%);">
+    <partial name="partialview" model="@Model" />
+</div>
     <script> 
     $(document).ready(function(){
         $('#decisionPopup').on('show.bs.modal', function (event) {

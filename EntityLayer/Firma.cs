@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EntityLayer
 {
-    public class Firma
+    public class Firma:BaseEntity
     {
         [Key]
         public int firmaId { get; set; }
@@ -20,4 +20,6 @@ namespace EntityLayer
         //Otobus ile ilişkilendirilecek.
         public virtual ICollection<Otobus> otobusler { get; set; }
     }
+
+  
 }

@@ -54,7 +54,7 @@ namespace BusBiletCoreApplication.Controllers
                 SeferGuzergahModel seferGuzergahModel = new SeferGuzergahModel();
                 seferGuzergahModel.guzergahModel = guzergahManager.GuzergahListele();
                 seferGuzergahModel.otobusModel = otobusManager.otobusListele();
-                seferGuzergahModel.guzergahOtobusModel = new GuzergahOtobus();
+                seferGuzergahModel.guzergahOtobusModel = guzergahOtobus;
                 foreach (var item in result.Errors)
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);

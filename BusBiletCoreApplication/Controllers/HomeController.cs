@@ -1,5 +1,6 @@
 ﻿using BusBiletCoreApplication.Models;
 using BusinessLayer;
+using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer;
@@ -29,7 +30,11 @@ namespace BusBiletCoreApplication.Controllers
         {
             var menus = c.menuler.ToList();
             var mappedTree=mapListToTreview(menus);
-            return View(mappedTree);
+            MenuSliderModel msmodel=new MenuSliderModel();
+            SliderManager sm = new SliderManager(new EfSliderRepository());
+            msmodel.menuModel= mappedTree;
+            msmodel.sliderModel = sm.SliderListele();
+            return View(msmodel);
          
         }
 
