@@ -5,7 +5,7 @@
 @{
     ViewData["Title"] = "Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-  
+    var currentDate =DateTime.Today;
 }    
 
 <div class="p-2">
@@ -15,22 +15,22 @@
 
         @Html.Label("Sefer Süresi")
         @Html.TextBox("sure","0",new { @class = "form-control" })
-        @Html.ValidationMessageFor(sefer=>sefer.guzergahOtobusModel.sure,"",new { @class ="text-danger" })
+        @Html.ValidationMessage("sure","",new { @class ="text-danger" })
         <br />
 
         @Html.Label("Sefer Kalkış Saati")
         @Html.TextBox("kalkisSaat","",new { @class = "form-control" })
-        @Html.ValidationMessageFor(sefer=>sefer.guzergahOtobusModel.kalkisSaat,"",new { @class ="text-danger" })
+        @Html.ValidationMessage("kalkisSaat","",new { @class ="text-danger" })
         <br />
         
         @Html.Label("Sefer Tarihi")
-        @Html.TextBox("tarih","",new { @class = "form-control" })
-        @Html.ValidationMessageFor(sefer=>sefer.guzergahOtobusModel.tarih,"",new { @class ="text-danger" })
+        @Html.TextBox("tarih",currentDate.ToString() ,new { @class = "form-control",@type="date" })
+        @Html.ValidationMessage("tarih","",new { @class ="text-danger" })
         <br />
         
         @Html.Label("Bilet Fiyatı")
         @Html.TextBox("biletFiyat","0.00",new { @class = "form-control" })
-        @Html.ValidationMessageFor(sefer=>sefer.guzergahOtobusModel.biletFiyat,"",new { @class ="text-danger" })
+        @Html.ValidationMessage("biletFiyat","",new { @class ="text-danger" })
         <br />
 
         @Html.Label("Durum")

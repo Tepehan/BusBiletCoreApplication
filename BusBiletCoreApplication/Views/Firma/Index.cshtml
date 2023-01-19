@@ -1,9 +1,11 @@
 ﻿@using EntityLayer
-@using X.PagedList;
-@model IPagedList<Firma>
+@using BusBiletCoreApplication.PagedList;
+@model List<Firma>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var pager = (Pager)ViewBag.pager;
+
 }
 @section searchbar{
     <!-- Topbar Search -->
@@ -52,9 +54,12 @@
     <a href="/Firma/ekle" class="btn btn-success"><ion-icon name="add" style=" font-size:30px;"></ion-icon></a>
 </div>
 
+                   
+               
 
 <div id="ListContainer" style="color:white;display:inline-block;position:relative;top:50%;left:50%;transform:translate(-50%,-50%);">
-    <partial name="partialview" model="@Model" />
+@*    <partial name="partialview" model="@Model" />*@
+    <partial name="partialcustompager" model="@pager" />
 </div>
 <!-- Modal -->
 @*#decisionPopup Model*@

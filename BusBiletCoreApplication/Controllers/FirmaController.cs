@@ -1,9 +1,12 @@
-﻿using BusBiletCoreApplication.Validaitons;
+﻿using BusBiletCoreApplication.PagedList;
+using BusBiletCoreApplication.Validaitons;
 using BusinessLayer;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using X.PagedList;
 
 namespace BusBiletCoreApplication.Controllers
@@ -13,11 +16,21 @@ namespace BusBiletCoreApplication.Controllers
     {
         FirmaManager fm = new FirmaManager(new EfFirmaRepository());
         
-        public IActionResult Index(int page = 1, int pageSize = 3)
+        public IActionResult Index(int page = 1)
         {
-            var firmalar = fm.firmaListele().ToPagedList(page, pageSize);
+            int pageSize = 2;
+            Context c = new Context();
+            Pager pager;
+            
+            //var firmalar = fm.firmaListele().ToPagedList(page, pageSize);
+            var itemCounts = c.firmalar.ToList().Count;
+             pager= new Pager(pageSize,itemCounts,page);
+            var data = c.firmalar.Skip((page - 1) * pageSize).Take(pageSize).ToList() ;
+            ViewBag.pager=pager; 
             ViewBag.actionName = "Index";
-            return View(firmalar);
+            ViewBag.contrName = "Firma";
+            return View(data);
+
         }
        
         [HttpGet]

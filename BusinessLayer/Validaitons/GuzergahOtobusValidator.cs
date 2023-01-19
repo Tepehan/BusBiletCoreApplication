@@ -21,7 +21,7 @@ namespace BusinessLayer.Validaitons
             RuleFor(guzergahOtobus => guzergahOtobus.kalkisSaat).MinimumLength(5).WithMessage("Minimum 5 karakter girebilirsiniz !");
 
             //Tarih
-            RuleFor(guzergahOtobus => guzergahOtobus.tarih).NotEmpty().WithMessage("Tarih boş geçilemez !");
+            RuleFor(guzergahOtobus => guzergahOtobus.tarih).NotNull().WithMessage("Tarih boş geçilemez !");
 
             //Bilet Fiyat
             RuleFor(guzergahOtobus => guzergahOtobus.biletFiyat).NotEmpty().WithMessage("Bilet fiyatı boş geçilemez !");
