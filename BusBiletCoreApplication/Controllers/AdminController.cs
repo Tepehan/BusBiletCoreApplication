@@ -45,7 +45,7 @@ namespace BusBiletCoreApplication.Controllers
             Context c=new Context();
             var result= c.adminler.Where(x=>x.adminEmail==admin.adminEmail&&x.adminPassword==admin.adminPassword).SingleOrDefault();
             if (result!=null) {
-            
+              
               var claims = new List<Claim> { new Claim(ClaimTypes.Email, admin.adminEmail) };
 
                 var userIdentify = new ClaimsIdentity(claims, "Login");

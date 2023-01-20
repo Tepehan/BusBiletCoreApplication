@@ -2,27 +2,28 @@
 @{
     var action_name = ViewBag.actionName;
     var contr_name = ViewBag.contrName;
+    var searchText = ViewBag.searchText;
 }
 <nav aria-label="Page navigation example">
     @if (@Model != null && @Model.sayfaSayisi > 0)
     {
         <ul class="pagination justify-content-end">
-            <li class="page-item @(Model.aktifSayfasi>1?"":"invisible")">
-                <a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="1">Başa Dön</a>
+            <li class="page-item @(Model.aktifSayfasi>1?"":"disabled")">
+                <a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="1" asp-route-searchText="@searchText">Başa Dön</a>
             </li>
             <li class="page-item @(Model.aktifSayfasi>1?"":"disabled")">
-                <a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="@(Model.aktifSayfasi-1)">Geri</a>
+                <a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="@(Model.aktifSayfasi-1)" asp-route-searchText="@searchText">Geri</a>
             </li>
             @for (var i = Model.baslangicSayfasi; i <= Model.bitisSayfasi; i++)
             {
-                <li class="page-item @(Model.aktifSayfasi==@i?"active":"")"><a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="@i">@i</a></li>
+                <li class="page-item @(Model.aktifSayfasi==@i?"active":"")"><a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="@i" asp-route-searchText="@searchText">@i</a></li>
             }
 
             <li class="page-item @(Model.aktifSayfasi<Model.sayfaSayisi?"":"disabled")">
-                <a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="@(Model.aktifSayfasi+1)">İleri</a>
+                <a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="@(Model.aktifSayfasi+1)" asp-route-searchText="@searchText">İleri</a>
             </li>
             <li class="page-item @(Model.aktifSayfasi<Model.sayfaSayisi?"":"invisible")">
-                <a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="@(Model.sayfaSayisi)">Sona Git</a>
+                <a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="@(Model.sayfaSayisi)" asp-route-searchText="@searchText">Sona Git</a>
             </li>
         </ul>
     }

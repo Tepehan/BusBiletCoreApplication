@@ -6,6 +6,8 @@ using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol.Core.Types;
+using System.Collections.Generic;
 using System.Linq;
 using X.PagedList;
 
@@ -16,19 +18,30 @@ namespace BusBiletCoreApplication.Controllers
     {
         FirmaManager fm = new FirmaManager(new EfFirmaRepository());
         
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(int page = 1,string searchText="")
         {
             int pageSize = 2;
             Context c = new Context();
             Pager pager;
-            
+            List<Firma> data;
+            var itemCounts=0;
+            if (searchText != "" && searchText != null)
+            {
+                data = c.firmalar.Where(firma => firma.firmaAd.Contains(searchText)).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+                itemCounts = c.firmalar.Where(firma => firma.firmaAd.Contains(searchText)).ToList().Count;
+            }
+            else {
+                 data = c.firmalar.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+                itemCounts = c.firmalar.ToList().Count;
+            }
             //var firmalar = fm.firmaListele().ToPagedList(page, pageSize);
-            var itemCounts = c.firmalar.ToList().Count;
+            
              pager= new Pager(pageSize,itemCounts,page);
-            var data = c.firmalar.Skip((page - 1) * pageSize).Take(pageSize).ToList() ;
+           
             ViewBag.pager=pager; 
             ViewBag.actionName = "Index";
             ViewBag.contrName = "Firma";
+            ViewBag.searchText = searchText;
             return View(data);
 
         }
