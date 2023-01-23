@@ -1,12 +1,23 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.IO;
 
 namespace BusBiletCoreApplication.Controllers
 {
     public class SliderController : Controller
     {
+        private readonly IWebHostEnvironment webHostEnvironment;
+
+        public SliderController(IWebHostEnvironment webHostEnvironment)
+        {
+            this.webHostEnvironment = webHostEnvironment;
+        }
+
         SliderManager sm = new SliderManager(new EfSliderRepository());
         public IActionResult Index()
         {
@@ -22,6 +33,7 @@ namespace BusBiletCoreApplication.Controllers
         [HttpPost]
         public IActionResult Ekle(Slider slider)
         {
+            slider.resimUrl= FileUpload(slider);
             sm.sliderEkle(slider);
             return RedirectToAction("Index");
         }
@@ -36,21 +48,23 @@ namespace BusBiletCoreApplication.Controllers
             sm.sliderGuncelle(slider);
             return RedirectToAction("Index");
         }
-      
-        // public async Task<IActionResult>  FileUpload(IFormFile formFile)
-        //{
-        //    if (formFile!=null)
-        //    {
-        //        var extent = Path.GetExtension(formFile.FileName);
-        //        var randomName = ($"{Guid.NewGuid()}{extent}");
-        //        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", randomName);
-                
-        //        using(var stream=new FileStream(path, FileMode.Create))
-        //        {
-        //            await formFile.CopyToAsync(stream);
-        //        }
-        //    }
-        //    return View();
-        //}
+
+        private string  FileUpload(Slider slider)
+        {
+            string uniquefileName = "";
+            if (slider.imgFile != null)
+            {
+                 uniquefileName = Guid.NewGuid().ToString() + "_" + slider.imgFile.FileName;
+                string uploadfolder = Path.Combine(webHostEnvironment.WebRootPath,"sliderimages");
+                string filePath = Path.Combine(uploadfolder,uniquefileName);
+               
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                     slider.imgFile.CopyTo(stream);
+                }
+            }
+            return uniquefileName;
+        }
     }
 }

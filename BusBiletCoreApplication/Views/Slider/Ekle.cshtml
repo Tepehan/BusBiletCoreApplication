@@ -7,15 +7,15 @@
 
 <div class="p-2">
     <h2>Ekle</h2>
-    @using (Html.BeginForm("Ekle", "Slider", FormMethod.Post, new { @class = "form-group" }))
+    @using (Html.BeginForm("Ekle", "Slider", FormMethod.Post, new { @class = "form-group", @enctype = "multipart/form-data" }))
     {
         @Html.Label("Slider Adı")
         @Html.TextBoxFor(slider=>slider.sliderName,new { @class = "form-control" })
         @Html.ValidationMessageFor(slider=>slider.sliderName,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Resim Seç")
-        @Html.TextBoxFor(slider=>slider.resimUrl, null, new { type="file", @class="form-control" })
-        @Html.ValidationMessageFor(slider=>slider.resimUrl,"",new { @class ="text-danger" })
+        @Html.TextBoxFor(slider=>slider.imgFile, new { type="file", @class="form-control" })
+        @Html.ValidationMessageFor(slider=>slider.imgFile,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Silindi")
         <select class="form-control" name="silindi">
