@@ -7,7 +7,7 @@
 
 <div class="p-2">
     <h2>Güncelle</h2>
-    @using (Html.BeginForm("Guncelle", "Slider", FormMethod.Post, new { @class = "form-group" }))
+    @using (Html.BeginForm("Guncelle", "Slider", FormMethod.Post, new { @class = "form-group" ,@enctype = "multipart/form-data" }))
     {
     
         @Html.TextBoxFor(slider=>slider.sliderId,new { @class = "form-control",@type="hidden" })
@@ -18,8 +18,15 @@
         @Html.ValidationMessageFor(slider=>slider.sliderName,"",new { @class ="text-danger" })
         <br />
         @Html.Label("Resim Seç");
-        @Html.TextBoxFor(slider=>slider.resimUrl, "", new { type="file", @class="form-control",@value="enesdfsdgf" })
-        @Html.ValidationMessageFor(slider=>slider.resimUrl,"",new { @class ="text-danger" })
+        <input id="image_file" type="file" name="imgFile" class="form-control" accept="image/*" onchange="changeContent();" />
+     @*   @Html.TextBoxFor(slider=>slider.imgFile, new { type="file", @class="form-control",@accept="image/*" ,@onchanged="changeContent();"})*@
+        @Html.ValidationMessageFor(slider=>slider.imgFile,"",new { @class ="text-danger" })
+        <br />
+        <div style="border:1px dashed white;padding:5px;width:30%;padding:10px;">
+        <img id="imageDisplay" src="~/sliderimages/@Model.resimUrl" width="100%" height="250px"/>
+         <label id="imageName"></label>
+            <label id="imageSize"></label>
+        </div>
         <br />
         @Html.Label("Silindi")
         <select class="form-control" name="silindi">
@@ -35,6 +42,39 @@
             }
         </select>
         <br />
-        <input class="form-control btn btn-primary" type="submit" value="Güncelle" />
+        <input id="guncelleBtn" class="form-control btn btn-primary" type="submit" value="Güncelle" />
     }
 </div>
+<script>
+    function changeContent(){
+        var file = document.getElementById('image_file').files[0];
+        //file.name == "photo.png"
+        //file.type == "image/png"
+        //file.size == 300821
+        document.getElementById('imageDisplay').src = window.URL.createObjectURL(file);
+        document.getElementById('imageName').innerHTML = file.name;
+        var btn=document.getElementById('guncelleBtn');       
+        var sizeLabel = document.getElementById('imageSize');
+
+        if (file.size > 80960) {
+            sizeLabel.innerHTML = "40 kilobayttan fazla olamaz";
+            sizeLabel.style.color="red";
+            btn.disabled = true;
+        }else{
+            sizeLabel.innerHTML = returnFileSize(file.size);
+            sizeLabel.style.color = "white";
+            btn.disabled = false;
+
+        }
+       
+    }
+    function returnFileSize(number) {
+        if (number < 1024) {
+            return `${number} bytes`;
+        } else if (number >= 1024 && number < 1048576) {
+            return `${(number / 1024).toFixed(1)} KB`;
+        } else if (number >= 1048576) {
+            return `${(number / 1048576).toFixed(1)} MB`;
+        }
+    }
+</script>

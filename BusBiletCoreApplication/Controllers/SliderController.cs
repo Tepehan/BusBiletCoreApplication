@@ -45,6 +45,8 @@ namespace BusBiletCoreApplication.Controllers
         [HttpPost]
         public IActionResult guncelle(Slider slider)
         {
+           
+            slider.resimUrl = FileUpload(slider);
             sm.sliderGuncelle(slider);
             return RedirectToAction("Index");
         }
