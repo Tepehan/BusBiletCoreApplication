@@ -20,6 +20,8 @@ namespace BusBiletCoreApplication.Controllers
         
         public IActionResult Index(int page = 1,string searchText="")
         {
+
+            TempData["page"] = page;
             int pageSize = 2;
             Context c = new Context();
             Pager pager;
@@ -27,7 +29,8 @@ namespace BusBiletCoreApplication.Controllers
             var itemCounts=0;
             if (searchText != "" && searchText != null)
             {
-                data = c.firmalar.Where(firma => firma.firmaAd.Contains(searchText)).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+                data = c.firmalar.Where(firma => firma.firmaAd.Contains(searchText)).Skip(( - 1) * pageSize).Take(pageSize).ToList();
                 itemCounts = c.firmalar.Where(firma => firma.firmaAd.Contains(searchText)).ToList().Count;
             }
             else {
@@ -78,7 +81,8 @@ namespace BusBiletCoreApplication.Controllers
             Firma firma=fm.firmaGetirById(id);
             firma.silindi = true;
             fm.firmaGuncelle(firma);
-            return RedirectToAction("Index");
+            int page = (int)TempData["page"];
+            return RedirectToAction("Index", new { page, searchText = "" });
         }
         public IActionResult guncelle(int id)
         {
@@ -94,7 +98,8 @@ namespace BusBiletCoreApplication.Controllers
             if (result.IsValid)
             {
                 fm.firmaGuncelle(firma);
-                return RedirectToAction("Index");
+                int page = (int)TempData["page"];
+                return RedirectToAction("Index", new { page, searchText = "" });
 
             }
             else

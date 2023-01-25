@@ -3,10 +3,12 @@
     var action_name = ViewBag.actionName;
     var contr_name = ViewBag.contrName;
     var searchText = ViewBag.searchText;
+   
 }
 <nav aria-label="Page navigation example">
     @if (@Model != null && @Model.sayfaSayisi > 0)
     {
+        
         <ul class="pagination justify-content-end">
             <li class="page-item @(Model.aktifSayfasi>1?"":"disabled")">
                 <a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="1" asp-route-searchText="@searchText">Başa Dön</a>
@@ -26,5 +28,6 @@
                 <a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="@(Model.sayfaSayisi)" asp-route-searchText="@searchText">Sona Git</a>
             </li>
         </ul>
+       
     }
 </nav>
