@@ -81,9 +81,47 @@
         </div>
     </div>
 </div>
- 
+<br />
+<input type="text" id="text" />
+<button id="btn" type="button" class="btn btn-secondary" >burdayım</button>
+     <div id="firmaNesne">
 
-    <script> 
+     </div>
+    <script>
+    $("#btn").click(x => {
+     let textValue = parseInt($("#text").val());
+        $.ajax({
+           contentType:"application/json",
+            dataType:"json",
+            type:"get",
+            url: "/Firma/deneme/",
+            data: { id: textValue },
+            success:function(resp){
+            let parsedData=jQuery.parseJSON(resp);
+                console.log(parsedData);
+               var table= document.createElement("table");
+                var tr = document.createElement("tr");
+                var td1 = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");
+                var td4 = document.createElement("td");
+                td1.innerHTML = parsedData["firmaAd"];
+                td2.innerHTML = parsedData["iletisim"];
+                td3.innerHTML = parsedData["logoUrl"];
+                td4.innerHTML = parsedData["silindi"];
+                tr.appendChild(td1);
+                 tr.appendChild(td2);
+                tr.appendChild(td3);
+                tr.appendChild(td4);
+              
+                table.appendChild(tr); 
+                var div = document.getElementById("firmaNesne");
+                div.remove();
+                div.appendChild(table);
+            }
+        });
+    });
+
     $(document).ready(function(){
         $('#decisionPopup').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget);

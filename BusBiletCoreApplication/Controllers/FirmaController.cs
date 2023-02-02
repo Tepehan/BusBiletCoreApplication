@@ -6,6 +6,7 @@ using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using NuGet.Protocol.Core.Types;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,7 +76,12 @@ namespace BusBiletCoreApplication.Controllers
             }
           
         }
-    
+        public JsonResult deneme(int id)
+        {
+            Firma firma = fm.firmaGetirById(id);
+           var jsonRes=JsonConvert.SerializeObject(firma);
+            return Json(jsonRes);
+        }
         public IActionResult sil(int id)
         {
             Firma firma=fm.firmaGetirById(id);

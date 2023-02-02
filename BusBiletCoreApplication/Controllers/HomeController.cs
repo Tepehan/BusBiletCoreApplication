@@ -30,11 +30,8 @@ namespace BusBiletCoreApplication.Controllers
         {
             var menus = c.menuler.ToList();
             var mappedTree=mapListToTreview(menus);
-            MenuSliderModel msmodel=new MenuSliderModel();
-            SliderManager sm = new SliderManager(new EfSliderRepository());
-            msmodel.menuModel= mappedTree;
-            msmodel.sliderModel = sm.SliderListele();
-            return View(msmodel);
+           
+            return View(mappedTree);
          
         }
 
